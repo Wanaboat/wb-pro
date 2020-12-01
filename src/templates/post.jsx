@@ -1,165 +1,230 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header } from '../components'
-import Categories from '../components/Listing/Categories'
-import website from '../../config/website'
+import { Link as GatsbyLink } from 'gatsby'
+import Wrapper from '../components/Wrapper'
+import Layout from '../components/Layout2'
+import SEO from '../components/SEO'
+import { Box, Button, Heading } from '@chakra-ui/react'
+import SlicesEngine from '../components/Slices/engine'
+import PageTitle from '../components/PageTitle'
+// import usePreviewData from '../utils/usePreviewData'
 
-const Hero = styled.header`
-  background-color: ${(props) => props.theme.colors.greyLight};
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-`
 
-const Headline = styled.p`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: ${(props) => props.theme.colors.grey};
-  font-size: 1.25rem;
-  a {
-    font-style: normal;
-    font-weight: normal;
-  }
-`
+const Post = ({ data }) => {
+  // const liveData = usePreviewData( data )
+  const liveData = data 
 
-const PostWrapper = Wrapper.withComponent('main')
-
-const Post = ({ data: { prismicPost, posts }, location }) => {
-  const { data } = prismicPost
-  let categories = false
-  if (data.categories[0].category) {
-    categories = data.categories.map((c) => c.category.document[0].data.name)
-  }
+  const { prismicPost, posts, nav, settings } = liveData
   return (
-    <Layout customSEO>
+    <Layout nav={ nav.data.nav } settings={ settings }>
       <SEO
-        title={`${data.title.text} | ${website.titleAlt}`}
-        pathname={location.pathname}
-        desc={data.description}
+        title={`${prismicPost.data.title.text}`}
+        pathname={prismicPost.data.uid ? post.data.uid : '/'}
+        desc={prismicPost.data.seo_description.text}
+        banner={ prismicPost.data.sharing_image.url }
         node={prismicPost}
         article
       />
-      <Hero>
-        <Wrapper>
-          <Header />
-          <Headline>
-            {data.date} — {categories && <Categories categories={categories} />}
-          </Headline>
-          <h1>{data.title.text}</h1>
-        </Wrapper>
-      </Hero>
-      <PostWrapper id={website.skipNavId}>
-        <SliceZone allSlices={data.body} />
-        <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
-        <Listing posts={posts.nodes} />
-      </PostWrapper>
+      <Wrapper>
+        <Box
+          my='2rem'
+        >
+          <Button
+            variant='outline'
+            size='sm'
+            to='../'
+            as={ GatsbyLink }>← Retour</Button>
+        </Box>
+        <PageTitle>{prismicPost.data.title.text}</PageTitle>
+        {/* <SlicesEngine slices={prismicPost.data.body} posts={ posts ? posts : [] } /> */}
+      </Wrapper>
     </Layout>
   )
 }
-
 export default Post
 
-Post.propTypes = {
-  data: PropTypes.shape({
-    prismicPost: PropTypes.object.isRequired,
-    posts: PropTypes.shape({
-      nodes: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
-  location: PropTypes.object.isRequired,
-}
 
-// The typenames come from the slice names
-// If this doesn't work for you query for __typename in body {} and GraphiQL will show them to you
-
-export const pageQuery = graphql`
-  query PostBySlug($uid: String!) {
+export const postQuery = graphql`
+  query PostQuery($uid: String!) {
     prismicPost(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
       data {
         title {
+          html
           text
         }
-        description
-        date(formatString: "DD.MM.YYYY")
-        categories {
-          category {
-            document {
-              data {
-                name
-              }
-            }
-          }
+        seo_description{
+          text
+        }
+        seo_title
+        sharing_image{
+          url
         }
         body {
-          ... on PrismicPostBodyText {
-            slice_type
-            id
-            primary {
-              text {
+          __typename
+          ... on PrismicPostBodyVideo{
+            primary{
+              youtube_link {
+                version
+                thumbnail_height
+                provider_url
+                type
+                title
+                author_url
+                height
+                author_name
                 html
+                provider_name
+                width
+                thumbnail_url
+                thumbnail_width
+                embed_url
               }
             }
           }
-          ... on PrismicPostBodyCodeBlock {
-            slice_type
-            id
+          ... on PrismicPostBodyImageGallery {
             primary {
-              code_block {
-                html
+              name_of_the_gallery {
+                text
               }
             }
-          }
-          ... on PrismicPostBodyQuote {
-            slice_type
-            id
-            primary {
-              quote {
+            items {
+              gallery_image {
+                url
+                copyright
+                alt
+                dimensions {
+                  height
+                  width
+                }
+              }
+              image_captions {
                 html
                 text
               }
             }
           }
-          ... on PrismicPostBodyImage {
-            slice_type
+          ... on PrismicPostBodyBannerWithCaption {
+            primary {
+              image_banner {
+                alt
+                copyright
+                url
+              }
+              description {
+                html
+                text
+              }
+              button_link {
+                
+                uid
+                url
+              }
+              button_label {
+                html
+                text
+              }
+            }
+          }
+          ... on PrismicPostBodyText {
             id
             primary {
-              image {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 1200, quality: 90) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+              text {
+                html
+                text
+              }
+            }
+          }
+        }
+      }
+    }
+    posts: allPrismicPost{
+      edges{
+        node{
+          href
+          uid
+          data{
+            date(formatString: "DD.MM.YYYY")
+            title {
+              text
+            }
+          }
+        }
+      }
+    }
+    products: allPrismicProduct {
+      edges {
+        node {
+          id
+          href
+          uid
+          data {
+            title {
+              text
+            }
+            sub_title
+            main_info
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+    settings:prismicSettings {
+      data {
+          site_name
+          footer_link {
+              uid
+          }
+          footer_link_label
+      }
+    }
+    nav:prismicNav {
+      data {
+          nav {
+              ... on PrismicNavNavNavItem {
+                  primary {
+                      label {
+                          text
+                      }
+                      link {
+                          uid
+                          document {
+                              ... on PrismicPage {
+                                  uid
+                                  data{
+                                      parent{
+                                          uid
+                                      }
+                                  }
+                              }
+                          }
+                      }
                   }
-                }
+                  items {
+                      sub_nav_link {
+                          uid
+                          document {
+                              ... on PrismicPage {
+                                  uid
+                                  data{
+                                      parent{
+                                          uid
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                      sub_nav_link_label {
+                          text
+                      }
+                  }
               }
-            }
           }
-        }
       }
-    }
-    posts: allPrismicPost(limit: 2, sort: { fields: [data___date], order: DESC }, filter: { uid: { ne: $uid } }) {
-      nodes {
-        uid
-        data {
-          title {
-            text
-          }
-          date(formatString: "DD.MM.YYYY")
-          categories {
-            category {
-              document {
-                data {
-                  name
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
+}
 `

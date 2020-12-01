@@ -1,12 +1,15 @@
-import styled from '@emotion/styled'
+import React from 'react'
+import { Box } from '@chakra-ui/react'
 
-const Wrapper = styled.div`
-  max-width: ${(props) => props.theme.maxWidth};
-  margin: 0 auto;
-  padding: 0 2rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    padding: 0 1.5rem;
-  }
-`
+const Wrapper = (props) => (
+  <Box
+    mb='5rem'
+    // maxW='1200px'
+    px={{ xs:'1rem', md:'2rem', lg:'2.5rem', xl:'0'}}
+    mx='auto'
+  >
+    { props.children }
+  </Box>
+)
 
 export default Wrapper

@@ -1,28 +1,100 @@
 {
   "Main" : {
+    "page_name" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Page name"
+      }
+    },
     "title" : {
       "type" : "StructuredText",
       "config" : {
         "single" : "heading1",
-        "label" : "title",
-        "placeholder" : "Title of the page"
+        "label" : "Titre"
       }
     },
-    "content" : {
+    "sub_title" : {
       "type" : "StructuredText",
       "config" : {
-        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item",
-        "label" : "content",
-        "placeholder" : "Content under the title"
+        "single" : "heading2",
+        "label" : "Sous-titre"
       }
     },
-    "footer" : {
-      "type" : "StructuredText",
+    "intro" : {
+      "type" : "Text",
       "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "allowTargetBlank" : true,
-        "label" : "Footer",
-        "placeholder" : "Footer"
+        "label" : "Intro"
+      }
+    }
+  },
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Seo Title"
+      }
+    },
+    "seo_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Seo description"
+      }
+    },
+    "sharing_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Sharing image"
+      }
+    }
+  },
+  "Boutons" : {
+    "button_target" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "Destination"
+      }
+    },
+    "button_label" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Libellé"
+      }
+    },
+    "phone_number" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Numéro de téléphone"
+      }
+    },
+    "phone_number_raw" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Numéro téléphone format international"
+      }
+    }
+  },
+  "Icons" : {
+    "items_list" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "icon" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "Warehouse", "Wheel", "Tools", "Parts", "Sailboat" ],
+              "label" : "Icon"
+            }
+          },
+          "label" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "Label"
+            }
+          }
+        },
+        "label" : "items_list"
       }
     }
   }

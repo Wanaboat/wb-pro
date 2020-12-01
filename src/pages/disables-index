@@ -1,0 +1,146 @@
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
+import { Layout } from '../components'
+import SEO from '../components/SEO'
+import HomeHero from '../components/HomeHero'
+import FeaturesList from '../components/FeaturesList'
+
+class Index extends Component {
+  render() {
+    const { data: { nav }, data: { settings }, data: { homepage }} = this.props
+    console.log( 'nav', nav)
+    return (
+      <Layout nav={ nav.data.nav } settings={ settings }>
+        <SEO
+          title={homepage.data.seo_title}
+          pathname={''}
+          desc={homepage.data.seo_description}
+          node={homepage}
+          banner={ homepage.data.sharing_image.url }
+          article
+        />
+        <HomeHero data={ homepage.data } />
+        <FeaturesList items={homepage.data.items_list } />
+      </Layout>
+    )
+  }
+}
+
+export default Index
+
+// Index.propTypes = {
+//   data: PropTypes.shape({
+//     homepage: PropTypes.shape({
+//       data: PropTypes.shape({
+//         title: PropTypes.shape({
+//           text: PropTypes.string.isRequired,
+//         }),
+//         content: PropTypes.shape({
+//           html: PropTypes.string.isRequired,
+//         }),
+//       }),
+//     }),
+//     social: PropTypes.shape({
+//       nodes: PropTypes.array.isRequired,
+//     }),
+//     posts: PropTypes.shape({
+//       nodes: PropTypes.array.isRequired,
+//     }),
+//     projects: PropTypes.shape({
+//       nodes: PropTypes.array.isRequired,
+//     }),
+//   }).isRequired,
+// }
+
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    homepage:  prismicHomepage {
+      first_publication_date
+      last_publication_date
+      data {
+        title {
+          html
+          text
+        }
+        sub_title{
+          html
+          text
+        }
+        intro
+        seo_title
+        seo_description
+        sharing_image {
+          url
+        }
+        button_label
+        button_target{
+          url
+        }
+        items_list {
+          icon
+          label
+        }
+        phone_number
+        phone_number_raw
+      }
+    }
+    settings: prismicSettings {
+      data {
+        site_name
+        footer_link {
+          uid
+          url
+        }
+        footer_link_label
+      }   
+    }
+    nav:prismicNav {
+      data {
+        nav {
+          primary {
+            label {
+              html
+              text
+            }
+            link {
+              url
+              id
+              document {
+                ... on PrismicPage {
+                  id
+                  data {
+                    parent {
+                      uid
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+          items {
+            sub_nav_link {
+              uid
+              url
+              document{
+                ... on PrismicPage {
+                  id
+                  data {
+                    parent {
+                      uid
+                      url
+                    }
+                  }
+                }
+              }
+            }
+            sub_nav_link_label {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+`

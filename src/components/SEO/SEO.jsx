@@ -9,22 +9,22 @@ import Twitter from './Twitter'
 
 const SEO = ({ title, desc, banner, pathname, article, node }) => {
   const { site } = useStaticQuery(query)
-
   const {
     buildTime,
     siteMetadata: {
-      siteUrl,
       defaultTitle,
       defaultDescription,
       defaultBanner,
       headline,
-      siteLanguage,
       ogLanguage,
-      author,
       twitter,
       facebook,
     },
   } = site
+
+  const siteLanguage = process.env.LANG
+  const author = process.env.SITE_TITLE
+  const siteUrl = process.env.SITE_URL
 
   const seo = {
     title: title || defaultTitle,
@@ -54,7 +54,7 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
       '@type': 'Person',
       name: author,
     },
-    copyrightYear: '2019',
+    copyrightYear: '2020',
     creator: {
       '@type': 'Person',
       name: author,
@@ -111,8 +111,8 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
           url: `${siteUrl}${defaultBanner}`,
         },
       },
-      datePublished: node.first_publication_date,
-      dateModified: node.last_publication_date,
+      datePublished: node ? node.first_publication_date : null,
+      dateModified: node ? node.last_publication_date : null,
       description: seo.description,
       headline: seo.title,
       inLanguage: siteLanguage,
@@ -146,14 +146,14 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
   return (
     <>
       <Helmet title={seo.title}>
-        <html lang={siteLanguage} />
+        <html lang={ siteLanguage } />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
-        <meta name="gatsby-starter" content="Gatsby Starter Prismic" />
+        {/* <meta name="gatsby-starter" content="Gatsby Starter Prismic" /> */}
         {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
-        <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+        {/* <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
       </Helmet>
       <Facebook
         desc={seo.description}
@@ -201,7 +201,6 @@ const query = graphql`
         headline
         siteLanguage
         ogLanguage
-        author
         twitter
         facebook
       }

@@ -1,2 +1,5 @@
-[template.environment]
-  API_KEY = "Your Prismic API access token"
+#[template.environment]
+# API_KEY = "Your Prismic API access token"
+[[redirects]]
+  from:"/boutique/"
+  to:https://nacrafr.fr/fr/

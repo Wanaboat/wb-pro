@@ -1,23 +1,62 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
+import React from 'react'
+import { Link as GatsbyLink } from 'gatsby'
+import { Box, Link, Stack, Text } from '@chakra-ui/react'
+import { FormattedMessage } from 'react-intl'
+const Footer = (props) => {
+  console.log('Footer props', props)
+  return (
+    <>
+      <Stack
+        as='footer'
+        justifyContent='center'
+        alignItems='center'
+        bg='brandDark1'
+        wrap='wrap'
+        spacing='.5rem'
+        p='3rem'
+        background='blue.900'
+      >
+        <Text
+          w='100%'
+          color='brandLightPrimary'
+          textAlign='center'
+          fontWeight='700'
+          fontSize={{ xs: '28px', lg: '44px' }}
+        >{props.settings.data.site_name}</Text>
+        <Text
+          w='100%'
+          textAlign='center'
+          color='brandLight2'
+          textTransform='uppercase'
+          letterSpacing='0.05rem'
+          fontSize={{ xs: '14px', lg: '22px' }}
 
-const StyledFooter = styled.footer`
-  max-width: ${(props) => props.theme.maxWidth};
-  margin: 6rem auto 0 auto;
-  padding: 2rem;
-  color: ${(props) => props.theme.colors.grey};
-`
-
-class Footer extends Component {
-  render() {
-    const { children } = this.props
-    return <StyledFooter>{children}</StyledFooter>
-  }
+        >
+          Le spécialiste voile légère en Bretagne</Text>
+        <Text
+          color='gray.400'
+          w='100%'
+          textAlign='center'
+          fontSize={{ xs: '12px', lg: '16px' }}
+        >
+          <Link as={ GatsbyLink } to={`/${props.settings.data.footer_link.uid}`}>
+            {props.settings.data.footer_link_label}
+          </Link>
+        </Text>
+      </Stack>
+      <Box bg='gray.800' p='.5rem' textAlign={{ xs:'center', lg:'right'}}>
+        <Link
+          fontSize={{ xs:'10px', lg:'12px'}}
+          color='gray.200'
+          target='_blank'
+          rel='noopener'
+          href="https://www.wanaboat.fr"
+        >
+          <FormattedMessage id="footer.wb.signature" />
+          
+        </Link>
+      </Box>
+    </>
+  )
 }
-
 export default Footer
-
-Footer.propTypes = {
-  children: PropTypes.node.isRequired,
-}

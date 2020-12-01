@@ -1,0 +1,64 @@
+.alert-enter {
+    opacity: 0;
+  }
+  .alert-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .alert-enter-done {
+    opacity: 1;
+    transform: translateY(0) !important;
+    transition: opacity 300ms, transform 300ms;
+  }
+  .alert-exit {
+    opacity: 1;
+    transition: opacity 300ms, transform 300ms;
+
+  }
+  .alert-exit-active {
+    opacity: 0;
+    transform: translateY(100%) !important;
+    transition: opacity 300ms, transform 300ms;
+  }
+  .alert-exit-done {
+    opacity: 0;
+    transform: translateY(100%) !important;
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+
+
+
+  .slideright-enter {
+    /* opacity: 0; */
+    transform: translateX(100%) !important;
+
+  }
+  .slideright-enter-active {
+    /* opacity: 1; */
+    transform: translateX(0);
+    transition: opacity 200ms, transform 200ms;
+  }
+  .slideright-enter-done {
+    /* opacity: 1; */
+    transform: translateX(0%) !important;
+    transition: opacity 200ms, transform 200ms;
+  }
+  .slideright-exit {
+    /* opacity: 1; */
+    transition: opacity 200ms, transform 200ms;
+
+  }
+  .slideright-exit-active {
+    /* opacity: 0; */
+    transform: translateX(100%) !important;
+    transition: opacity 200ms, transform 200ms;
+  }
+  .slideright-exit-done {
+    /* opacity: 0; */
+    transform: translateX(0%) !important;
+    transition: opacity 200ms, transform 200ms;
+  }
+
+  

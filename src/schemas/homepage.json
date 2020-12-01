@@ -1,0 +1,101 @@
+{
+    "Main" : {
+      "page_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Page name"
+        }
+      },
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Titre"
+        }
+      },
+      "sub_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Sous-titre"
+        }
+      },
+      "intro" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Intro"
+        }
+      }
+    },
+    "SEO" : {
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Seo Title"
+        }
+      },
+      "seo_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Seo description"
+        }
+      },
+      "sharing_image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Sharing image"
+        }
+      }
+    },
+    "Boutons" : {
+      "button_target" : {
+        "type" : "Link",
+        "config" : {
+          "label" : "Destination"
+        }
+      },
+      "button_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Libellé"
+        }
+      },
+      "phone_number" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Numéro de téléphone"
+        }
+      },
+      "phone_number_raw" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Numéro téléphone format international"
+        }
+      }
+    },
+    "Icons" : {
+      "items_list" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "icon" : {
+              "type" : "Select",
+              "config" : {
+                "options" : [ "Warehouse", "Wheel", "Tools", "Parts", "Sailboat" ],
+                "label" : "Icon"
+              }
+            },
+            "label" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Label"
+              }
+            }
+          },
+          "label" : "items_list"
+        }
+      }
+    }
+  }
