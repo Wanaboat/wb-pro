@@ -1,6 +1,6 @@
 #[template.environment]
 # API_KEY = "Your Prismic API access token"
 [[redirects]]
-  from = "/boutique/"
+  from = "/boutique/*"
   to = "https://nacrafr.fr/fr/:splat"
   status = 200
