@@ -2,4 +2,4 @@
 # API_KEY = "Your Prismic API access token"
 [[redirects]]
   from = "/boutique/"
-  to = https://nacrafr.fr/fr/
+  to = "https://nacrafr.fr/fr/:spat"
