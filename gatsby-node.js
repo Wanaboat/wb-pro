@@ -31,13 +31,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const adsListTemplate = require.resolve('./src/templates/ads-summary.jsx')
   createPage({
-    path: `/bateaux/occasions-2/`,
+    path: `/bateaux/occasions/`,
     component: adsListTemplate,
     context: {
       // uid: edge.node.uid,
     },
   })
+
+  const searchTemplate = require.resolve('./src/templates/search.jsx')
+  createPage({
+    path: `/recherche/`,
+    component: searchTemplate,
+    context: {
+      // uid: edge.node.uid,
+    },
+  })
   var paths = []
+  var contents = []
+
 
 
   const buildPageSlug = (node) => {
@@ -184,6 +195,7 @@ postsList.forEach((edge) => {
               prismicId
               uid
               data{
+                title { text }
                 parent{
                   uid
                   document{ ... on PrismicPage{ data{ parent{ uid
@@ -209,6 +221,8 @@ postsList.forEach((edge) => {
       if( edge.node.uid === 'histoire-du-f18' ){
         buildPageSlug( edge.node )
       }
+
+      contents.push({ title: edge.node.data.title.text, uid:edge.node.uid })
 
       createPage({
         // path: !edge.node.data.parent ? `${edge.node.uid}` : `${edge.node.data.parent.uid}/${edge.node.uid}`,
@@ -252,6 +266,11 @@ postsList.forEach((edge) => {
   console.log( paths )
 
   fs.writeFile('./paths.js', `export const URIs=${JSON.stringify( paths )};`, function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+
+  fs.writeFile('./contents.js', `export const URIs=${JSON.stringify( contents )};`, function (err) {
     if (err) throw err;
     console.log('Saved!');
   });
