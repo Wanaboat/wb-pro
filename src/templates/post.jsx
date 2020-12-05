@@ -5,7 +5,7 @@ import Wrapper from '../components/Wrapper'
 import Layout from '../components/Layout2'
 import SEO from '../components/SEO'
 import { Box, Button, Heading } from '@chakra-ui/react'
-import SlicesEngine from '../components/Slices/engine'
+import SlicesEngine from '../components/slices/engine'
 import PageTitle from '../components/PageTitle'
 // import usePreviewData from '../utils/usePreviewData'
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout2'
-import SlicesEngine from '../components/Slices/engine'
+import SlicesEngine from '../components/slices/engine'
 import SEO from '../components/SEO'
 import PageTitle from '../components/PageTitle'
 import Wrapper from '../components/Wrapper'

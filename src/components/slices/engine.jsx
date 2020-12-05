@@ -10,7 +10,7 @@ import {
   Plan,
   ProductsList,
   Video
-} from '../Slices'
+} from '../slices'
 
 const Slices = (props) => {
   const { slices, posts, products } = props
