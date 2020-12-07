@@ -32,7 +32,8 @@ const Footer = (props) => {
           fontSize={{ xs: '14px', lg: '22px' }}
 
         >
-          Le spécialiste voile légère en Bretagne</Text>
+          {/* Le spécialiste voile légère en Bretagne */}
+          </Text>
         <Text
           color='gray.400'
           w='100%'

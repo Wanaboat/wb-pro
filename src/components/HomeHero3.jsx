@@ -70,7 +70,7 @@ const HomeHero3 = (props) => {
           >
             {props.data.intro}
           </Text>
-          <Box>
+          {/* <Box>
             <Stack isInline spacing='1rem'>
               <Box
                 as={GatsbyLink}
@@ -111,7 +111,7 @@ const HomeHero3 = (props) => {
                 </Box>
                 : null}
             </Stack>
-          </Box>
+          </Box> */}
         </Stack>
       </Box>
     </Box>
