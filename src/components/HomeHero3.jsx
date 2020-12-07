@@ -62,7 +62,7 @@ const HomeHero3 = (props) => {
             fontWeight='600'
             color='white'
           >
-            {props.data.sub_title.text} 2
+            {props.data.sub_title.text}
             </Heading>
           <Text
             fontSize={{ base:'16px', lg:'22px' }}
