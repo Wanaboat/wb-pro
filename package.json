@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "author": "LekoArts <hello@lekoarts.de>",
   "scripts": {
+    "start": "clear && gatsby clean && gatsby develop",
     "build": "gatsby build",
     "dev": "gatsby develop -o",
     "develop": "gatsby develop",

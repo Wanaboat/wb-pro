@@ -46,20 +46,20 @@ module.exports = {
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'wanaboat',
+        repositoryName: 'sailfast',
         // repositoryName: `${process.env.PRISMIC_REPOSITORY_NAME}`,
         // accessToken: `${process.env.API_KEY}`,
         // Get the correct URLs in blog posts
-        linkResolver: () => (post) => `/${post.uid}`,
+        // linkResolver: () => (post) => `/${post.uid}`,
         // PrismJS highlighting for labels and slices
         htmlSerializer: () => prismicHtmlSerializer,
         // Remove this config option if you only have one language in your Prismic repository
         lang: 'fr-fr',
         schemas: {
-          homepage: require('./src/schemas/homepage.json'),
+          // homepage: require('./src/schemas/homepage.json'),
           page: require('./src/schemas/page.json'),
-          product: require('./src/schemas/product.json'),
-          post: require('./src/schemas/post.json'),
+          // product: require('./src/schemas/product.json'),
+          // post: require('./src/schemas/post.json'),
           nav: require('./src/schemas/nav.json'),
           settings: require('./src/schemas/settings.json'),
         },

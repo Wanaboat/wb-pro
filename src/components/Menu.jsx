@@ -77,7 +77,7 @@ const Menu = (props) => {
                             p='.5rem 1rem'
                             textTransform='uppercase'
                             color='gray.600'
-                            fontSize='20px'
+                            fontSize={{ xs:'1px', lg:'20px'}}
                             letterSpacing='0.05rem'
                             fontFamily="Source Sans Pro"
                             mx={{ lg: '.5rem' }}

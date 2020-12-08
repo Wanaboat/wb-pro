@@ -55,10 +55,11 @@ const AdsList = (props) => {
                     p={{ xs: '1rem', lg: '3rem' }}
                   >
                     <Box>
-                      <div className='wysiwyg' dangerouslySetInnerHTML={{ __html: props.data.side_text.html }} />
+                      Side
+                      {/* <div className='wysiwyg' dangerouslySetInnerHTML={{ __html: props.data.side_text.html }} /> */}
                     </Box>
                     <Box>
-                      <Button
+                      {/* <Button
                         as={GatsbyLink}
                         to={props.data.link_to_contact.url}
                         bg='brandLight2'
@@ -74,7 +75,7 @@ const AdsList = (props) => {
                         }}
                       >
                         <FormattedMessage id='main.contact.us' />
-                      </Button>
+                      </Button> */}
                     </Box>
                   </Stack>
                 }

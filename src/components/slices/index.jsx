@@ -6,6 +6,7 @@ import PostsList from './PostsList'
 import Plan from './Plan'
 import ProductsList from './ProductsList'
 import Video from './Video'
+import HomeHero from './HomeHero'
 
 export { 
     AdsList,
@@ -15,5 +16,6 @@ export {
     Plan, 
     PostsList,
     ProductsList,
-    Video
+    Video,
+    HomeHero
 }

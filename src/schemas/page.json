@@ -1,267 +1,332 @@
 {
-  "Main": {
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1",
-        "label": "Title"
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
       }
     },
-    "short_name": {
-      "type": "Text",
-      "config": {
-        "label": "Short name"
+    "short_name" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Short name"
       }
     },
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "uid"
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
       }
     },
-    "parent": {
-      "type": "Link",
-      "config": {
-        "select": "document",
-        "label": "Parent"
+    "parent" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "document",
+        "label" : "Parent"
       }
     },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {
-          "map": [],
-          "ads_list": [],
-          "products_list": [],
-          "video": []
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "map" : [ ],
+          "ads_list" : [ ],
+          "products_list" : [ ],
+          "video" : [ ],
+          "home_hero" : [ ]
         },
-        "choices": {
-          "text": {
-            "type": "Slice",
-            "fieldset": "Text",
-            "description": "Rich Text Section",
-            "icon": "text_fields",
-            "non-repeat": {
-              "text": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-                  "label": "text",
-                  "placeholder": "Your content here"
+        "choices" : {
+          "text" : {
+            "type" : "Slice",
+            "fieldset" : "Text",
+            "description" : "Rich Text Section",
+            "icon" : "text_fields",
+            "non-repeat" : {
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "text",
+                  "placeholder" : "Your content here"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "banner_with_caption": {
-            "type": "Slice",
-            "fieldset": "Banner with caption",
-            "description": "Banner with caption and button",
-            "icon": "chrome_reader_mode",
-            "non-repeat": {
-              "image_banner": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": null,
-                    "height": null
+          "banner_with_caption" : {
+            "type" : "Slice",
+            "fieldset" : "Banner with caption",
+            "description" : "Banner with caption and button",
+            "icon" : "chrome_reader_mode",
+            "non-repeat" : {
+              "image_banner" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : null,
+                    "height" : null
                   },
-                  "thumbnails": [],
-                  "label": "Image Banner"
+                  "thumbnails" : [ ],
+                  "label" : "Image Banner"
                 }
               },
-              "title_of_banner": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "heading2",
-                  "label": "Title Of banner",
-                  "placeholder": "My title of banner"
+              "title_of_banner" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2",
+                  "label" : "Title Of banner",
+                  "placeholder" : "My title of banner"
                 }
               },
-              "description": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Description",
-                  "placeholder": "My description"
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Description",
+                  "placeholder" : "My description"
                 }
               },
-              "button_label": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-                  "label": "Button label",
-                  "placeholder": "Click Here"
+              "button_label" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Button label",
+                  "placeholder" : "Click Here"
                 }
               },
-              "button_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Button Link",
-                  "placeholder": "Select the link"
+              "button_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Button Link",
+                  "placeholder" : "Select the link"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "image_gallery": {
-            "type": "Slice",
-            "fieldset": "Image Gallery",
-            "description": "Image Gallery with a title and a caption for each image",
-            "icon": "photo_library",
-            "non-repeat": {
-              "name_of_the_gallery": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading2",
-                  "label": "Name of the gallery",
-                  "placeholder": "My beautiful paintings"
+          "image_gallery" : {
+            "type" : "Slice",
+            "fieldset" : "Image Gallery",
+            "description" : "Image Gallery with a title and a caption for each image",
+            "icon" : "photo_library",
+            "non-repeat" : {
+              "name_of_the_gallery" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "Name of the gallery",
+                  "placeholder" : "My beautiful paintings"
                 }
               }
             },
-            "repeat": {
-              "image_captions": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Image captions",
-                  "placeholder": "Images captions"
+            "repeat" : {
+              "image_captions" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Image captions",
+                  "placeholder" : "Images captions"
                 }
               },
-              "gallery_image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": null,
-                    "height": null
+              "gallery_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : null,
+                    "height" : null
                   },
-                  "thumbnails": [],
-                  "label": "Gallery Image"
+                  "thumbnails" : [ ],
+                  "label" : "Gallery Image"
                 }
               }
             }
           },
-          "map": {
-            "type": "Slice",
-            "fieldset": "Map",
-            "description": "Localisation map",
-            "icon": "map",
-            "display": "list",
-            "non-repeat": {
-              "address": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, heading4, strong, em, hyperlink",
-                  "label": "Adresse"
+          "map" : {
+            "type" : "Slice",
+            "fieldset" : "Map",
+            "description" : "Localisation map",
+            "icon" : "map",
+            "display" : "list",
+            "non-repeat" : {
+              "address" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading4, strong, em, hyperlink",
+                  "label" : "Adresse"
                 }
               },
-              "location": {
-                "type": "GeoPoint",
-                "config": {
-                  "label": "Location"
+              "location" : {
+                "type" : "GeoPoint",
+                "config" : {
+                  "label" : "Location"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "ads_list": {
-            "type": "Slice",
-            "fieldset": "Ads List",
-            "description": "The list of your Wanaboat ads",
-            "icon": "dashboard",
-            "display": "list",
-            "non-repeat": {
-              "link_to_contact": {
-                "type": "Link",
-                "config": {
-                  "label": "Link to contact"
+          "ads_list" : {
+            "type" : "Slice",
+            "fieldset" : "Ads List",
+            "description" : "The list of your Wanaboat ads",
+            "icon" : "dashboard",
+            "display" : "list",
+            "non-repeat" : {
+              "link_to_contact" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link to contact"
                 }
               },
-              "side_text": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, heading4, strong, em, hyperlink, list-item",
-                  "label": "Texte accompnant"
+              "side_text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading4, strong, em, hyperlink, list-item",
+                  "label" : "Texte accompnant"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "products_list": {
-            "type": "Slice",
-            "fieldset": "Products list",
-            "description": "La liste de vos produits",
-            "icon": "apps",
-            "display": "list",
-            "non-repeat": {},
-            "repeat": {}
+          "products_list" : {
+            "type" : "Slice",
+            "fieldset" : "Products list",
+            "description" : "La liste de vos produits",
+            "icon" : "apps",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : { }
           },
-          "video": {
-            "type": "Slice",
-            "fieldset": "Video",
-            "description": "Un block à partir d'une vidéo Youtube",
-            "icon": "ondemand_video",
-            "display": "list",
-            "non-repeat": {
-              "youtube_link": {
-                "type": "Embed",
-                "config": {
-                  "label": "YoutubeLink"
+          "video" : {
+            "type" : "Slice",
+            "fieldset" : "Video",
+            "description" : "Un block à partir d'une vidéo Youtube",
+            "icon" : "ondemand_video",
+            "display" : "list",
+            "non-repeat" : {
+              "youtube_link" : {
+                "type" : "Embed",
+                "config" : {
+                  "label" : "YoutubeLink"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "list_of_articles": {
-            "type": "Slice",
-            "fieldset": "List of Articles",
-            "description": "Section title and article list",
-            "icon": "photo_filter",
-            "non-repeat": {
-              "title_of_section": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "heading2",
-                  "label": "Title of Section",
-                  "placeholder": "Featured"
+          "list_of_articles" : {
+            "type" : "Slice",
+            "fieldset" : "List of Articles",
+            "description" : "Section title and article list",
+            "icon" : "photo_filter",
+            "non-repeat" : {
+              "title_of_section" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2",
+                  "label" : "Title of Section",
+                  "placeholder" : "Featured"
                 }
               }
             },
-            "repeat": {
-              "articles_to_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Articles to link",
-                  "placeholder": "Selct your article"
+            "repeat" : {
+              "articles_to_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Articles to link",
+                  "placeholder" : "Selct your article"
                 }
               }
             }
+          },
+          "home_hero" : {
+            "type" : "Slice",
+            "fieldset" : "Home hero",
+            "description" : "The homepage hero",
+            "icon" : "home",
+            "display" : "list",
+            "non-repeat" : {
+              "home_hero_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Home hero title"
+                }
+              },
+              "home_hero_subtitle" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Home hero subtitle"
+                }
+              },
+              "home_hero_intro" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Home hero intro"
+                }
+              },
+              "home_hero_bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 1040,
+                    "height" : 1040
+                  },
+                  "thumbnails" : [ {
+                    "name" : "large",
+                    "width" : 1040,
+                    "height" : 1040
+                  }, {
+                    "name" : "small",
+                    "width" : 750,
+                    "height" : 600
+                  } ],
+                  "label" : "Home hero bg image"
+                }
+              }
+            },
+            "repeat" : { }
           }
         }
       }
     }
   },
-  "SEO": {
-    "seo_title": {
-      "type": "Text",
-      "config": {
-        "label": "Titre seo"
+  "SEO" : {
+    "seo_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Titre seo"
       }
     },
-    "seo_description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Description SEO"
+    "seo_description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Description SEO"
       }
     },
-    "sharing_image": {
-      "type": "Image",
-      "config": {
-        "constraint": {},
-        "thumbnails": [],
-        "label": "Image de partage"
+    "sharing_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Image de partage"
+      }
+    }
+  },
+  "Layout" : {
+    "hide_breadcrumbs" : {
+      "type" : "Boolean",
+      "config" : {
+        "default_value" : false,
+        "label" : "Hide breadcrumbs"
+      }
+    },
+    "hide_title" : {
+      "type" : "Boolean",
+      "config" : {
+        "default_value" : false,
+        "label" : "Hide title"
       }
     }
   }

@@ -98,6 +98,7 @@ const NavVertical = (props) => {
                     justifyContent={{ base:'flex-start', lg:'center' }}
                     w='100%'
                     p='1rem'
+                    mt='2rem'
                   >
                     <Image
                       src={ logo } 
@@ -138,7 +139,7 @@ const NavVertical = (props) => {
                                 pr={item.items.length > 1 ? '.25rem' : '1rem'}
                                 textTransform='uppercase'
                                 color='gray.600'
-                                fontSize='20px'
+                                fontSize={{ xs:'16px' , lg:'18px'}}
                                 letterSpacing='0.05rem'
                                 fontFamily="Source Sans Pro"
                                 mx={{ lg: '0rem' }}

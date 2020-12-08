@@ -26,8 +26,12 @@ const Page = ( { data, location } ) => {
         article
       />
       <Wrapper>
-        <Breadcrumbs data={ prismicPage } />
-        <PageTitle>{ prismicPage.data.title.text }</PageTitle>
+        { !prismicPage.data.hide_breadcrumbs ? 
+          <Breadcrumbs data={ prismicPage } />
+        : null}
+        { !prismicPage.data.hide_title ? 
+          <PageTitle>{ prismicPage.data.title.text }</PageTitle>
+        : null}
         { prismicPage.data.body ?
           <SlicesEngine
             slices={ prismicPage.data.body }
@@ -62,6 +66,8 @@ export const pageQuery = graphql`
             }}}}
           }}}}
         }
+        hide_breadcrumbs
+        hide_title
         title {
           text
         }
@@ -84,25 +90,25 @@ export const pageQuery = graphql`
             }
           }
           
-          ... on PrismicPageBodyAdsList {
-            primary{
-              link_to_contact{
-                id
-                isBroken
-                lang
-                link_type
-                slug
-                target
-                type
-                uid
-                url
-              }
-              side_text{
-                html
-                text
-              }
-            }
-          }
+         #... on PrismicPageBodyAdsList {
+         #  primary{
+         #    link_to_contact{
+         #      id
+         #      isBroken
+         #      lang
+         #      link_type
+         #      slug
+         #      target
+         #      type
+         #      uid
+         #      url
+         #    }
+         #    side_text{
+         #      html
+         #      text
+         #    }
+         #  }
+         #}
           ... on PrismicPageBodyMap {
             primary {
               location {
@@ -155,54 +161,65 @@ export const pageQuery = graphql`
               }
             }
           }
-        }
-      }
-    }
-    posts: allPrismicPost{
-      edges{
-        node{
-          href
-          uid
-          data{
-            date(formatString: "DD.MM.YYYY")
-            title {
-              text
+          ... on PrismicPageBodyHomeHero{
+            primary{
+              home_hero_title{ text }
+              home_hero_subtitle
+              home_hero_intro
+              home_hero_bg_image{
+                small{ url }
+                large{ url }
+              }
             }
           }
         }
       }
     }
-    products: allPrismicProduct {
-      edges {
-        node {
-          id
-          href
-          uid
-          data {
-            title {
-              text
-            }
-            sub_title
-            main_info
-            image {
-              url
-              #thumbnails{
-              #  square_sm {
-              #    alt
-              #    copyright
-              #    url
-              #  }
-              #  square_lg {
-              #    alt
-              #    copyright
-              #    url
-              #  }
-              #}
-            }
-          }
-        }
-      }
-    }
+    #posts: allPrismicPost{
+    #  edges{
+    #    node{
+    #      href
+    #      uid
+    #      data{
+    #        date(formatString: "DD.MM.YYYY")
+    #        title {
+    #          text
+    #        }
+    #      }
+    #    }
+    #  }
+    #}
+    #products: allPrismicProduct {
+    #  edges {
+    #    node {
+    #      id
+    #      href
+    #      uid
+    #      data {
+    #        title {
+    #          text
+    #        }
+    #        sub_title
+    #        main_info
+    #        image {
+    #          url
+    #          #thumbnails{
+    #          #  square_sm {
+    #          #    alt
+    #          #    copyright
+    #          #    url
+    #          #  }
+    #          #  square_lg {
+    #          #    alt
+    #          #    copyright
+    #          #    url
+    #          #  }
+    #          #}
+    #        }
+    #      }
+    #    }
+    #  }
+    #}
     settings:prismicSettings {
       data {
           site_name

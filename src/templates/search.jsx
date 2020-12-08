@@ -161,7 +161,7 @@ class SearchTemplate extends Component {
                                             <Box 
                                             key={ item.uid }
                                             as={ GatsbyLink }
-                                            to={`${item.uid}`}
+                                            to={`/${item.uid}`}
                                             py='2rem'
                                             borderBottom='solid 1px'
                                             borderColor='brandDark2'
@@ -206,51 +206,6 @@ export default SearchTemplate
 export const pageQuery = graphql`
   query SearchPageQuery
   {
-    posts: allPrismicPost{
-      edges{
-        node{
-          href
-          uid
-          data{
-            date(formatString: "DD.MM.YYYY")
-            title {
-              text
-            }
-          }
-        }
-      }
-    }
-    products: allPrismicProduct {
-      edges {
-        node {
-          id
-          href
-          uid
-          data {
-            title {
-              text
-            }
-            sub_title
-            main_info
-            image {
-              url
-              #thumbnails{
-              #  square_sm {
-              #    alt
-              #    copyright
-              #    url
-              #  }
-              #  square_lg {
-              #    alt
-              #    copyright
-              #    url
-              #  }
-              #}
-            }
-          }
-        }
-      }
-    }
     settings:prismicSettings {
       data {
           site_name

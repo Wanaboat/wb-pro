@@ -15,37 +15,35 @@ const wrapper = (promise) =>
     return result
   })
 
-
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const homeTemplate = require.resolve('./src/templates/homepage.jsx')
-  createPage({
-    path: `/`,
-    component: homeTemplate,
-    context: {
-      // uid: edge.node.uid,
-    },
-  })
+  // const homeTemplate = require.resolve('./src/templates/homepage.jsx')
+  // createPage({
+  //   path: `/`,
+  //   component: homeTemplate,
+  //   context: {
+  //     // uid: edge.node.uid,
+  //   },
+  // })
 
-  const adsListTemplate = require.resolve('./src/templates/ads-summary.jsx')
-  createPage({
-    path: `/bateaux/occasions/`,
-    component: adsListTemplate,
-    context: {
-      // uid: edge.node.uid,
-    },
-  })
+  // const adsListTemplate = require.resolve('./src/templates/ads-summary.jsx')
+  // createPage({
+  //   path: `/bateaux/occasions/`,
+  //   component: adsListTemplate,
+  //   context: {
+  //     // uid: edge.node.uid,
+  //   },
+  // })
 
-  const searchTemplate = require.resolve('./src/templates/search.jsx')
-  createPage({
-    path: `/recherche/`,
-    component: searchTemplate,
-    context: {
-      // uid: edge.node.uid,
-    },
-  })
+  // const searchTemplate = require.resolve('./src/templates/search.jsx')
+  // createPage({
+  //   path: `/recherche/`,
+  //   component: searchTemplate,
+  //   context: {
+  //     // uid: edge.node.uid,
+  //   },
+  // })
   var paths = []
   var contents = []
 
@@ -132,58 +130,58 @@ const settings = await wrapper(
 `)
 )
 
-const blogArchivePage = settings.data.prismicSettings.data.blog_archive_page
+// const blogArchivePage = settings.data.prismicSettings.data.blog_archive_page
 
-const postsQuery = await wrapper(
-  graphql(`
-    {
-      allPrismicPost {
-        pageInfo {
-          currentPage
-          totalCount
-          perPage
-          pageCount
-          itemCount
-          hasPreviousPage
-          hasNextPage
-        }
-        edges {
-          node {
-            uid
-          }
-        }
-      }
-    }
-  `)
-)
-const postTemplate = require.resolve('./src/templates/post.jsx')
-const archiveTemplate = require.resolve('./src/templates/archive.jsx')
-const postsList = postsQuery.data.allPrismicPost.edges;
-const paginationInfos = postsQuery.data.allPrismicPost.pageInfo;
+// const postsQuery = await wrapper(
+//   graphql(`
+//     {
+//       allPrismicPost {
+//         pageInfo {
+//           currentPage
+//           totalCount
+//           perPage
+//           pageCount
+//           itemCount
+//           hasPreviousPage
+//           hasNextPage
+//         }
+//         edges {
+//           node {
+//             uid
+//           }
+//         }
+//       }
+//     }
+//   `)
+// )
+// const postTemplate = require.resolve('./src/templates/post.jsx')
+// const archiveTemplate = require.resolve('./src/templates/archive.jsx')
+// const postsList = postsQuery.data.allPrismicPost.edges;
+// const paginationInfos = postsQuery.data.allPrismicPost.pageInfo;
 
-for (let index = 0; index < paginationInfos.pageCount; index++) {
+// for (let index = 0; index < paginationInfos.pageCount; index++) {
 
-  createPage({
-    path: index === 0 ? `/${blogArchivePage.uid}` : `/${blogArchivePage.uid}/page-${index}`,
-    component: archiveTemplate,
-    context: {
-      page: index,
-      // uid: edge.node.uid,
-    },
-  })
+//   createPage({
+//     path: index === 0 ? `/${blogArchivePage.uid}` : `/${blogArchivePage.uid}/page-${index}`,
+//     component: archiveTemplate,
+//     context: {
+//       page: index,
+//       // uid: edge.node.uid,
+//     },
+//   })
 
-}
+// }
 
-postsList.forEach((edge) => {
-  createPage({
-    path: `/blog/${edge.node.uid}`,
-    component: postTemplate,
-    context: {
-      // Pass the unique ID (uid) through context so the template can filter by it
-      uid: edge.node.uid,
-    },
-  })
-})
+// postsList.forEach((edge) => {
+//   createPage({
+//     path: `/blog/${edge.node.uid}`,
+//     component: postTemplate,
+//     context: {
+//       // Pass the unique ID (uid) through context so the template can filter by it
+//       uid: edge.node.uid,
+//     },
+//   })
+// })
 
   const pagesQuery = await wrapper(
     graphql(`
@@ -192,6 +190,7 @@ postsList.forEach((edge) => {
           edges {
             node {
               id
+              tags
               prismicId
               uid
               data{
@@ -217,51 +216,44 @@ postsList.forEach((edge) => {
   const pageTemplate = require.resolve('./src/templates/page.jsx')
   const pagesList = pagesQuery.data.allPrismicPage.edges
   pagesList.forEach((edge) => {
-    if( edge.node.uid !== blogArchivePage.uid){
-      if( edge.node.uid === 'histoire-du-f18' ){
-        buildPageSlug( edge.node )
-      }
-
       contents.push({ title: edge.node.data.title.text, uid:edge.node.uid })
-
       createPage({
         // path: !edge.node.data.parent ? `${edge.node.uid}` : `${edge.node.data.parent.uid}/${edge.node.uid}`,
-        path: buildPageSlug( edge.node ),
+        path: edge.node.tags.includes('home') ? '/' : buildPageSlug( edge.node ),
         component: pageTemplate,
         context: {
           uid: edge.node.uid,
           prismicId: edge.node.prismicId
         },
       })
-    }
   })
 
 
-  const productsQuery = await wrapper(
-    graphql(`
-      {
-        allPrismicProduct {
-          edges {
-            node {
-              id
-              uid
-            }
-          }
-        }
-      }
-    `)
-  )
-  const productTemplate = require.resolve('./src/templates/product.jsx')
-  const productsList = productsQuery.data.allPrismicProduct.edges
-  productsList.forEach((edge) => {
-    createPage({
-      path: `${process.env.PRODUCT_BASE_SLUG}/${edge.node.uid}`,
-      component: productTemplate,
-      context: {
-        uid: edge.node.uid,
-      },
-    })
-  })
+  // const productsQuery = await wrapper(
+  //   graphql(`
+  //     {
+  //       allPrismicProduct {
+  //         edges {
+  //           node {
+  //             id
+  //             uid
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `)
+  // )
+  // const productTemplate = require.resolve('./src/templates/product.jsx')
+  // const productsList = productsQuery.data.allPrismicProduct.edges
+  // productsList.forEach((edge) => {
+  //   createPage({
+  //     path: `${process.env.PRODUCT_BASE_SLUG}/${edge.node.uid}`,
+  //     component: productTemplate,
+  //     context: {
+  //       uid: edge.node.uid,
+  //     },
+  //   })
+  // })
 
   console.log( paths )
 
