@@ -109,6 +109,13 @@ export const pageQuery = graphql`
          #    }
          #  }
          #}
+          ... on PrismicPageBodyImageAlone {
+            id
+            primary {
+              background_color
+              image { alt url }
+            }
+          }
           ... on PrismicPageBodyMap {
             primary {
               location {
@@ -239,6 +246,8 @@ export const pageQuery = graphql`
               }
               link {
                 uid
+                target
+                url
                 document {
                   ... on PrismicPage {
                     uid

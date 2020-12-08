@@ -36,14 +36,14 @@ exports.createPages = async ({ graphql, actions }) => {
   //   },
   // })
 
-  // const searchTemplate = require.resolve('./src/templates/search.jsx')
-  // createPage({
-  //   path: `/recherche/`,
-  //   component: searchTemplate,
-  //   context: {
-  //     // uid: edge.node.uid,
-  //   },
-  // })
+  const searchTemplate = require.resolve('./src/templates/search.jsx')
+  createPage({
+    path: `/recherche/`,
+    component: searchTemplate,
+    context: {
+      // uid: edge.node.uid,
+    },
+  })
   var paths = []
   var contents = []
 

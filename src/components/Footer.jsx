@@ -47,14 +47,13 @@ const Footer = (props) => {
       </Stack>
       <Box bg='gray.800' p='.5rem' textAlign={{ xs:'center', lg:'right'}}>
         <Link
-          fontSize={{ xs:'10px', lg:'12px'}}
+          fontSize={{ xs:'10px', lg:'11px'}}
           color='gray.200'
           target='_blank'
           rel='noopener'
           href="https://www.wanaboat.fr"
         >
           <FormattedMessage id="footer.wb.signature" />
-          
         </Link>
       </Box>
     </>

@@ -34,7 +34,13 @@ const colors = {
   },
 }
 
-const theme = extendTheme({ breakpoints, colors })
+const fonts = {
+  body: "Source sans pro, sans-serif",
+  heading: "Source sans pro",
+  mono: "Menlo, monospace",
+}
+
+const theme = extendTheme({ fonts, breakpoints, colors })
 
 
 // const theme = extendTheme({
@@ -70,10 +76,9 @@ const Layout2 = (props) => {
         {/* Layout 2 */}
         <CSSReset />
         {/* {props.nav ? <Nav items={props.nav} /> : null} */}
-
         <Grid
           templateColumns={{
-            base: '100vw 100vw',
+            base: '100vw',
             lg: '350px 1fr',
             xl: '400px 1fr',
             xxl: '500px 1fr'
@@ -86,40 +91,54 @@ const Layout2 = (props) => {
             md: 'blue.400',
             lg: 'green.500',
           }}
-          transform={ navOpen ? 'translate3d(+100vw,0,0)' : 'none' }
-          transition='transform 300ms ease'
+          // transform={ navOpen ? 'translate3d(+100vw,0,0)' : 'none' }
+          // transition='transform 300ms ease'
         >
           <Box
             bg='white'
             position={{
-              base:'fixed',
+              base:'initial',
               lg:'initial'
             }}
-            left='-100vw'
+            // left='-100vw'
             top='0'
             zIndex='tooltip'
             transition='transform 200ms ease'
-            h='100%'
-            px={{ base:0, lg:'2rem'}}
+            h={{ xs:'65px', lg:'100vh'}}
+            px={{ base:0, lg:'0rem'}}
+            width='100%'
           >
             <Box
               position='sticky'
               top='0rem'
+              
             >
+              <Flex>
+                <Box
+                  display={{ base:'block', lg:'none' }}
+                  m='0 1rem'
+                  bg={`url(${logo})`}
+                  backgroundRepeat="no-repeat"
+                  backgroundSize='100% auto'
+                  backgroundPosition='center center'
+                  w={{ base:'120px', lg:'100%' }}
+                  h={{ base:'80px', lg:'100%' }}
+                  color="gray.900"
+                />
+              </Flex>
               <Flex
                 // h='100vh'
                 alignItems='center'
                 h={{ base:'auto', lg:'100vh'}}
               >
-                <Box
-                >
                   <Flex
                     position={{ base:'fixed', lg:'initial' }}
-                    top='1rem'
-                    right='1rem'
+                    top='.5rem'
+                    right='.5rem'
                     onClick={()=>{ setNavOpen( true )}}
                     color='white'
                     display={{ base:'block', lg:'none'}}
+
                   >
                     <IconButton
                       border='solid 1px'
@@ -128,8 +147,9 @@ const Layout2 = (props) => {
                       bg='brand.1'
                       borderRadius='50%'
                       p='1rem'
-                      w='60px'
-                      h='60px'
+                      m='.5rem'
+                      w='50px'
+                      h='50px'
                       _hover={{
                         bg:'white',
                         color:'brand.1',
@@ -141,9 +161,10 @@ const Layout2 = (props) => {
                   <NavVertical
                     items={props.nav}
                     orientation='vertical'
+                    isOpen={ navOpen }
                     handleClose={ ()=>{ setNavOpen(false) }}
+                    handleOpen={ ()=>{ setNavOpen(true) }}
                   />
-                </Box>
               </Flex>
               {/* <Nav items={props.nav} orientation='vertical' /> */}
             </Box>

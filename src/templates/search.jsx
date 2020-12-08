@@ -88,7 +88,7 @@ class SearchTemplate extends Component {
         e.preventDefault()
     }
     render() {
-        const { nav, prismicPage, settings, posts, products } = this.props.data
+        const { nav, settings } = this.props.data
         const { bookList, searchResults, searchQuery } = this.state
         const queryResults = searchQuery === "" ? null : searchResults
         return (
@@ -216,50 +216,52 @@ export const pageQuery = graphql`
       }
     }
     nav:prismicNav {
-      data {
-        nav {
-          ... on PrismicNavNavNavItem {
-            primary {
-              label {
-                text
-              }
-              link {
-                uid
-                document {
-                  ... on PrismicPage {
-                    uid
-                    prismicId
-                    data{
-                      parent{
-                        uid
+        data {
+          nav {
+            ... on PrismicNavNavNavItem {
+              primary {
+                label {
+                  text
+                }
+                link {
+                  uid
+                  target
+                  url
+                  document {
+                    ... on PrismicPage {
+                      uid
+                      prismicId
+                      data{
+                        parent{
+                          uid
+                        }
                       }
                     }
                   }
                 }
               }
-            }
-            items {
-              sub_nav_link {
-                uid
-                document {
-                  ... on PrismicPage {
-                    uid
-                    prismicId
-                    data{
-                      parent{
-                        uid
+              items {
+                sub_nav_link {
+                  uid
+                  document {
+                    ... on PrismicPage {
+                      uid
+                      prismicId
+                      data{
+                        parent{
+                          uid
+                        }
                       }
                     }
                   }
                 }
-              }
-              sub_nav_link_label {
-                text
+                sub_nav_link_label {
+                  text
+                }
               }
             }
           }
         }
       }
-    }
 }
 `

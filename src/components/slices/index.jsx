@@ -7,6 +7,7 @@ import Plan from './Plan'
 import ProductsList from './ProductsList'
 import Video from './Video'
 import HomeHero from './HomeHero'
+import ImageAlone from './ImageAlone'
 
 export { 
     AdsList,
@@ -17,5 +18,6 @@ export {
     PostsList,
     ProductsList,
     Video,
-    HomeHero
+    HomeHero,
+    ImageAlone
 }

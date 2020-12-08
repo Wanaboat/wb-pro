@@ -1,16 +1,22 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Box, Button, Flex, Heading, Image, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { SimpleGrid } from "@chakra-ui/react"
+import { Grid, GridItem } from "@chakra-ui/react"
 
 const BannerWithCaption = (props) => {
   // console.log( props.data )
   const { title_of_banner, button_label, button_link, image_banner } = props.data
   return (
-    <SimpleGrid
-      columns={{ xs: 1, lg: 2 }}
-      gap='3rem'
+    <Grid
+      templateColumns={{ base:'100%', lg:"repeat(2, 1fr)"}}
+      gap='2rem'
+      ml={{ base:0, lg:'2rem'}}
     >
-      <Flex alignItems='center'>
+      <Flex
+        alignItems='center'
+        px={{ base:5, lg:0 }}
+      >
         <Stack spacing="1rem">
           {title_of_banner ?
             <Heading
@@ -22,27 +28,27 @@ const BannerWithCaption = (props) => {
           <Box >
             <div className='wysiwyg' dangerouslySetInnerHTML={{ __html: props.data.description.text }} />
           </Box>
-          { button_link ? 
-          <Box>
-            <Button
-              position='static'
-              to={button_link ? button_link.url : '/'}
-              bg={'brandLight2'}
-              as={GatsbyLink}>{button_label.text}
-            </Button>
-          </Box>
-          : null}
+          {button_link ?
+            <Box>
+              <Button
+                position='static'
+                to={button_link ? button_link.url : '/'}
+                bg={'brandLight2'}
+                as={GatsbyLink}>{button_label.text}
+              </Button>
+            </Box>
+            : null}
 
         </Stack>
       </Flex>
       <Box>
         <Image
-          borderRadius="10px"
+          borderRadius={{ base:'0', lg:"3px 0 0 3px"}}
           src={image_banner.url}
           alt={image_banner.alt}
         />
       </Box>
-    </SimpleGrid>
+    </Grid>
   )
 }
 

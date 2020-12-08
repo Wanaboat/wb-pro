@@ -10,7 +10,8 @@ import {
   Plan,
   ProductsList,
   Video,
-  HomeHero
+  HomeHero,
+  ImageAlone
 } from '../slices'
 
 const Slices = (props) => {
@@ -29,7 +30,8 @@ const Slices = (props) => {
     PrismicPageBodyListOfArticles: PostsList,
     PrismicPageBodyMap: Plan,
     PrismicPageBodyProductsList: ProductsList,
-    PrismicPageBodyHomeHero: HomeHero
+    PrismicPageBodyHomeHero: HomeHero,
+    PrismicPageBodyImageAlone: ImageAlone
   }
 
   const SlicesMerge =  slices.map((slice, index) => {
