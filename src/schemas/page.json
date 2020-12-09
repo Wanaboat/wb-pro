@@ -36,7 +36,11 @@
           "products_list": [],
           "video": [],
           "home_hero": [],
-          "image_alone": []
+          "image_alone": [],
+          "title": [],
+          "entry_list_illustrated": [],
+          "contact_form": [],
+          "specs_table": []
         },
         "choices": {
           "text": {
@@ -313,6 +317,58 @@
                 }
               }
             },
+            "repeat": {}
+          },
+          "title": {
+            "type": "Slice",
+            "fieldset": "Title",
+            "description": "Title of ≠ level",
+            "icon": "title",
+            "display": "list",
+            "non-repeat": {
+              "slice_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Slice title"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "entry_list_illustrated": {
+            "type": "Slice",
+            "fieldset": "Entry list illustrated",
+            "description": "A list of entries with picture",
+            "icon": "view_list",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "related_entries": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "label": "related entries"
+                }
+              }
+            }
+          },
+          "contact_form": {
+            "type": "Slice",
+            "fieldset": "Contact form",
+            "description": "A contact form",
+            "icon": "contact_mail",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          },
+          "specs_table": {
+            "type": "Slice",
+            "fieldset": "Specs table",
+            "description": "Table of specifications",
+            "icon": "view_list",
+            "display": "list",
+            "non-repeat": {},
             "repeat": {}
           }
         }

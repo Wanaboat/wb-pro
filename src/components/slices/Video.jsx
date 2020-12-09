@@ -1,19 +1,29 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
-import '../../styles/wysiwyg.css'
+import {
+    AspectRatio,
+    Box
+} from '@chakra-ui/react'
 
-const Video = ( props ) => {
-    // console.log( 'Videoprops', props.data.youtube_link )
-    if( props.data ){
-        return(
-            <Box maxW='800px' fontFamily='Source Sans Pro'>
-               <div dangerouslySetInnerHTML={ {__html: props.data.youtube_link.html }} />
-            </Box>
+const Video = (props) => {
+    console.log('Videoprops', props.data.youtube_link.embed_url)
+    const found = props.data.youtube_link.embed_url.split('v=')[1];
+    console.log('VideoPropsfound', found)
+    let iframeURL = 'https://youtube.com/embed/' + found;
+    if (props.data) {
+        return (
+            <AspectRatio ratio={16 / 9} maxWidth="100%">
+                <Box
+                    w='100%'
+                    h='100%'
+                    as='iframe'
+                    src={iframeURL}
+                />
+            </AspectRatio>
         )
-    }else{
+    } else {
         return false
     }
 
-  }
-  
-  export default Video
+}
+
+export default Video

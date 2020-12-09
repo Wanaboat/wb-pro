@@ -45,9 +45,11 @@ const Footer = (props) => {
           </Link>
         </Text>
       </Stack>
-      <Box bg='gray.800' p='.5rem' textAlign={{ xs:'center', lg:'right'}}>
+      <Box
+        fontSize={{ xs:'10px', lg:'11px'}}
+        bg='gray.800'
+        p='.5rem' textAlign={{ xs:'center', lg:'right'}}>
         <Link
-          fontSize={{ xs:'10px', lg:'11px'}}
           color='gray.200'
           target='_blank'
           rel='noopener'

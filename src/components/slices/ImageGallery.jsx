@@ -5,7 +5,7 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import { Box, Heading, Image } from '@chakra-ui/react'
 
 const ImageGallery = (props) => {
-  // console.log('props', props)
+  console.log('ImageGallery', props)
 
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -33,11 +33,12 @@ const ImageGallery = (props) => {
     }
     return cleanImages
   }
+
   return (
     <Box>
-      <Heading>{ props.data.name_of_the_gallery.text }</Heading>
+      {/* <Heading>{ props.data.name_of_the_gallery.text }</Heading> */}
       <Gallery photos={ cleanImages( props.items ) } onClick={openLightbox} />
-      <ModalGateway>
+      {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
@@ -50,7 +51,7 @@ const ImageGallery = (props) => {
             />
           </Modal>
         ) : null}
-      </ModalGateway>
+      </ModalGateway> */}
 
       {/* { props.items.map(image =>
         <Box

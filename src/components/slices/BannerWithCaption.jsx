@@ -11,10 +11,10 @@ const BannerWithCaption = (props) => {
     <Grid
       templateColumns={{ base:'100%', lg:"repeat(2, 1fr)"}}
       gap='2rem'
-      ml={{ base:0, lg:'2rem'}}
+      ml={{ base:0, lg:'4rem'}}
     >
       <Flex
-        alignItems='center'
+        alignItems='flex-start'
         px={{ base:5, lg:0 }}
       >
         <Stack spacing="1rem">
@@ -47,6 +47,10 @@ const BannerWithCaption = (props) => {
           src={image_banner.url}
           alt={image_banner.alt}
         />
+        <Text
+          textAlign='center'
+          fontStyle='italic'
+        >{image_banner.alt}</Text>
       </Box>
     </Grid>
   )

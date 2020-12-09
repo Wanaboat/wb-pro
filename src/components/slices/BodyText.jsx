@@ -7,7 +7,7 @@ const BodyText = ( props ) => {
     if( props.data ){
         return(
             <Box
-                p={{ base:0, lg:'2rem 4rem'}}
+                p={{ base:'0 1rem', lg:'1rem 4rem'}}
             >
                 <div className='wysiwyg' dangerouslySetInnerHTML={ {__html: props.data.text.html }} />
             </Box>

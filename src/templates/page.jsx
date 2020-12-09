@@ -10,8 +10,9 @@ import Breadcrumbs from '../components/Breadcrumbs'
 const Page = ( { data, location } ) => {
   // const liveData = usePreviewData( data )
   const { nav, prismicPage, settings, posts, products } = data
-  console.log( prismicPage )
+  console.log( 'prismicPage', prismicPage )
   console.log( prismicPage.data.parent )
+  console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
   // const { page, nav, posts, products, settings } = data
   // const liveData = usePreviewData(data)
   // console.log( 'livet data', liveData )
@@ -29,9 +30,11 @@ const Page = ( { data, location } ) => {
         { !prismicPage.data.hide_breadcrumbs ? 
           <Breadcrumbs data={ prismicPage } />
         : null}
-        { !prismicPage.data.hide_title ? 
+        { prismicPage.data.hide_title ? 
+        null
+        :
           <PageTitle>{ prismicPage.data.title.text }</PageTitle>
-        : null}
+        }
         { prismicPage.data.body ?
           <SlicesEngine
             slices={ prismicPage.data.body }
@@ -109,11 +112,39 @@ export const pageQuery = graphql`
          #    }
          #  }
          #}
+          ... on PrismicPageBodyEntryListIllustrated {
+            items{
+              related_entries{ document{
+                ... on PrismicPage {
+                  prismicId
+                  data {
+                    title { text }
+                    sharing_image{
+                      url
+                    }
+                  }
+                } 
+              }}
+            }
+          }
+          ... on PrismicPageBodyImageGallery{
+            items{
+              gallery_image{ alt url dimensions{ height width } }
+            }
+          }
+          ... on PrismicPageBodyTitle{
+            primary{ slice_title { html text }}
+          }
           ... on PrismicPageBodyImageAlone {
             id
             primary {
               background_color
               image { alt url }
+            }
+          }
+          ... on PrismicPageBodyVideo {
+            primary {
+              youtube_link { embed_url html }
             }
           }
           ... on PrismicPageBodyMap {

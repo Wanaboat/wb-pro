@@ -8,6 +8,9 @@ import ProductsList from './ProductsList'
 import Video from './Video'
 import HomeHero from './HomeHero'
 import ImageAlone from './ImageAlone'
+import Title from './Title'
+import EntryListIllustrated from './EntryListIllustrated'
+import ContactForm from './ContactForm'
 
 export { 
     AdsList,
@@ -19,5 +22,8 @@ export {
     ProductsList,
     Video,
     HomeHero,
-    ImageAlone
+    ImageAlone,
+    Title,
+    EntryListIllustrated,
+    ContactForm
 }

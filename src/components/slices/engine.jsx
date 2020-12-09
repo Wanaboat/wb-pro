@@ -11,16 +11,19 @@ import {
   ProductsList,
   Video,
   HomeHero,
-  ImageAlone
+  ImageAlone,
+  Title,
+  EntryListIllustrated,
+  ContactForm
 } from '../slices'
 
 const Slices = (props) => {
   const { slices, posts, products } = props
   const sliceComponents = {
     PrismicPageBodyAdsList: AdsList,
-    PrismicPageBodyText : BodyText,
+    PrismicPageBodyText: BodyText,
     PrismicPostBodyText: BodyText,
-    PrismicPostBodyVideo: Video,
+    PrismicPageBodyVideo: Video,
     PrismicProductBodyText: BodyText,
     PrismicPostBodyBannerWithCaption: BannerWithCaption,
     PrismicPageBodyBannerWithCaption: BannerWithCaption,
@@ -31,39 +34,42 @@ const Slices = (props) => {
     PrismicPageBodyMap: Plan,
     PrismicPageBodyProductsList: ProductsList,
     PrismicPageBodyHomeHero: HomeHero,
-    PrismicPageBodyImageAlone: ImageAlone
+    PrismicPageBodyImageAlone: ImageAlone,
+    PrismicPageBodyTitle: Title,
+    PrismicPageBodyEntryListIllustrated: EntryListIllustrated,
+    PrismicPageBodyContactForm: ContactForm
   }
 
-  const SlicesMerge =  slices.map((slice, index) => {
+  const SlicesMerge = slices.map((slice, index) => {
     const SliceComponent = sliceComponents[slice.__typename]
-      if (SliceComponent) {    
-        return(    
-          <>
+    if (SliceComponent) {
+      return (
+        <>
           <SliceComponent
-            data={ slice.primary }
-            items={ slice.items }
-            lastPosts={ posts }
-            products= { products}
+            data={slice.primary}
+            items={slice.items}
+            lastPosts={posts}
+            products={products}
             key={`${slice.__typename}-${index}`}
           />
           {/* <Box>Composant absent : {slice.__typename}</Box> */}
-          </>
+        </>
 
-        )  
-      }
-      else{
-        return(
-          <Box>Composant absent : {slice.__typename}</Box>
-        )
-      }
+      )
+    }
+    else {
+      return (
+        <Box>Composant absent : {slice.__typename}</Box>
+      )
+    }
   })
   return (
-      <Stack
-          spacing='3rem'
-          shouldWrapChildren={ true }
-        >
-          { SlicesMerge }
-        </Stack>
+    <Stack
+      // spacing='3rem'
+      shouldWrapChildren={true}
+    >
+      { SlicesMerge }
+    </Stack>
   )
 }
 
