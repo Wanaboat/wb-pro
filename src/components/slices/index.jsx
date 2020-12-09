@@ -11,6 +11,7 @@ import ImageAlone from './ImageAlone'
 import Title from './Title'
 import EntryListIllustrated from './EntryListIllustrated'
 import ContactForm from './ContactForm'
+import SpecsTable from './SpecsTable'
 
 export { 
     AdsList,
@@ -25,5 +26,6 @@ export {
     ImageAlone,
     Title,
     EntryListIllustrated,
-    ContactForm
+    ContactForm,
+    SpecsTable
 }

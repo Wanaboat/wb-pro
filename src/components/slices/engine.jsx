@@ -14,7 +14,8 @@ import {
   ImageAlone,
   Title,
   EntryListIllustrated,
-  ContactForm
+  ContactForm,
+  SpecsTable
 } from '../slices'
 
 const Slices = (props) => {
@@ -37,7 +38,8 @@ const Slices = (props) => {
     PrismicPageBodyImageAlone: ImageAlone,
     PrismicPageBodyTitle: Title,
     PrismicPageBodyEntryListIllustrated: EntryListIllustrated,
-    PrismicPageBodyContactForm: ContactForm
+    PrismicPageBodyContactForm: ContactForm,
+    PrismicPageBodySpecsTable: SpecsTable
   }
 
   const SlicesMerge = slices.map((slice, index) => {

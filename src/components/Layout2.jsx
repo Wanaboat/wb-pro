@@ -82,7 +82,7 @@ const Layout2 = (props) => {
             base: '100vw',
             lg: '350px 1fr',
             xl: '400px 1fr',
-            xxl: '500px 1fr'
+            xxl: '600px 1fr'
           }}
           gap={{ xl: '0rem' }}
           bg='gray.50'

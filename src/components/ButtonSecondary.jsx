@@ -8,8 +8,7 @@ import linkResolver from '../utils/linkResolver'
 const ButtonSecondary = ({ to, children, ...rest }) => {
     return(
         <Button
-            as={ GatsbyLink }
-            transparent
+            // as={ GatsbyLink }
             border='solid 1px'
             borderRadius='2px'
             bg='tranparent'
@@ -27,7 +26,7 @@ const ButtonSecondary = ({ to, children, ...rest }) => {
             {...rest}
 
         >
-            Découvrir
+            { children }
         </Button>
     )
 }
