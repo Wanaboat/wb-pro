@@ -2,39 +2,32 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
 import { Box, Link, List, ListItem } from '@chakra-ui/react'
+import linkResolver from '../utils/linkResolver'
 
 const SubNav = ( props ) => {
-    const resolve = ( link ) => {
-        if( link.document.data.parent ){
-            return `/${link.document.data.parent.uid}/${link.document.uid}`
-        }
-        else{
-            return link.document.uid
-        }
-    } 
+    
     return(
         <Box
-            position={{ xs:'initial', lg:'absolute'}}
-            top='48px'
+            // position={{ xs:'initial', lg:'absolute'}}
             bg={{ lg:'white' }}
-            w={{ xs:'100%', lg:'120%'}}
+            w={{ base:'100%', lg:'100%'}}
             p='.5rem 1rem'
-            pl={{ xs : '2rem', lg:'1rem' }}
+            pl={{ base : '2rem', lg:'1rem' }}
             opacity={{ lg: props.isOpen ? '1' : '0' }}
             transition='opacity 200ms ease'
             pointerEvents={{ lg: props.isOpen ? 'auto' : 'none' }}
-            display={{ xs: props.isOpen ? 'block' : 'none', lg:'block' }}
+            display={{ base:'block', lg: props.isOpen ? 'block' : 'none'}}
         >
-            {/* <List>
+            <List>
                 { props.items.map( subitem =>
                     <ListItem key={`sub-nav-${subitem.sub_nav_link.uid}`}>
                         <Link
-                            to={resolve( subitem.sub_nav_link )}
+                            to={ linkResolver( subitem.sub_nav_link.document[0].prismicId )}
                             as={ GatsbyLink }
                             display='block'
                             fontWeight='400'
                             color='gray.600'
-                            fontSize='18px'
+                            fontSize='16px'
                             py='.25rem'
                         >
                             {
@@ -44,7 +37,7 @@ const SubNav = ( props ) => {
                     </ListItem>
                 )}
                 
-            </List> */}
+            </List>
         </Box>
     )
 }

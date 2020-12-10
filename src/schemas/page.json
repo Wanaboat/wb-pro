@@ -40,7 +40,8 @@
           "title": [],
           "entry_list_illustrated": [],
           "contact_form": [],
-          "specs_table": []
+          "specs_table": [],
+          "equipement_sheet": []
         },
         "choices": {
           "text": {
@@ -369,6 +370,39 @@
             "icon": "view_list",
             "display": "list",
             "non-repeat": {},
+            "repeat": {
+              "key": {
+                "type": "Text",
+                "config": {
+                  "label": "Key"
+                }
+              },
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value"
+                }
+              }
+            }
+          },
+          "equipement_sheet": {
+            "type": "Slice",
+            "fieldset": "Equipement sheet",
+            "description": "A link to an equipement sheet",
+            "icon": "playlist_add",
+            "display": "list",
+            "non-repeat": {
+              "equipement_sheet_link": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": [
+                    "equipements_sheet"
+                  ],
+                  "label": "Equipement sheet link"
+                }
+              }
+            },
             "repeat": {}
           }
         }

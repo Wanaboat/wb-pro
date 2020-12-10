@@ -3,7 +3,6 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Box, Link, Stack, Text } from '@chakra-ui/react'
 import { FormattedMessage } from 'react-intl'
 const Footer = (props) => {
-  console.log('Footer props', props)
   return (
     <>
       <Stack
@@ -16,29 +15,35 @@ const Footer = (props) => {
         p='3rem'
         background='blue.900'
       >
+        <Box>
+          <Text
+            w='100%'
+            color='brandLightPrimary'
+            textAlign='center'
+            fontWeight='700'
+            fontSize={{ base: '28px', lg: '44px' }}
+            color='white'
+            borderBottom='solid 3px'
+            borderBottomColor='brand.1'
+          >{props.settings.data.site_name}</Text>
+        </Box>
+        
         <Text
           w='100%'
-          color='brandLightPrimary'
           textAlign='center'
-          fontWeight='700'
-          fontSize={{ xs: '28px', lg: '44px' }}
-        >{props.settings.data.site_name}</Text>
-        <Text
-          w='100%'
-          textAlign='center'
-          color='brandLight2'
+          color='white'
           textTransform='uppercase'
           letterSpacing='0.05rem'
           fontSize={{ xs: '14px', lg: '22px' }}
 
         >
-          {/* Le spécialiste voile légère en Bretagne */}
-          </Text>
+          {props.settings.data.site_description}
+        </Text>
         <Text
           color='gray.400'
           w='100%'
           textAlign='center'
-          fontSize={{ xs: '12px', lg: '16px' }}
+          fontSize={{ base: '12px', lg: '16px' }}
         >
           <Link as={ GatsbyLink } to={`/${props.settings.data.footer_link.uid}`}>
             {props.settings.data.footer_link_label}
@@ -46,7 +51,7 @@ const Footer = (props) => {
         </Text>
       </Stack>
       <Box
-        fontSize={{ xs:'10px', lg:'11px'}}
+        fontSize={{ base:'10px', lg:'11px'}}
         bg='gray.800'
         p='.5rem' textAlign={{ xs:'center', lg:'right'}}>
         <Link

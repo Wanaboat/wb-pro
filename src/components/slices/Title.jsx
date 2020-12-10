@@ -23,9 +23,12 @@ const Title = ( props ) => {
             color='brand.light.primary'
             mb={ level() === 1 ? '2rem' : 0 }
             fontSize={{
-                base: level() === 1 ? '32px' : level() === 2 ? '26px' : '20px',
-                lg: level() === 1 ? '38px' : level() === 2 ? '28px' : '24px' 
+                base: level() === 1 ? '32px' : level() === 2 ? '26px' : level() === 2 ? '20px' : '18px',
+                lg: level() === 1 ? '38px' : level() === 2 ? '28px' : level() === 2 ? '24px' : '20px' 
             }}
+            textTransform={{ base: level() != 4 ? 'none' : 'uppercase' }}
+            fontWeight={{ base: level() != 4 ? '600' : '400' }}
+            letterSpacing={{ base: level() != 4 ? 'auto' : '0.05rem' }}
             mt='1rem'
             color='brand.3'
             p={{ base:'1rem', lg: level() <= 2 ? '2rem 4rem' : '0rem 4rem'}}

@@ -62,6 +62,7 @@ module.exports = {
           // post: require('./src/schemas/post.json'),
           nav: require('./src/schemas/nav.json'),
           settings: require('./src/schemas/settings.json'),
+          equipementsSheet: require('./src/schemas/equipements_sheet.json'),
         },
       },
     },

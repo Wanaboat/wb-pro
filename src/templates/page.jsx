@@ -13,9 +13,7 @@ const Page = ( { data, location } ) => {
   console.log( 'prismicPage', prismicPage )
   console.log( prismicPage.data.parent )
   console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
-  // const { page, nav, posts, products, settings } = data
-  // const liveData = usePreviewData(data)
-  // console.log( 'livet data', liveData )
+  
   return(
     <Layout nav={ nav.data.nav } settings={ settings }>
        <SEO
@@ -127,6 +125,11 @@ export const pageQuery = graphql`
               }}
             }
           }
+          ... on PrismicPageBodySpecsTable{
+            items{
+              key value
+            }
+          }
           ... on PrismicPageBodyImageGallery{
             items{
               gallery_image{ alt url dimensions{ height width } }
@@ -199,6 +202,28 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicPageBodyEquipementSheet{
+            primary{ equipement_sheet_link{
+              document{
+                ... on PrismicEquipementsSheet{
+                  data {
+                    body {
+                      __typename
+                      ... on PrismicEquipementsSheetBodyCategoryTitle {
+                        primary{ value }
+                      }
+                      ... on PrismicEquipementsSheetBodyCategoryItem {
+                        primary { item_title }
+                      }
+                      ... on PrismicEquipementsSheetBodyCategoryOptions {
+                        items{ option_value }
+                      }
+                    }
+                  }
+                }
+              }
+            }}
+          }
           ... on PrismicPageBodyHomeHero{
             primary{
               home_hero_title{ text }
@@ -261,6 +286,7 @@ export const pageQuery = graphql`
     settings:prismicSettings {
       data {
           site_name
+          site_description
           footer_link {
               uid
           }
@@ -299,11 +325,6 @@ export const pageQuery = graphql`
                   ... on PrismicPage {
                     uid
                     prismicId
-                    data{
-                      parent{
-                        uid
-                      }
-                    }
                   }
                 }
               }

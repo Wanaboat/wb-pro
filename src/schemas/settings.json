@@ -1,44 +1,52 @@
 {
-    "Main" : {
-      "title" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Title"
-        }
-      },
-      "site_name" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Nom du site"
-        }
-      },
-      "phone_number" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "Numéro de téléphone",
-          "placeholder" : "01 23 45 67 89"
-        }
-      },
-      "footer_link" : {
-        "type" : "Link",
-        "config" : {
-          "label" : "Footer link",
-          "placeholder" : "Le lien place dans le footer"
-        }
-      },
-      "footer_link_label" : {
-        "type" : "Text",
-        "config" : {
-          "label" : "footer_link_label"
-        }
-      },
-      "blog_archive_page" : {
-        "type" : "Link",
-        "config" : {
-          "select" : "document",
-          "customtypes" : [ "page" ],
-          "label" : "Blog archive page"
-        }
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title"
+      }
+    },
+    "site_name": {
+      "type": "Text",
+      "config": {
+        "label": "Nom du site"
+      }
+    },
+    "site_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description du site"
+      }
+    },
+    "phone_number": {
+      "type": "Text",
+      "config": {
+        "label": "Numéro de téléphone",
+        "placeholder": "01 23 45 67 89"
+      }
+    },
+    "footer_link": {
+      "type": "Link",
+      "config": {
+        "label": "Footer link",
+        "placeholder": "Le lien place dans le footer"
+      }
+    },
+    "footer_link_label": {
+      "type": "Text",
+      "config": {
+        "label": "footer_link_label"
+      }
+    },
+    "blog_archive_page": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": [
+          "page"
+        ],
+        "label": "Blog archive page"
       }
     }
   }
+}

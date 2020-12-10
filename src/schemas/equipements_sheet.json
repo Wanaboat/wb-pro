@@ -1,0 +1,73 @@
+{
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1",
+          "label": "Title",
+          "placeholder": "Just to remind"
+        }
+      },
+      "body": {
+        "type": "Slices",
+        "fieldset": "Slice zone",
+        "config": {
+          "labels": {
+            "category_title": [],
+            "equipement_category": [],
+            "category_options": []
+          },
+          "choices": {
+            "category_title": {
+              "type": "Slice",
+              "fieldset": "Category title",
+              "description": "The title of a category",
+              "icon": "title",
+              "display": "list",
+              "non-repeat": {
+                "value": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Value"
+                  }
+                }
+              },
+              "repeat": {}
+            },
+            "category_item": {
+              "type": "Slice",
+              "fieldset": "Category item",
+              "description": "An equipement item",
+              "icon": "add_box",
+              "display": "list",
+              "non-repeat": {
+                "item_title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Item title"
+                  }
+                }
+              },
+              "repeat": {}
+            },
+            "category_options": {
+              "type": "Slice",
+              "fieldset": "Category options",
+              "description": "Item options",
+              "icon": "add_to_photos",
+              "display": "list",
+              "non-repeat": {},
+              "repeat": {
+                "option_value": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Option value"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

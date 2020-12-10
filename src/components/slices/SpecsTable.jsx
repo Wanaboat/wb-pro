@@ -8,60 +8,66 @@ import {
 import ButtonSecondary from '../ButtonSecondary'
 
 const SpecsTable = (props) => {
+    console.log('SpecsTable', props)
     const [more, setMore] = useState(false)
-    return (
-        <Box
-            bg='white'
-            p='2rem 4rem'
-            mx={{ base:'1rem', lg:'4rem' }}
-        >
 
-            {
-            [1,2,3].map( item =>
+    const SpecLine = ({ title, value, last }) => {
+        return (
             <Flex
                 p='1rem 0'
                 w='100%'
                 justifyContent='space-between'
-                borderBottom='dashed 1px'
+                borderBottom={ !last ? 'dashed 1px' : null }
                 borderBottomColor='gray.100'
             >
                 <Text
                     alignSelf='flex-start'
-                >Key</Text>
+                    color='gray.600'
+                >
+                    {title}
+                </Text>
                 <Text
                     alignSelf='flex-end'
-                >Value</Text>
-                        </Flex>
-
-            )}
-
-            { more ? 
-            [1,2,3].map( item =>
-                <Flex
-                    p='1rem 0'
-                    w='100%'
-                    justifyContent='space-between'
-                    borderBottom='dashed 1px'
-                    borderBottomColor='gray.100'
                 >
-                    <Text
-                        alignSelf='flex-start'
-                    >Key</Text>
-                    <Text
-                        alignSelf='flex-end'
-                    >Value</Text>
-                            </Flex>
-    
-                )
-            : 
-            <Flex
-                mt='1rem'
-                justifyContent='center'
-                onClick={ () => { setMore(true) } }
-            >
-                <ButtonSecondary>Voir plus</ButtonSecondary>
+                    {value}
+                </Text>
             </Flex>
+        )
+    }
+
+    return (
+        <Box
+            bg='white'
+            p={{ base:'1rem', lg:'2rem 4rem' }}
+            mx={{ base: '1rem', lg: '4rem' }}
+        >
+
+            {
+                props.items.map((item, i) =>
+                    !more && i < 3 ?
+                        <SpecLine key={`specLine-${i}`} title={item.key} value={item.value} />
+                        : more ?
+                            <SpecLine
+                                key={`specLine-${i}`}
+                                title={item.key}
+                                value={item.value}
+                                last={ i+1 === props.items.length }
+                            />
+                        : null
+                )
             }
+            {
+                !more ?
+                    <Flex
+                        mt='1rem'
+                        justifyContent='center'
+                        onClick={() => { setMore(true) }}
+                    >
+                        <ButtonSecondary>Voir plus</ButtonSecondary>
+                    </Flex>
+                    : null
+            }
+
         </Box>
     )
 }

@@ -12,6 +12,7 @@ import Title from './Title'
 import EntryListIllustrated from './EntryListIllustrated'
 import ContactForm from './ContactForm'
 import SpecsTable from './SpecsTable'
+import EquipementSheet from './EquipementSheet'
 
 export { 
     AdsList,
@@ -27,5 +28,6 @@ export {
     Title,
     EntryListIllustrated,
     ContactForm,
-    SpecsTable
+    SpecsTable,
+    EquipementSheet
 }

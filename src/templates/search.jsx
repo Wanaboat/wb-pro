@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby'
 import Axios from "axios"
 import * as JsSearch from "js-search"

@@ -27,21 +27,18 @@ const ContactForm = () => {
                     borderRight='solid 1px'
                     borderRightColor='gray.100'
                     p='1.5rem'
-                    />
+                />
                 <Input
                     placeholder='Prénom'
                     border='none'
                     borderRadius='0'
-                    borderRight='solid 1px'
-                    borderRightColor='gray.100'
                     p='1.5rem'
-
-                    />
+                />
             </SimpleGrid>
             <Box
-            
                 borderTop='solid 1px'
                 borderTopColor='gray.200'
+                borderRadius='0'
                 display='block'
                 as='textarea'
                 p='1.5rem'
@@ -52,9 +49,7 @@ const ContactForm = () => {
                     borderStyle:'none',
                     bg:'gray.50'
                 }}
-                >
-
-            </Box>
+            />
             <Box
                 p='1rem 1.5rem'
 
