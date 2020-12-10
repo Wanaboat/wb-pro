@@ -146,7 +146,7 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
   return (
     <>
       <Helmet title={seo.title}>
-        <html lang={ siteLanguage } />
+        <html lang={ siteLanguage ? siteLanguage : 'fr' } />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
         {/* <meta name="gatsby-starter" content="Gatsby Starter Prismic" /> */}
