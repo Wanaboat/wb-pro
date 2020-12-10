@@ -32,6 +32,7 @@ const Title = ( props ) => {
             mt='1rem'
             color='brand.3'
             p={{ base:'1rem', lg: level() <= 2 ? '2rem 4rem' : '0rem 4rem'}}
+            pb={{ base:'.25rem', lg: level() <= 2 ? '1rem' : '.5rem'}}
         >
                 { props.data.slice_title.text }
             { level() <= 2 ? 

@@ -9,7 +9,7 @@ const BannerWithCaption = (props) => {
   const { title_of_banner, button_label, button_link, image_banner } = props.data
   return (
     <Grid
-      templateColumns={{ base:'100%', lg:"repeat(2, 1fr)"}}
+      templateColumns={{ base:'100%', lg:"1fr 400px"}}
       gap='2rem'
       ml={{ base:0, lg:'4rem'}}
     >
@@ -46,6 +46,7 @@ const BannerWithCaption = (props) => {
           borderRadius={{ base:'0', lg:"3px 0 0 3px"}}
           src={image_banner.url}
           alt={image_banner.alt}
+          w='100%'
         />
         <Text
           textAlign='center'

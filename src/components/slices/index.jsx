@@ -13,6 +13,7 @@ import EntryListIllustrated from './EntryListIllustrated'
 import ContactForm from './ContactForm'
 import SpecsTable from './SpecsTable'
 import EquipementSheet from './EquipementSheet'
+import Carousel from './Carousel'
 
 export { 
     AdsList,
@@ -29,5 +30,6 @@ export {
     EntryListIllustrated,
     ContactForm,
     SpecsTable,
-    EquipementSheet
+    EquipementSheet,
+    Carousel
 }

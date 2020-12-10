@@ -1,16 +1,17 @@
 import React from 'react'
 
-import { Box, Button, Heading, Stack, Grid, Image, Text } from '@chakra-ui/react'
-import HeroIlluJPG from '../../images/hero-illu-nacra.jpg'
+import { Box, Button, Heading, Stack, Image, Text } from '@chakra-ui/react'
+import { animateScroll as scroll } from 'react-scroll'
+import ButtonPrimary from '../ButtonPrimary'
 
 
-const HomeHero = ( props ) => {
+const HomeHero = (props) => {
 
-    console.log( 'Hero Props', props)
-    return(
-<Box
+  console.log('Hero Props', props)
+  return (
+    <Box
       bg='rgba(6, 52, 98, 1)'
-      h={{ base:'calc( 100vh - 65px )', lg:'100vh' }}
+      h={{ base: 'calc( 100vh - 65px )', lg: '100vh' }}
       position='relative'
     >
       <Box
@@ -18,7 +19,7 @@ const HomeHero = ( props ) => {
         // w='100%'
         // height={{ xs:'50vh', lg:'100vh'}}
         // height='100vh'
-        h={{ xs:'50vh', lg:'100vh' }}
+        h={{ xs: '50vh', lg: '100vh' }}
       >
         {/* <source type='image/webp' srcSet={HeroIlluWEBP} /> */}
         {/* <source type='image/jpg'
@@ -31,7 +32,7 @@ const HomeHero = ( props ) => {
           boxShadow='sm'
           position='relative'
           zIndex='docked'
-          srcSet={ `
+          srcSet={`
             ${props.data.home_hero_bg_image.small.url} 320w, 
             ${props.data.home_hero_bg_image.large.url} 1040w, 
           ` }
@@ -39,8 +40,8 @@ const HomeHero = ( props ) => {
           objectFit='cover'
           alt='Sailfast'
           w='100%'
-        //   h={{ xs:'50vh', lg:'100vh'}}
-          height={{ base:'100%', lg:'100vh' }}
+          //   h={{ xs:'50vh', lg:'100vh'}}
+          height={{ base: '100%', lg: '100vh' }}
 
           objectFit='cover'
         />
@@ -56,37 +57,44 @@ const HomeHero = ( props ) => {
         w={{ base: '100%', lg: '80%' }}
       >
         <Stack
-          spacing={{ base:'.5rem', lg:'2rem' }}
+          spacing={{ base: '.5rem', lg: '2rem' }}
           justifyContent='center'
-          p={{ base:'1rem', lg:0}}
+          p={{ base: '1rem', lg: 0 }}
         >
           <Heading
             as='h1'
-            fontSize={{ base:'24px', lg:'48px' }}
+            fontSize={{ base: '24px', lg: '48px' }}
             color='white'
           >
-              { props.data.home_hero_title.text }
+            {props.data.home_hero_title.text}
             <Box h='3px' w='120px' bg='brandLight2' />
           </Heading>
           <Heading
             as='h2'
-            fontSize={{ base:'18px', lg:'28px' }}
+            fontSize={{ base: '18px', lg: '28px' }}
 
             fontWeight='600'
             color='white'
           >
-            { props.data.home_hero_subtitle }
-            </Heading>
+            {props.data.home_hero_subtitle}
+          </Heading>
           <Text
-            fontSize={{ base:'16px', lg:'22px' }}
+            fontSize={{ base: '16px', lg: '22px' }}
             color='white'
           >
-            { props.data.home_hero_intro}
+            {props.data.home_hero_intro}
           </Text>
+          <Box>
+            <ButtonPrimary
+              onClick={() => scroll.scrollMore(600)}
+            >
+              Découvrir ce catamaran
+          </ButtonPrimary>
+          </Box>
         </Stack>
       </Box>
     </Box>
-    )
+  )
 }
 
 export default HomeHero

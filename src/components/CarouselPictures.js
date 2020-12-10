@@ -4,7 +4,7 @@ import {
     Button,
     Flex,
     Image
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -17,13 +17,12 @@ const PicturesGallery = ({ pictures }) => {
     const formatArray = (arr) => {
         const cleanArray = []
         for (let index = 0; index < arr.length; index++) {
-            const img = arr[index];
+            const item = arr[index];
             cleanArray.push(
                 {
-                    src: img.picture.localFile.childImageSharp.fixed.src ? img.picture.localFile.childImageSharp.fixed.src : img.picture.fixed.src,
-                    srcWebp: img.picture.localFile.childImageSharp.fixed.srcWebp ? img.picture.localFile.childImageSharp.fixed.srcWebp : false,
-                    width: img.picture.dimensions.width,
-                    height: img.picture.dimensions.height,
+                    src: item.gallery_image.url,
+                    width: item.gallery_image.dimensions.width,
+                    height: item.gallery_image.dimensions.height,
                 }
             )
         }
@@ -32,32 +31,25 @@ const PicturesGallery = ({ pictures }) => {
     const photos = formatArray(pictures)
     const Items = () => {
         return (
-
             photos.map((item, index) =>
                 <Slide
                     index={index}
                     key={`carousel-picture-item-${index}`}
                 >
                     <Box
-                        // p={{ xs: '1rem 4rem' }}
                         position='relative'
                         h='600px'
                     >
                         <picture>
                             <source type="image/jpeg" src={item.src} />
-                            { item.srcWebp ? 
-                                <source type="image/webp" src={item.srcWebp} />
-                            : null}
                             <Image
                                 w='100%'
                                 src={item.src}
                                 loading='lazy'
                             />
                         </picture>
-                        
                     </Box>
                 </Slide>
-
             )
         )
     }
@@ -66,6 +58,7 @@ const PicturesGallery = ({ pictures }) => {
         <Box
             mx={{ xs: '-1rem', lg: '0' }}
             position='relative'
+            my={{ base:'2rem', lg:'0' }}
         >
             <CarouselProvider
                 naturalSlideWidth={1150}
@@ -80,17 +73,18 @@ const PicturesGallery = ({ pictures }) => {
                     position='absolute'
                     bottom='-1.5rem'
                     left='0rem'
-                    w='100%'
-                    justifyContent={{ xs:'center', lg:'left'}}
+                    justifyContent={{ base:'center' }}
                     pl={{ xs:'0', lg:'2rem'}}
+                    w='100%'
+
                 >
                     <Flex
                         w='auto'
-                        // ml='1rem'
                         bg='brand.3'
                         p={{ xs: '.25rem', lg: '.5rem .75rem' }}
                         display='flex'
-                        justifyContent={{ xs: 'center', lg: 'flex-start' }}
+                        justifyContent={{ base: 'center' }}
+
                     >
                         <Button
                             variant='ghost'

@@ -10,18 +10,21 @@ import ButtonSecondary from '../ButtonSecondary'
 
 const ContactForm = () => {
     const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(' submit ')
 
     }
     return(
         <Box
-         as='form'
-         bg='white'
-         onSubmit={ (e) => { handleSubmit() } }
-         mx={{ base:0, lg:'4rem'}}
+            as='form'
+            bg='white'
+            onSubmit={ (e) => { handleSubmit(e) } }
+            mx={{ base:'1rem', lg:'4rem'}}
         >
             <SimpleGrid columns='2'>
                 <Input
-                    placeholder='Prénom'
+                    placeholder='Prénom/Nom'
+                    type='text'
                     border='none'
                     borderRadius='0'
                     borderRight='solid 1px'
@@ -29,7 +32,8 @@ const ContactForm = () => {
                     p='1.5rem'
                 />
                 <Input
-                    placeholder='Prénom'
+                    placeholder='email'
+                    type='email'
                     border='none'
                     borderRadius='0'
                     p='1.5rem'
@@ -54,6 +58,7 @@ const ContactForm = () => {
                 p='1rem 1.5rem'
 
             >
+                Test
             <ButtonSecondary
                 type='submit'
             >Envoyer</ButtonSecondary>

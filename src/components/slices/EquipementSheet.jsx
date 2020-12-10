@@ -62,11 +62,14 @@ const EquipementSheet = (props) => {
 
     const Slice = ({ slice, i }) => (
         <Box w='100%'
-            p={{ base: '1rem', lg: slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '1rem 4rem' : '0rem 4rem' }}
+            p={{ base: '.5rem 1rem', lg: slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '1rem 4rem' : '0rem 4rem' }}
             pt={{ base: '1rem', lg: slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '2.5rem' : '0' }}
             borderTop={i > 0 && slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? 'solid 1px' : 'none'}
             borderTopColor='gray.100'
-            pt={slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '2.5rem' : '0'}
+            pt={{
+                base:slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '1rem' : '0',
+                lg:slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ? '2.5rem' : '0'
+            }}
         >
             {slice.__typename === 'PrismicEquipementsSheetBodyCategoryTitle' ?
                 <Title data={slice.primary} />

@@ -16,7 +16,8 @@ import {
   EntryListIllustrated,
   ContactForm,
   SpecsTable,
-  EquipementSheet
+  EquipementSheet,
+  Carousel
 } from '../slices'
 
 const Slices = (props) => {
@@ -24,14 +25,11 @@ const Slices = (props) => {
   const sliceComponents = {
     PrismicPageBodyAdsList: AdsList,
     PrismicPageBodyText: BodyText,
-    PrismicPostBodyText: BodyText,
     PrismicPageBodyVideo: Video,
     PrismicProductBodyText: BodyText,
-    PrismicPostBodyBannerWithCaption: BannerWithCaption,
     PrismicPageBodyBannerWithCaption: BannerWithCaption,
     PrismicProductBodyBannerWithCaption: BannerWithCaption,
-    PrismicPostBodyImageGallery: ImageGallery,
-    PrismicPageBodyImageGallery: ImageGallery,
+    PrismicPageBodyImageGallery: Carousel,
     PrismicPageBodyListOfArticles: PostsList,
     PrismicPageBodyMap: Plan,
     PrismicPageBodyProductsList: ProductsList,

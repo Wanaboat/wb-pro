@@ -102,7 +102,7 @@ const NavVertical = (props) => {
                         />
                     </Flex>
                     <Box
-                        mx={{ base: '0', lg: '4rem' }}
+                        mx={{ base: '0', lg: '4rem', xl:'6rem', xxl:'8rem' }}
                     >
 
                         {props.items.map((item, index) =>
