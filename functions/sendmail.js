@@ -1,13 +1,5 @@
 const nodemailer = require('nodemailer');
 
-// $mail->SMTPDebug  = 0;
-// $mail->SMTPAuth   = TRUE;
-// $mail->SMTPSecure = "tls";
-// $mail->Port       = 587;
-// $mail->Host       = "smtp.gmail.com";
-// $mail->Username   = "vhf@wanaboat.fr";
-// $mail->Password   = '1AZ"ertyui$';
-
 
 exports.handler = function(event, context, callback) {
 
@@ -25,9 +17,9 @@ exports.handler = function(event, context, callback) {
     transporter.sendMail({
         from: "vhf@wanaboat.fr",
         to: "vhf@wanaboat.fr",
-        subject: `Sending with React, Nodemailer and Netlify`,
+        subject: `[Form] : de ${data.name}`,
         html: `
-            <h3>Email from ${data.name} ${data.email}<h3>
+            <h3>Message de ${data.name} (${data.email})</h3>
             <p>${data.message}<p>
             `
     }, function(error, info) {

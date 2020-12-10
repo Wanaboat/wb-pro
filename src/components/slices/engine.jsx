@@ -17,11 +17,12 @@ import {
   ContactForm,
   SpecsTable,
   EquipementSheet,
-  Carousel
+  Carousel,
+  ChildrenNews
 } from '../slices'
 
 const Slices = (props) => {
-  const { slices, posts, products } = props
+  const { slices, posts, products, childrenNews } = props
   const sliceComponents = {
     PrismicPageBodyAdsList: AdsList,
     PrismicPageBodyText: BodyText,
@@ -39,7 +40,8 @@ const Slices = (props) => {
     PrismicPageBodyEntryListIllustrated: EntryListIllustrated,
     PrismicPageBodyContactForm: ContactForm,
     PrismicPageBodySpecsTable: SpecsTable,
-    PrismicPageBodyEquipementSheet: EquipementSheet
+    PrismicPageBodyEquipementSheet: EquipementSheet,
+    PrismicPageBodyChildrenNews: ChildrenNews
   }
 
   const SlicesMerge = slices.map((slice, index) => {
@@ -52,6 +54,7 @@ const Slices = (props) => {
             items={slice.items}
             lastPosts={posts}
             products={products}
+            childrenNews={ childrenNews }
             key={`${slice.__typename}-${index}`}
           />
           {/* <Box>Composant absent : {slice.__typename}</Box> */}

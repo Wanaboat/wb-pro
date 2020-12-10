@@ -14,6 +14,7 @@ import ContactForm from './ContactForm'
 import SpecsTable from './SpecsTable'
 import EquipementSheet from './EquipementSheet'
 import Carousel from './Carousel'
+import ChildrenNews from './ChildrenNews'
 
 export { 
     AdsList,
@@ -31,5 +32,6 @@ export {
     ContactForm,
     SpecsTable,
     EquipementSheet,
-    Carousel
+    Carousel,
+    ChildrenNews
 }

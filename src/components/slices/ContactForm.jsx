@@ -1,6 +1,8 @@
-import React from 'react'
-
-import { 
+import React, { useState } from 'react'
+import axios from 'axios'
+import {
+    Alert,
+    AlertIcon,
     Box,
     Text,
     Input,
@@ -9,62 +11,104 @@ import {
 import ButtonSecondary from '../ButtonSecondary'
 
 const ContactForm = () => {
+
+    const [sent, setSent] = useState(false)
+
+    const
+        emailInput = React.createRef(),
+        nameInput = React.createRef(),
+        messageInput = React.createRef()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(' submit ')
-        
+
+        console.log(
+            emailInput.current.value,
+            nameInput.current.value,
+            messageInput.current.value,
+        )
+        axios.post('/.netlify/functions/sendmail',
+            {
+                "name": nameInput.current.value,
+                "email": emailInput.current.value,
+                "message": messageInput.current.value
+            }
+        )
+            .then(function (response) {
+                setSent(true)
+            })
+
     }
-    return(
-        <Box
-            as='form'
-            bg='white'
-            onSubmit={ (e) => { handleSubmit(e) } }
-            mx={{ base:'1rem', lg:'4rem'}}
-        >
-            <SimpleGrid columns='2'>
-                <Input
-                    placeholder='Prénom/Nom'
-                    type='text'
-                    border='none'
-                    borderRadius='0'
-                    borderRight='solid 1px'
-                    borderRightColor='gray.100'
-                    p='1.5rem'
-                />
-                <Input
-                    placeholder='email'
-                    type='email'
-                    border='none'
-                    borderRadius='0'
-                    p='1.5rem'
-                />
-            </SimpleGrid>
+    return (
+        !sent ?
             <Box
-                borderTop='solid 1px'
-                borderTopColor='gray.200'
-                borderRadius='0'
-                display='block'
-                as='textarea'
-                p='1.5rem'
-                placeholder='Votre question'
-                w='100%'
-                borderRadius='0'
-                _focus={{
-                    borderStyle:'none',
-                    bg:'gray.50'
-                }}
-            />
-            <Box
-                p='1rem 1.5rem'
-
+                as='form'
+                bg='white'
+                onSubmit={(e) => { handleSubmit(e) }}
+                mx={{ base: '1rem', lg: '4rem' }}
             >
-                Test
-            <ButtonSecondary
-                type='submit'
-            >Envoyer</ButtonSecondary>
+                <SimpleGrid columns='2'>
+                    <Input
+                        placeholder='Prénom/Nom'
+                        type='text'
+                        border='none'
+                        borderRadius='0'
+                        borderRight='solid 1px'
+                        borderRightColor='gray.100'
+                        p='1.5rem'
+                        ref={nameInput}
+                        required
 
+                    />
+                    <Input
+                        placeholder='email'
+                        type='email'
+                        border='none'
+                        borderRadius='0'
+                        p='1.5rem'
+                        ref={emailInput}
+                        required
+                    />
+                </SimpleGrid>
+                <Box
+                    borderTop='solid 1px'
+                    borderTopColor='gray.200'
+                    borderRadius='0'
+                    display='block'
+                    as='textarea'
+                    p='1.5rem'
+                    placeholder='Votre question'
+                    w='100%'
+                    borderRadius='0'
+                    ref={messageInput}
+                    _focus={{
+                        borderStyle: 'none',
+                        bg: 'gray.50'
+                    }}
+                    required
+                />
+                <Box
+                    p='1rem 1.5rem'
+
+                >
+                    <ButtonSecondary
+                        type='submit'
+                    >Envoyer</ButtonSecondary>
+
+                </Box>
             </Box>
-        </Box>
+            :
+            <Box
+                bg='white'
+                p='1rem'
+                mx={{ base: '1rem', lg: '4rem' }}
+            >
+                <Alert status="success">
+                    <AlertIcon />
+                    Votre message a bien été envoyé, je vous recontacte très vite, merci !
+                </Alert>
+            </Box>
     )
 }
 

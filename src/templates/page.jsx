@@ -9,8 +9,10 @@ import Breadcrumbs from '../components/Breadcrumbs'
 // import usePreviewData from '../utils/usePreviewData'
 const Page = ( { data, location } ) => {
   // const liveData = usePreviewData( data )
-  const { nav, prismicPage, settings, posts, products } = data
-  console.log( 'prismicPage', prismicPage )
+  const { nav, prismicPage, settings, childrenNews, posts } = data
+  console.log( 'prismicPage', prismicPage, childrenNews )
+
+  console.log( 'childrenNews', childrenNews)
   console.log( prismicPage.data.parent )
   console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
   
@@ -37,7 +39,7 @@ const Page = ( { data, location } ) => {
           <SlicesEngine
             slices={ prismicPage.data.body }
             posts={ posts }
-            products={ products }
+            childrenNews={ childrenNews }
           />
         : null}
       </Wrapper> 
@@ -48,7 +50,9 @@ const Page = ( { data, location } ) => {
 export default Page
 
 export const pageQuery = graphql`
-  query PageQuery($uid: String!)
+  query PageQuery( $uid: String!, 
+    $prismicId: String!
+  )
   {
     prismicPage(uid: {eq: $uid}) {
       uid
@@ -238,51 +242,21 @@ export const pageQuery = graphql`
         }
       }
     }
-    #posts: allPrismicPost{
-    #  edges{
-    #    node{
-    #      href
-    #      uid
-    #      data{
-    #        date(formatString: "DD.MM.YYYY")
-    #        title {
-    #          text
-    #        }
-    #      }
-    #    }
-    #  }
-    #}
-    #products: allPrismicProduct {
-    #  edges {
-    #    node {
-    #      id
-    #      href
-    #      uid
-    #      data {
-    #        title {
-    #          text
-    #        }
-    #        sub_title
-    #        main_info
-    #        image {
-    #          url
-    #          #thumbnails{
-    #          #  square_sm {
-    #          #    alt
-    #          #    copyright
-    #          #    url
-    #          #  }
-    #          #  square_lg {
-    #          #    alt
-    #          #    copyright
-    #          #    url
-    #          #  }
-    #          #}
-    #        }
-    #      }
-    #    }
-    #  }
-    #}
+    childrenNews: allPrismicPage(
+        filter: {
+          data: {parent: {document: {elemMatch: {prismicId: { eq: $prismicId }}}}}
+          tags: { eq: "news"}
+        }
+      ) {
+        edges {
+          node {
+            prismicId
+            data{
+              title{text}
+            }
+          }
+        }
+      }
     settings:prismicSettings {
       data {
           site_name

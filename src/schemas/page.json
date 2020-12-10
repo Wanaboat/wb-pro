@@ -41,7 +41,8 @@
           "entry_list_illustrated": [],
           "contact_form": [],
           "specs_table": [],
-          "equipement_sheet": []
+          "equipement_sheet": [],
+          "children_news": []
         },
         "choices": {
           "text": {
@@ -403,6 +404,15 @@
                 }
               }
             },
+            "repeat": {}
+          },
+          "children_news": {
+            "type": "Slice",
+            "fieldset": "Children news",
+            "description": "List of children news",
+            "icon": "list",
+            "display": "list",
+            "non-repeat": {},
             "repeat": {}
           }
         }
