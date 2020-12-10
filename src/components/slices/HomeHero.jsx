@@ -16,28 +16,21 @@ const HomeHero = (props) => {
       mb={{ base:'1rem', lg:'4rem'}}
     >
       <Box
-        // as='picture'
-        // w='100%'
-        // height={{ xs:'50vh', lg:'100vh'}}
-        // height='100vh'
         h={{ xs: '50vh', lg: '100vh' }}
       >
-        {/* <source type='image/webp' srcSet={HeroIlluWEBP} /> */}
-        {/* <source type='image/jpg'
-            srcSet={ `
-                ${props.data.home_hero_bg_image.small.url} 75Ow, 
-                ${props.data.home_hero_bg_image.large.url} 1050w, 
-            ` }
-        /> */}
         <Image
           boxShadow='sm'
           position='relative'
           zIndex='docked'
-          srcSet={`
-            ${props.data.home_hero_bg_image.small.url} 320w, 
-            ${props.data.home_hero_bg_image.large.url} 1040w, 
+          srcSet={`${props.data.home_hero_bg_image.small.url} 750w, 
+            ${props.data.home_hero_bg_image.large.url} 1040w
           ` }
-          sizes="70vmin"
+          sizes="
+            (max-width: 768px) 100vw, 
+            (max-width: 1280px) calc(100vw - 400px),
+            (max-width: 1500px) calc(100vw - 600px),
+            calc(100vw - 9rem - 200px)
+          "
           objectFit='cover'
           alt='Sailfast'
           w='100%'

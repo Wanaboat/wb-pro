@@ -85,7 +85,7 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: website.title ? website.title : 'name',
-        short_name: website.titleAlt,
+        short_name: website.titleAlt ? website.titleAlt : 'shortname',
         description: website.description,
         start_url: pathPrefix,
         background_color: website.backgroundColor,

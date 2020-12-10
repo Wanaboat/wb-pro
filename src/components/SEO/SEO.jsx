@@ -154,6 +154,8 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         {/* <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
+        <link rel='preconnect' href='https://images.prismic.io/' />
+        
       </Helmet>
       <Facebook
         desc={seo.description}
