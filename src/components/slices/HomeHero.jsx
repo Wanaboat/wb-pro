@@ -13,6 +13,7 @@ const HomeHero = (props) => {
       bg='rgba(6, 52, 98, 1)'
       h={{ base: 'calc( 100vh - 65px )', lg: '100vh' }}
       position='relative'
+      mb={{ base:'1rem', lg:'4rem'}}
     >
       <Box
         // as='picture'
@@ -88,7 +89,7 @@ const HomeHero = (props) => {
             <ButtonPrimary
               onClick={() => scroll.scrollMore(600)}
             >
-              Découvrir ce catamaran
+              { props.data.home_hero_button_label }
           </ButtonPrimary>
           </Box>
         </Stack>

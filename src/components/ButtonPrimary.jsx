@@ -21,6 +21,11 @@ const ButtonPrimary = ({ to, children, ...rest }) => {
                 bg:'white',
                 color:'brand.1'
             }}
+            _active={{
+                bg:'white',
+                color:'brand.1'
+            }}
+
             {...rest}
 
         >

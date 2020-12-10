@@ -142,6 +142,7 @@ const Layout2 = (props) => {
 
                   >
                     <IconButton
+                      aria-label="Ouvrir le menu"
                       border='solid 1px'
                       borderColor='brand.1'
                       bg='brand.1'

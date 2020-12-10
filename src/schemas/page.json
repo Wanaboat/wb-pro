@@ -79,14 +79,6 @@
                   "label": "Image Banner"
                 }
               },
-              "title_of_banner": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "heading2",
-                  "label": "Title Of banner",
-                  "placeholder": "My title of banner"
-                }
-              },
               "description": {
                 "type": "StructuredText",
                 "config": {
@@ -248,8 +240,8 @@
           },
           "home_hero": {
             "type": "Slice",
-            "fieldset": "Home hero",
-            "description": "The homepage hero",
+            "fieldset": "Hero illustrated",
+            "description": "An hero with page",
             "icon": "home",
             "display": "list",
             "non-repeat": {
@@ -270,6 +262,12 @@
                 "type": "Text",
                 "config": {
                   "label": "Home hero intro"
+                }
+              },
+              "home_hero_button_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Home hero button label"
                 }
               },
               "home_hero_bg_image": {

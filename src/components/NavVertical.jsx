@@ -67,6 +67,7 @@ const NavVertical = (props) => {
                         display={{ base: 'flex', lg: 'none' }}
                     >
                         <IconButton
+                            aria-label="Fermer le menu"
                             border='solid 1px'
                             borderColor='brand.1'
                             bg='brand.1'
@@ -99,6 +100,8 @@ const NavVertical = (props) => {
                             src={logo}
                             alt='Sailfast, catamarans de sport'
                             mb='2rem'
+                            width='178px'
+                            height='60px'
                         />
                     </Flex>
                     <Box
@@ -153,6 +156,7 @@ const NavVertical = (props) => {
                                     </Link>
                                     {item.items.length > 1 ?
                                         <Button
+                                            aria-label="Voir les pages filles"
                                             bg='transparent'
                                             color='brandDark1'
                                             size='sm'

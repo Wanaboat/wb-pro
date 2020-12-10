@@ -5,13 +5,13 @@ const PageTitle = (props) => {
     return(
         <Heading
             as='h1'
-            color='brand.light.primary'
+            color='brand.2'
             mt='3rem'
             mb='2rem'
             color='brandDark1'
             position='relative'
             zIndex='tooltip'
-            p={{ base:0, lg:'2rem 4rem'}}
+            p={{ base:'1rem', lg: '2rem 4rem' }}
         >
             { props.children }
             <Box

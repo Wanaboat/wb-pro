@@ -233,6 +233,7 @@ export const pageQuery = graphql`
               home_hero_title{ text }
               home_hero_subtitle
               home_hero_intro
+              home_hero_button_label
               home_hero_bg_image{
                 small{ url }
                 large{ url }
