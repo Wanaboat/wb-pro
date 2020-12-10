@@ -68,27 +68,33 @@ module.exports = {
     },
     'gatsby-plugin-lodash',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    {
+      resolve:'gatsby-plugin-sharp',
+      options: {
+        icon: website.favicon
+      }
+    },
     // {
     //   resolve: 'gatsby-plugin-google-analytics',
     //   options: {
     //     trackingId: website.googleAnalyticsID,
     //   },
     // },
-    // 'gatsby-plugin-sitemap',
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: website.title,
-    //     short_name: website.titleAlt,
-    //     description: website.description,
-    //     start_url: pathPrefix,
-    //     background_color: website.backgroundColor,
-    //     theme_color: website.themeColor,
-    //     display: 'standalone',
-    //     icon: website.favicon,
-    //   },
-    // },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: website.title,
+        short_name: website.titleAlt,
+        description: website.description,
+        start_url: pathPrefix,
+        background_color: website.backgroundColor,
+        theme_color: website.themeColor,
+        display: 'standalone',
+        icon: website.favicon,
+        start_url: '/'
+      },
+    },
     // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',

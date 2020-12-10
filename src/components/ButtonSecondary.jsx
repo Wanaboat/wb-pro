@@ -23,6 +23,10 @@ const ButtonSecondary = ({ to, children, ...rest }) => {
                 color:'white',
                 bg:'brand.1'
             }}
+            _active={{
+                color:'white',
+                bg:'brand.1'
+            }}
             {...rest}
 
         >

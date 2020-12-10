@@ -10,7 +10,7 @@ const PageTitle = (props) => {
             mb='2rem'
             color='brandDark1'
             position='relative'
-            zIndex='tooltip'
+            zIndex={{ base:'base', lg:'tooltip'}}
             p={{ base:'1rem', lg: '2rem 4rem' }}
         >
             { props.children }
