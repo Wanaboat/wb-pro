@@ -8,6 +8,7 @@ import '../styles/transition.css'
 import linkResolver from '../utils/linkResolver'
 import { HamburgerIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import logo from '../images/logo-sailfast.png'
+import logo_large from '../images/logo-sailfast-large.png'
 
 const NavVertical = (props) => {
     console.log('NavProps', props)
@@ -36,7 +37,7 @@ const NavVertical = (props) => {
                 <Box
                     as="nav"
                     position={{ base: 'fixed', lg: 'relative' }}
-                    h={{ base: '100vh', lg: 'auto' }}
+                    h={{ base: '100vh', lg: '50vh' }}
                     w={{ xs: '100vw', lg: 'auto' }}
                     bg={{ base: 'white', lg: 'transparent' }}
                     zIndex='banner'
@@ -89,21 +90,20 @@ const NavVertical = (props) => {
                         />
                     </Flex>
 
-                    <Flex
+                    <Box
+                        as={ GatsbyLink }
+                        title={'Aller à l\'accueil'}
+                        display='block'
+                        to='/'
                         maxW='100%'
-                        justifyContent={{ base: 'flex-start', lg: 'center' }}
                         w='100%'
-                        p='1rem'
-                        mt='2rem'
-                    >
-                        <Image
-                            src={logo}
-                            alt='Sailfast, catamarans de sport'
-                            mb='2rem'
-                            width='178px'
-                            height='60px'
-                        />
-                    </Flex>
+                        h='90px'
+                        mb='2rem'
+                        bgImage={{ base:`url(${logo})`, lg:`url(${logo_large})` }}
+                        backgroundRepeat='no-repeat'
+                        backgroundSize='auto auto'
+                        backgroundPosition='center center'
+                    />
                     <Box
                         mx={{ base: '0', lg: '4rem', xl:'6rem', xxl:'8rem' }}
                     >

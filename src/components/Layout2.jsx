@@ -10,6 +10,7 @@ import { extendTheme } from "@chakra-ui/react"
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 
 import logo from '../images/logo-sailfast.png'
+import logo_large from '../images/logo-sailfast-large.png'
 
 import { HamburgerIcon } from '@chakra-ui/icons'
 
@@ -118,11 +119,11 @@ const Layout2 = (props) => {
                 <Box
                   display={{ base:'block', lg:'none' }}
                   m='0 1rem'
-                  bg={`url(${logo})`}
+                  bg={{ base:`url(${logo})`, lg:`url(${logo_large})` }}
                   backgroundRepeat="no-repeat"
                   backgroundSize='100% auto'
                   backgroundPosition='center center'
-                  w={{ base:'120px', lg:'100%' }}
+                  w={{ base:'135px', lg:'140px' }}
                   h={{ base:'80px', lg:'100%' }}
                   color="gray.900"
                 />

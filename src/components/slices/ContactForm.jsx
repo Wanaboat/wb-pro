@@ -54,8 +54,10 @@ const ContactForm = () => {
                         type='text'
                         border='none'
                         borderRadius='0'
-                        borderRight='solid 1px'
-                        borderRightColor='gray.100'
+                        // borderRight={{ base:'none', lg:'solid 1px' }}
+                        // borderRightColor={{ base:'gray.200' }}
+                        borderBottom={{ base:'solid 1px', lg:'none' }}
+                        borderBottomColor='gray.200'
                         p='1.5rem'
                         ref={nameInput}
                         required
@@ -83,6 +85,10 @@ const ContactForm = () => {
                     borderRadius='0'
                     ref={messageInput}
                     _focus={{
+                        borderStyle: 'none',
+                        bg: 'gray.50'
+                    }}
+                    _active={{
                         borderStyle: 'none',
                         bg: 'gray.50'
                     }}

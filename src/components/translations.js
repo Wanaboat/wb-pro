@@ -9,6 +9,7 @@ export default {
         "main.copied": "Copié !",
         "main.previous": "Précédant",
         "main.next": "Suivant",
+        "main.discover":"Découvrir",
         "footer.wb.signature": "Site par Wanaboat.fr : Services digitaux pour les pros du nautisme"
     },
     "en":{
@@ -21,6 +22,7 @@ export default {
         "main.copied": "Copied",
         "main.previous": "Previous",
         "main.next": "Next",
+        "main.discover":"Discover",
         "footer.wb.signature": "Website by iWannaboat.com : Digital services for nautical professionals"
 
     }

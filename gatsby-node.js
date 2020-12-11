@@ -216,7 +216,7 @@ const settings = await wrapper(
   const pageTemplate = require.resolve('./src/templates/page.jsx')
   const pagesList = pagesQuery.data.allPrismicPage.edges
   pagesList.forEach((edge) => {
-      contents.push({ title: edge.node.data.title.text, uid:edge.node.uid })
+      contents.push({ title: edge.node.data.title.text, uid:edge.node.uid, prismicId:edge.node.prismicId  })
       createPage({
         // path: !edge.node.data.parent ? `${edge.node.uid}` : `${edge.node.data.parent.uid}/${edge.node.uid}`,
         path: edge.node.tags.includes('home') ? '/' : buildPageSlug( edge.node ),
@@ -255,7 +255,7 @@ const settings = await wrapper(
   //   })
   // })
 
-  console.log( paths )
+  console.log( contents )
 
   fs.writeFile('./paths.js', `export const URIs=${JSON.stringify( paths )};`, function (err) {
     if (err) throw err;

@@ -7,18 +7,19 @@ import Layout from '../components/Layout2'
 
 import {
     Box,
+    Flex,
     Heading,
+    Input,
     Text,
-
 } from '@chakra-ui/react'
-import data from '../../contents2.json';
-
-// var content = require('../../contents.js')['URIs']
-console.log('data', data)
+import linkResolver from '../utils/linkResolver'
+// import data from '../../contents.json';
+// console.log('data', data)
+var content = require('../../contents.js')['URIs']
 
 class SearchTemplate extends Component {
     state = {
-        bookList: data.URIs,
+        bookList: content,
         search: [],
         searchResults: [],
         isLoading: true,
@@ -29,11 +30,12 @@ class SearchTemplate extends Component {
      * React lifecycle method to fetch the data
      */
     async componentDidMount() {
-        this.setState({ bookList: data.URIs }, this.rebuildIndex());
+        // console.log('data componentDidMount', this.state.bookLists)
         this.rebuildIndex()
 
-        //   Axios.get("https://bvaughn.github.io/js-search/books.json")
+        //   Axios.get("../../contents.json")
         //     .then(result => {
+        //       console.log('result', result)
         //       const bookData = result.data
         //       this.setState({ bookList: bookData.books })
         //       this.rebuildIndex()
@@ -50,20 +52,20 @@ class SearchTemplate extends Component {
      */
     rebuildIndex = () => {
         const { bookList } = this.state
-        const dataToSearch = new JsSearch.Search("isbn")
+        const dataToSearch = new JsSearch.Search("uid")
 
-        console.log('bookList', bookList)
+        console.log('Contents', bookList)
         /**
          *  defines a indexing strategy for the data
          * more about it in here https://github.com/bvaughn/js-search#configuring-the-index-strategy
          */
-        dataToSearch.indexStrategy = new JsSearch.PrefixIndexStrategy()
+        // dataToSearch.indexStrategy = new JsSearch.PrefixIndexStrategy()
         /**
          * defines the sanitizer for the search
          * to prevent some of the words from being excluded
          *
          */
-        dataToSearch.sanitizer = new JsSearch.LowerCaseSanitizer()
+        // dataToSearch.sanitizer = new JsSearch.LowerCaseSanitizer()
         /**
          * defines the search index
          * read more in here https://github.com/bvaughn/js-search#configuring-the-search-index
@@ -71,6 +73,7 @@ class SearchTemplate extends Component {
         dataToSearch.searchIndex = new JsSearch.TfIdfSearchIndex("isbn")
         dataToSearch.addIndex("title") // sets the index attribute for the data
         dataToSearch.addIndex("uid") // sets the index attribute for the data
+        dataToSearch.addIndex("prismicId") // sets the index attribute for the data
         dataToSearch.addDocuments(bookList) // adds the data to be searched
         this.setState({ search: dataToSearch, isLoading: false })
     }
@@ -95,19 +98,20 @@ class SearchTemplate extends Component {
         return (
             <Layout nav={nav.data.nav} settings={settings}>
                 <Box p='1rem'>
-                    <Box as='form' onSubmit={this.handleSubmit}>
-                        <div style={{ margin: "0 auto" }}>
-                            <label htmlFor="Search" style={{ paddingRight: "10px" }}>
-                                Enter your search here
-                                </label>
-                            <input
-                                id="Search"
-                                value={searchQuery}
-                                onChange={this.searchData}
-                                placeholder="Enter your search here"
-                                style={{ margin: "0 auto", width: "400px" }}
-                            />
-                        </div>
+                    <Box
+                        p={{ base:'1rem', lg:'2rem 4rem' }}
+                        as='form'
+                        onSubmit={this.handleSubmit}
+                    >
+                        
+                        <Input
+                            bg='white'
+                            value={searchQuery}
+                            onChange={this.searchData}
+                            placeholder="Votre recherche"
+                            w='100%'
+
+                        />
                     </Box>
                     {/* { queryResults.length ? 
                             <Text>
@@ -116,85 +120,40 @@ class SearchTemplate extends Component {
                             </Text>
                         : null } */}
 
-                    <table
-                        style={{
-                            width: "100%",
-                            borderCollapse: "collapse",
-                            borderRadius: "4px",
-                            border: "1px solid #d3d3d3",
-                        }}
+                    <Box
+                        display='block'
+                        p={{ base:'1rem', lg:'2rem 4rem' }}
                     >
-                        <thead style={{ border: "1px solid #808080" }}>
-                            <tr>
-                                <th
-                                    style={{
-                                        textAlign: "left",
-                                        padding: "5px",
-                                        fontSize: "14px",
-                                        fontWeight: 600,
-                                        borderBottom: "2px solid #d3d3d3",
-                                        cursor: "pointer",
-                                    }}
-                                >
-                                    Book ISBN
-                                </th>
-                                <th
-                                    style={{
-                                        textAlign: "left",
-                                        padding: "5px",
-                                        fontSize: "14px",
-                                        fontWeight: 600,
-                                        borderBottom: "2px solid #d3d3d3",
-                                        cursor: "pointer",
-                                    }}
-                                >
-                                    Book Title
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                queryResults ?
-
-                                    queryResults.map(item => {
-                                        return (
-
-                                            <Box 
-                                            key={ item.uid }
-                                            as={ GatsbyLink }
-                                            to={`/${item.uid}`}
-                                            py='2rem'
+                        {
+                            queryResults ?
+                                queryResults.map(item => {
+                                    return (
+                                        <Flex
+                                            key={item.uid}
+                                            as={GatsbyLink}
+                                            to={ linkResolver( item.prismicId ) }
+                                            bg='white'
                                             borderBottom='solid 1px'
-                                            borderColor='brandDark2'
-                                            transition='padding 250ms ease'
+                                            borderBottomColor='gray.100'
+                                            p='1rem 3rem'
+                                            justify='space-between'
+                                            align='center'
                                             _hover={{
-                                                bg:'brandLightPrimary',
-                                                pl:'2rem'
+                                                bg:'gray.50'
                                             }}
                                         >
-                                            <Heading
-                                                as="h3"
-                                                color='brandDarkPrimary'
-                                                fontWeight='500'
-                                                fontSize='26px'
-                                                
-                                            >
-                                                {item.title}
-                                            </Heading>
-                                            {/* <Text
-                                                color='gray.400'
-                                            >
-                                                {post.node.data.date}
-                                            </Text> */}
-                                        </Box>
-
-                                        )
-                                    })
-
-                                    : null
-                            }
-                        </tbody>
-                    </table>
+                                            <Text>
+                                            {item.title}
+                                            </Text>
+                                            <Text>
+                                            →
+                                            </Text>
+                                        </Flex>
+                                    )
+                                })
+                            : null
+                        }
+                    </Box>
                 </Box>
             </Layout>
         )

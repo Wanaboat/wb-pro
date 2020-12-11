@@ -11,7 +11,7 @@ const HomeHero = (props) => {
   return (
     <Box
       bg='rgba(6, 52, 98, 1)'
-      h={{ base: 'calc( 100vh - 65px )', lg: '100vh' }}
+      minH={{ base: 'calc( 100vh - 65px )', lg: '100vh' }}
       position='relative'
       mb={{ base:'1rem', lg:'4rem'}}
     >
@@ -70,13 +70,13 @@ const HomeHero = (props) => {
         w={{ base: '100%', lg: '80%' }}
       >
         <Stack
-          spacing={{ base: '.5rem', lg: '2rem' }}
+          spacing={{ base: '1rem', lg: '2rem' }}
           justifyContent='center'
           p={{ base: '1rem', lg: 0 }}
         >
           <Heading
             as='h1'
-            fontSize={{ base: '24px', lg: '48px' }}
+            fontSize={{ base: '32px', lg:'42px', xl:'52px' }}
             color='white'
           >
             {props.data.home_hero_title.text}
@@ -84,7 +84,7 @@ const HomeHero = (props) => {
           </Heading>
           <Heading
             as='h2'
-            fontSize={{ base: '18px', lg: '28px' }}
+            fontSize={{ base: '22px', lg:'34px', xl:'42px' }}
 
             fontWeight='600'
             color='white'
