@@ -32,7 +32,7 @@ const Slices = (props) => {
     PrismicProductBodyBannerWithCaption: BannerWithCaption,
     PrismicPageBodyImageGallery: Carousel,
     PrismicPageBodyListOfArticles: PostsList,
-    PrismicPageBodyMap: Plan,
+    // PrismicPageBodyMap: Plan,
     PrismicPageBodyProductsList: ProductsList,
     PrismicPageBodyHomeHero: HomeHero,
     PrismicPageBodyImageAlone: ImageAlone,

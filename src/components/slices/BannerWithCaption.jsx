@@ -25,7 +25,9 @@ const BannerWithCaption = (props) => {
               {title_of_banner.text}
             </Heading>
             : null}
-          <Box >
+          <Box
+            fontSize={{ base:'15px', lg:'18px'}}
+          >
             <div className='wysiwyg' dangerouslySetInnerHTML={{ __html: props.data.description.text }} />
           </Box>
           {button_link ?
@@ -44,8 +46,8 @@ const BannerWithCaption = (props) => {
       <Box>
         <Image
           borderRadius={{ base:'0', lg:"3px 0 0 3px"}}
-          src={image_banner.url}
-          alt={image_banner.alt}
+          src={ image_banner.medium ? image_banner.medium.url : image_banner.url }
+          alt={ image_banner.alt }
           w='100%'
         />
         <Text

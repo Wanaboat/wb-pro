@@ -9,9 +9,9 @@ const EntryListIllustrated = ( props ) => {
     const relatedEntries = props.items
     return(
         <SimpleGrid
-            columns={{ base:1, lg:3, xl:4}}
+            columns={{ base:1, lg:2, xl:  props.items.length === 2 ? 2 : 3}}
             gap='2rem'
-            ml={{ base:0, lg:'4rem' }}
+            mx={{ base:0, lg:'4rem' }}
         >
             { props.items.map( entry => 
                 <EntryCard

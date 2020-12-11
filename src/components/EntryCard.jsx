@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react'
 import linkResolver from '../utils/linkResolver'
 import ButtonSecondary from './ButtonSecondary'
+import { FormattedMessage } from 'react-intl'
 
 const EntryCard = ({ node }) => {
     return(
@@ -22,7 +23,10 @@ const EntryCard = ({ node }) => {
             }}
         >
             <Image
-                src={ node.data.sharing_image.url }
+                src={
+                    node.data.sharing_image.small 
+                        ? node.data.sharing_image.small.url
+                        : node.data.sharing_image.url }
                 alt={ node.data.title.text }
                 w='100%'
             />
@@ -37,7 +41,7 @@ const EntryCard = ({ node }) => {
                 { node.data.title.text }
             </Text>
             <ButtonSecondary>
-                Découvrir
+                <FormattedMessage id="main.discover" />
             </ButtonSecondary>
             </Box>
            

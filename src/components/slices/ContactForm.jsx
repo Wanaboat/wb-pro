@@ -48,7 +48,7 @@ const ContactForm = () => {
                 onSubmit={(e) => { handleSubmit(e) }}
                 mx={{ base: '1rem', lg: '4rem' }}
             >
-                <SimpleGrid columns='2'>
+                <SimpleGrid columns={{ base: 1, lg:2 }}>
                     <Input
                         placeholder='Prénom/Nom'
                         type='text'

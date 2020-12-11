@@ -75,7 +75,13 @@
                     "width": null,
                     "height": null
                   },
-                  "thumbnails": [],
+                  "thumbnails": [
+                    {
+                      "name": "medium",
+                      "width": 400,
+                      "height": 400
+                    }
+                  ],
                   "label": "Image Banner"
                 }
               },
@@ -435,7 +441,23 @@
       "type": "Image",
       "config": {
         "constraint": {},
-        "thumbnails": [],
+        "thumbnails": [
+          {
+            "name": "medium",
+            "width": 750,
+            "height": 500
+          },
+          {
+            "name": "small",
+            "width": 400,
+            "height": 300
+          },
+          {
+            "name": "large",
+            "width": 1200,
+            "height": 630
+          }
+        ],
         "label": "Image de partage"
       }
     }

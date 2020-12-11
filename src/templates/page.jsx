@@ -123,6 +123,9 @@ export const pageQuery = graphql`
                     title { text }
                     sharing_image{
                       url
+                      small{ url }
+                      medium{ url }
+                      large { url }
                     }
                   }
                 } 
@@ -154,24 +157,24 @@ export const pageQuery = graphql`
               youtube_link { embed_url html }
             }
           }
-          ... on PrismicPageBodyMap {
-            primary {
-              location {
-                latitude
-                longitude
-              }
-              address {
-                html
-                text
-              }
-            }
-          }
+          #... on PrismicPageBodyMap {
+          #  primary {
+          #    location {
+          #      latitude
+          #      longitude
+          #    }
+          #    address {
+          #      html
+          #      text
+          #    }
+          #  }
+          #}
           ... on PrismicPageBodyBannerWithCaption {
             primary {
               image_banner {
                 alt
-                copyright
                 url
+                medium{ url }
               }
               description {
                 html
@@ -235,6 +238,7 @@ export const pageQuery = graphql`
               home_hero_intro
               home_hero_button_label
               home_hero_bg_image{
+                alt
                 small{ url }
                 large{ url }
               }

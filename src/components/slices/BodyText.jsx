@@ -8,6 +8,7 @@ const BodyText = ( props ) => {
         return(
             <Box
                 p={{ base:'0 1rem', lg:'1rem 4rem'}}
+                fontSize={{ base:'15px', lg:'18px'}}
             >
                 <div className='wysiwyg' dangerouslySetInnerHTML={ {__html: props.data.text.html }} />
             </Box>

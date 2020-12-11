@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, Heading, Stack, Image, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Image, Text } from '@chakra-ui/react'
 import { animateScroll as scroll } from 'react-scroll'
 import ButtonPrimary from '../ButtonPrimary'
 
@@ -16,7 +16,9 @@ const HomeHero = (props) => {
       mb={{ base:'1rem', lg:'4rem'}}
     >
       <Box
+        as='figure'
         h={{ xs: '50vh', lg: '100vh' }}
+        position='relative'
       >
         <Image
           boxShadow='sm'
@@ -32,13 +34,30 @@ const HomeHero = (props) => {
             calc(100vw - 9rem - 200px)
           "
           objectFit='cover'
-          alt='Sailfast'
+          alt={ props.data.home_hero_bg_image.alt }
           w='100%'
           //   h={{ xs:'50vh', lg:'100vh'}}
           height={{ base: '100%', lg: '100vh' }}
 
           objectFit='cover'
         />
+        { props.data.home_hero_bg_image.alt ? 
+        <Text
+          as='figcaption'
+          borderRadius='2px 0 0 0'
+          position='absolute'
+          bottom='0'
+          right='0'
+          bg='rgba(255,255,255,.85)'
+          color='gray.900'
+          zIndex='banner'
+          p={{ base:'.2rem .75rem'}}
+          fontSize={{ base:'12px', lg:'16px' }}
+
+        >
+          { props.data.home_hero_bg_image.alt }
+        </Text>
+        : null}
       </Box>
       <Box
         position={{ base: 'initial', lg: 'absolute' }}
