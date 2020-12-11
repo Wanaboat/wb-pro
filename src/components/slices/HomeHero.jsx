@@ -61,7 +61,7 @@ const HomeHero = (props) => {
       </Box>
       <Box
         position={{ base: 'initial', lg: 'absolute' }}
-        top='40%'
+        top='35%'
         left='-2rem'
         background='rgba(6, 52, 98, 0.83)'
         zIndex='tooltip'
@@ -70,7 +70,7 @@ const HomeHero = (props) => {
         w={{ base: '100%', lg: '80%' }}
       >
         <Stack
-          spacing={{ base: '1rem', lg: '2rem' }}
+          spacing={{ base: '1rem', lg: '1.5rem' }}
           justifyContent='center'
           p={{ base: '1rem', lg: 0 }}
         >
@@ -84,7 +84,7 @@ const HomeHero = (props) => {
           </Heading>
           <Heading
             as='h2'
-            fontSize={{ base: '22px', lg:'34px', xl:'42px' }}
+            fontSize={{ base: '20px', lg:'30px', xl:'32px' }}
 
             fontWeight='600'
             color='white'
