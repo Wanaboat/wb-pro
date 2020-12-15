@@ -27,7 +27,7 @@ const PicturesViewers = (props) => {
                             onClick={ ()=>{setCurrentPicture(i+1)} }
                             cursor='pointer'
                             w='100%'
-                            src={photo.gallery_image.small.url}
+                            src={photo.gallery_image.small ? photo.gallery_image.small.url : photo.gallery_image.url }
                         />
                     )}
                 </SimpleGrid>

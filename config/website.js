@@ -11,7 +11,7 @@ module.exports = {
   ogLanguage: 'fr_FR', // Facebook Language
 
   // JSONLD / Manifest
-  favicon: `static/favicons/favicon-${process.env.FAVICON}.png`, // Used for manifest favicon generation
+  favicon: `static/favicons/favicon-sailfast.png`, // Used for manifest favicon generation
   shortName: process.env.SITE_SHORT_TITLE, // shortname for manifest. MUST be shorter than 12 characters
   themeColor: '#3D63AE',
   backgroundColor: '#EBEDF2',

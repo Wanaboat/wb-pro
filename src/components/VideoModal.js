@@ -82,13 +82,15 @@ const VideoModal = ({ currentVideo, pictures, index, isVisible, handleClose, han
                         px='2rem'
                     >
                         <AspectRatio ratio={16 / 9} w='100%' h='100%' maxWidth="100%">
-                        <Box
-                            w='100%'
-                            h='100%'
-                            as='iframe'
-                            src={currentVideo ? currentVideo : iframePlayerUrl( props.items[0] ) }
-                        />
-                    </AspectRatio>
+                            { currentVideo ? 
+                            <Box
+                                w='100%'
+                                h='100%'
+                                as='iframe'
+                                src={currentVideo ? currentVideo : iframePlayerUrl( props.items[0] ) }
+                            />
+                            : null }
+                        </AspectRatio>
                     </Box>
                 </ModalBody>
             </ModalContent>
