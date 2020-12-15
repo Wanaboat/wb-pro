@@ -19,7 +19,7 @@ const Title = ( props ) => {
         <Heading
             as={ extractH( props.data.slice_title.html )}
             position='relative'
-            zIndex={{ base:'base', lg:'tooltip'}}
+            zIndex={{ base:'auto', lg:'banner'}}
             color='brand.light.primary'
             mb={ level() === 1 ? '2rem' : 0 }
             fontSize={{

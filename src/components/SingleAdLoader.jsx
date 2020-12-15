@@ -24,7 +24,6 @@ const SingleAdLoader = (props) => {
     });
 
     if (loading || !fetched) {
-        return null;
         <Box>
             <Spinner />
         </Box>
@@ -42,6 +41,10 @@ const SingleAdLoader = (props) => {
     // See the Contentful query response
     // console.debug(data);
     // console.log(data);
+    if( !data.items[0]){
+        return (<div>Ad error</div>)
+    }
+    console.log( 'ad data', data )
     const ad = data.items[0].fields
     // Process and pass in the loaded `data` necessary for your page or child components.
     return (
@@ -53,7 +56,7 @@ const SingleAdLoader = (props) => {
             borderRadius={{ xs: '0', lg: '10px' }}
             overflow='hidden'
             boxShadow='sm'
-            maxH={{ xl: 'calc( 100vh - 4rem )' }}
+            // maxH={{ xl: 'calc( 100vh - 4rem )' }}
             overflowY='auto'
 
             w={{ xs: '100vw', lg: 'auto' }}

@@ -18,7 +18,8 @@ import {
   SpecsTable,
   EquipementSheet,
   Carousel,
-  ChildrenNews
+  ChildrenNews,
+  PicturesViewers
 } from '../slices'
 
 const Slices = (props) => {
@@ -27,13 +28,11 @@ const Slices = (props) => {
     PrismicPageBodyAdsList: AdsList,
     PrismicPageBodyText: BodyText,
     PrismicPageBodyVideo: Video,
-    PrismicProductBodyText: BodyText,
     PrismicPageBodyBannerWithCaption: BannerWithCaption,
-    PrismicProductBodyBannerWithCaption: BannerWithCaption,
-    PrismicPageBodyImageGallery: Carousel,
+    // PrismicPageBodyImageGallery: Carousel,
+    PrismicPageBodyImageGallery: PicturesViewers,
     PrismicPageBodyListOfArticles: PostsList,
-    // PrismicPageBodyMap: Plan,
-    PrismicPageBodyProductsList: ProductsList,
+    PrismicPageBodyMap: Plan,
     PrismicPageBodyHomeHero: HomeHero,
     PrismicPageBodyImageAlone: ImageAlone,
     PrismicPageBodyTitle: Title,
@@ -52,7 +51,7 @@ const Slices = (props) => {
           <SliceComponent
             data={slice.primary}
             items={slice.items}
-            lastPosts={posts}
+            posts={posts}
             products={products}
             childrenNews={ childrenNews }
             key={`${slice.__typename}-${index}`}

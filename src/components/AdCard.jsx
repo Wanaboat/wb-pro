@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, Flex, Heading, Image, PseudoBox, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react'
 
 const AdCard = (props) => {
     return (
-        <PseudoBox
+        <Box
             display='grid'
             gridTemplateColumns={{ xs:'90px calc( 100% - 90px - 1rem )', lg:'90px calc( 100% - 90px - 2rem )'}}
             gridGap={{ xs:'1rem', lg:'2rem'}}
@@ -95,7 +95,7 @@ const AdCard = (props) => {
                     </Text>
                 </Stack>
             </Flex>
-        </PseudoBox>
+        </Box>
     )
 }
 

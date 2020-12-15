@@ -14,17 +14,19 @@ const contentfulClient = new ContentfulClient({
 });
 
 const AdsList = (props) => {
-  const [singleAdID, setSingleAdID] = useState(false)
+  const [singleAdID, setSingleAdID] = useState('5f3fcb898a8ca')
   return (
     <ContentfulProvider client={contentfulClient}>
-      <Grid
-        templateColumns={{ xs: '100%', lg: '480px 1fr' }}
-        gap={{ xs: '2rem', lg: '5rem' }}
-      >
-        <Box>
-          <AdsLoader adID={singleAdID} setSingleAdID={(id) => { setSingleAdID(id) }} />
+        <Box
+          mx={{ base:'1rem', lg:'4rem' }}
+          maxW='700px'
+        >
+          <AdsLoader
+            adID={singleAdID}
+            setSingleAdID={(id) => { setSingleAdID(id) }}
+          />
         </Box>
-        <Box>
+        {/* <Box>
           <Box
             position='sticky'
             top='2rem'
@@ -39,52 +41,14 @@ const AdsList = (props) => {
                 top={0}
                 left={0}
               >
-                {singleAdID ?
                   <SingleAdLoader
                     adID={singleAdID}
                     close={() => { setSingleAdID(null) }}
                   />
-                  :
-                  <Stack
-                    spacing='2rem'
-                    mt={{ xs: 0, lg: '5rem' }}
-                    borderRadius='15px'
-                    border='dashed 2px'
-                    borderColor='gray.200'
-                    bg='gray.50'
-                    p={{ xs: '1rem', lg: '3rem' }}
-                  >
-                    <Box>
-                      Side
-                      {/* <div className='wysiwyg' dangerouslySetInnerHTML={{ __html: props.data.side_text.html }} /> */}
-                    </Box>
-                    <Box>
-                      {/* <Button
-                        as={GatsbyLink}
-                        to={props.data.link_to_contact.url}
-                        bg='brandLight2'
-                        color='gray.800'
-                        p='.5rem 1rem'
-                        cursor='pointer'
-                        borderRadius='3px'
-                        justifyContent='center'
-                        leftIcon='email'
-                        _hover={{
-                          bg: 'brandDark2',
-                          color: 'white'
-                        }}
-                      >
-                        <FormattedMessage id='main.contact.us' />
-                      </Button> */}
-                    </Box>
-                  </Stack>
-                }
               </Box>
             </CSSTransition>
           </Box>
-          {/* } */}
-        </Box>
-      </Grid>
+        </Box> */}
     </ContentfulProvider>
 
   )

@@ -7,8 +7,7 @@ import SubNav from './SubNav'
 import '../styles/transition.css'
 import linkResolver from '../utils/linkResolver'
 import { HamburgerIcon, ArrowForwardIcon } from '@chakra-ui/icons'
-import logo from '../images/logo-sailfast.png'
-import logo_large from '../images/logo-sailfast-large.png'
+import logoSvg from '../images/logo-sailfast.svg'
 
 const NavVertical = (props) => {
     console.log('NavProps', props)
@@ -89,17 +88,17 @@ const NavVertical = (props) => {
                             />}
                         />
                     </Flex>
-
                     <Box
                         as={ GatsbyLink }
                         title={'Aller à l\'accueil'}
                         display='block'
                         to='/'
                         maxW='100%'
-                        w='100%'
-                        h='90px'
+                        w='220px'
+                        h='70px'
+                        mx='auto'
                         mb='2rem'
-                        bgImage={{ base:`url(${logo})`, lg:`url(${logo_large})` }}
+                        bgImage={`url(${logoSvg})`}
                         backgroundRepeat='no-repeat'
                         backgroundSize='auto auto'
                         backgroundPosition='center center'

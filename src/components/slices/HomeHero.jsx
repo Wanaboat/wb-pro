@@ -25,8 +25,7 @@ const HomeHero = (props) => {
           position='relative'
           zIndex='docked'
           srcSet={`${props.data.home_hero_bg_image.small.url} 750w, 
-            ${props.data.home_hero_bg_image.large.url} 1040w
-          ` }
+            ${props.data.home_hero_bg_image.large.url} 1040w`}
           sizes="
             (max-width: 768px) 100vw, 
             (max-width: 1280px) calc(100vw - 400px),
@@ -36,9 +35,7 @@ const HomeHero = (props) => {
           objectFit='cover'
           alt={ props.data.home_hero_bg_image.alt }
           w='100%'
-          //   h={{ xs:'50vh', lg:'100vh'}}
           height={{ base: '100%', lg: '100vh' }}
-
           objectFit='cover'
         />
         { props.data.home_hero_bg_image.alt ? 
@@ -53,7 +50,6 @@ const HomeHero = (props) => {
           zIndex='banner'
           p={{ base:'.2rem .75rem'}}
           fontSize={{ base:'12px', lg:'16px' }}
-
         >
           { props.data.home_hero_bg_image.alt }
         </Text>
@@ -61,7 +57,7 @@ const HomeHero = (props) => {
       </Box>
       <Box
         position={{ base: 'initial', lg: 'absolute' }}
-        top='35%'
+        top={{ base:'0', lg:'15%', xl:'30%', xxl:'40%' }}
         left='-2rem'
         background='rgba(6, 52, 98, 0.83)'
         zIndex='tooltip'

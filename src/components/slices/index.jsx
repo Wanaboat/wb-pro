@@ -15,6 +15,7 @@ import SpecsTable from './SpecsTable'
 import EquipementSheet from './EquipementSheet'
 import Carousel from './Carousel'
 import ChildrenNews from './ChildrenNews'
+import PicturesViewers from './PicturesViewers'
 
 export { 
     AdsList,
@@ -33,5 +34,6 @@ export {
     SpecsTable,
     EquipementSheet,
     Carousel,
-    ChildrenNews
+    ChildrenNews,
+    PicturesViewers
 }

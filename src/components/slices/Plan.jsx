@@ -1,23 +1,24 @@
 import React from 'react'
-import { Box, Grid, PseudoBox, Stack, Text } from '@chakra-ui/react'
-import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { Box, Grid } from '@chakra-ui/react'
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const Plan = ( props ) => {
-    const { location, address } = props.data
-    const defaultOptions = {
-        mapTypeControl: false,
-        zoomControl: false,
-        streetViewControl: true,
-        draggableCursor: "default",
-        draggingCursor: "move"
-    };
+    // console.log('plan', props)
+    // const { location, address } = props.data
+    // const defaultOptions = {
+    //     mapTypeControl: false,
+    //     zoomControl: false,
+    //     streetViewControl: true,
+    //     draggableCursor: "default",
+    //     draggingCursor: "move"
+    // };
     return(
         <Box>
             <Grid
                 templateColumns={{ xs:'100%', xl:'20% 1fr'}}
                 gap='10rem'
             >
-                <Box>
+                {/* <Box mx={{ base: '1rem', lg:'4rem'}}>
                     <div className='wysiwyg' dangerouslySetInnerHTML={ {__html: address.html }} />
                 </Box>
                 <Box
@@ -49,7 +50,7 @@ const Plan = ( props ) => {
                         />
                         </GoogleMap>
                     </LoadScript>
-                </Box>
+                </Box> */}
             </Grid>
         </Box>
     )

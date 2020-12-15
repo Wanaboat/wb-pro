@@ -80,6 +80,7 @@ export const pageQuery = graphql`
           text
         }
         seo_title
+        publication_date
         sharing_image {
           url
         }
@@ -139,7 +140,7 @@ export const pageQuery = graphql`
           }
           ... on PrismicPageBodyImageGallery{
             items{
-              gallery_image{ alt url dimensions{ height width } }
+              gallery_image{ alt url dimensions{ height width } small{ url } }
             }
           }
           ... on PrismicPageBodyTitle{
@@ -153,8 +154,8 @@ export const pageQuery = graphql`
             }
           }
           ... on PrismicPageBodyVideo {
-            primary {
-              youtube_link { embed_url html }
+            items{
+              youtube_link{ version thumbnail_url title embed_url }
             }
           }
           #... on PrismicPageBodyMap {
@@ -257,6 +258,23 @@ export const pageQuery = graphql`
           node {
             prismicId
             data{
+              publication_date
+              title{text}
+            }
+          }
+        }
+      }
+    posts: allPrismicPage(
+        filter: {
+          tags: { eq: "news"}
+        }
+      ) {
+        edges {
+          node {
+            prismicId
+            uid
+            data{
+              publication_date
               title{text}
             }
           }

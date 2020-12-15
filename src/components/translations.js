@@ -10,7 +10,12 @@ export default {
         "main.previous": "Précédant",
         "main.next": "Suivant",
         "main.discover":"Découvrir",
-        "footer.wb.signature": "Site par Wanaboat.fr : Services digitaux pour les pros du nautisme"
+        "footer.wb.signature": "Site par Wanaboat.fr : Services digitaux pour les pros du nautisme",
+
+        "ad.price":"Price",
+        "ad.builder":"Chantier",
+        "ad.brand":"Marque",
+        "ad.sail.maker":"Voilier"
     },
     "en":{
         "main.back": "Back",

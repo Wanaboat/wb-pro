@@ -9,8 +9,8 @@ import { IconButton } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 
-import logo from '../images/logo-sailfast.png'
-import logo_large from '../images/logo-sailfast-large.png'
+import logoSvg from '../images/logo-sailfast.svg'
+
 
 import { HamburgerIcon } from '@chakra-ui/icons'
 
@@ -81,9 +81,9 @@ const Layout2 = (props) => {
         <Grid
           templateColumns={{
             base: '100vw',
-            lg: '350px 1fr',
-            xl: '400px 1fr',
-            xxl: '600px 1fr'
+            lg: '33% 1fr',
+            // xl: '400px 1fr',
+            // xxl: '600px 1fr'
           }}
           gap={{ xl: '0rem' }}
           bg='gray.50'
@@ -104,7 +104,7 @@ const Layout2 = (props) => {
             }}
             // left='-100vw'
             top='0'
-            zIndex='tooltip'
+            zIndex={{ base:'tooltip', lg:'inherit' }}
             transition='transform 200ms ease'
             h={{ xs:'65px', lg:'100vh'}}
             px={{ base:0, lg:'0rem'}}
@@ -118,13 +118,13 @@ const Layout2 = (props) => {
               <Flex>
                 <Box
                   display={{ base:'block', lg:'none' }}
-                  m='0 1rem'
-                  bg={{ base:`url(${logo})`, lg:`url(${logo_large})` }}
+                  m='1.5rem 1rem'
+                  bg={`url( ${logoSvg} )`}
                   backgroundRepeat="no-repeat"
                   backgroundSize='100% auto'
                   backgroundPosition='center center'
                   w={{ base:'135px', lg:'140px' }}
-                  h={{ base:'80px', lg:'100%' }}
+                  h={{ base:'40px' }}
                   color="gray.900"
                 />
               </Flex>

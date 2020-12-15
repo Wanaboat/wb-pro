@@ -1,7 +1,8 @@
-import React from 'react'
-import { Flex, Stack, Spinner } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Box, Flex, Stack, Spinner } from '@chakra-ui/react'
 import { useContentful } from 'react-contentful';
-import AdCard from './AdCard'
+import AdCard from './AdCardNew'
+import SingleAdLoader from './SingleAdLoader'
 // https://cdn.contentful.com/spaces/xg7lbk8sfmzs/environments/master/entries
 //     ?content_type=ad
 //     &locale=fr&order=-fields.publicationDate
@@ -10,11 +11,12 @@ import AdCard from './AdCard'
 //     &fields.refModel.sys.id=5dadfb6dae5ec
 
 const AdsLooader = ( props ) => {
+  const [ detailsAdId , setDetailsAdId ] = useState(false)
     const { data, error, fetched, loading } = useContentful({
         contentType: 'Page',
         query: {
             'content_type': 'ad',
-            'fields.userId': `14`,
+            'fields.userId': `819`,
             'order':'-fields.publicationDate',
             locale: 'fr',
 
@@ -47,17 +49,21 @@ const AdsLooader = ( props ) => {
                 <Spinner />
             :
              data.items.map( ad => 
+                ad.sys.id != detailsAdId  ?
                 <AdCard
                   isCurrent={ props.adID === ad.sys.id }
                   key={ ad.sys.id }
-                  setSingleAdID={ 
+                  handleClick={ 
                       () => { 
-                          props.setSingleAdID( ad.sys.id )
-                          // console.log( 'click', ad.sys.id)
+                        setDetailsAdId( ad.sys.id )
                       }
-                      // props.setSingleAdID( ad.sys.id )
                   }
                   ad={ ad.fields }
+                />
+                :
+                <SingleAdLoader
+                    adID={detailsAdId}
+                    close={() => { setDetailsAdId(null) }}
                 />
             )
             }
