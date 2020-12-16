@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Button, Box, Heading, Image, Stack, Text, Spinner } from '@chakra-ui/react'
+import { 
+    Button,
+    Box,
+    Flex,
+    Heading,
+    Image,
+    Stack,
+    Text,
+    Spinner
+} from '@chakra-ui/react'
+import { LinkIcon } from '@chakra-ui/icons'
+
 import Gallery from './Gallery'
 import { useContentful } from 'react-contentful'
 import { FormattedMessage } from 'react-intl'
-import { useClipboard } from "@chakra-ui/react";
-
+import { useClipboard } from '@chakra-ui/react'
+import ContactForm from './slices/ContactForm'
 const ReactMarkdown = require('react-markdown')
 
 const SingleAdLoader = (props) => {
     const [viewingGallery, setViewingGallery] = useState(false)
-    const { onCopy, hasCopied } = useClipboard( `${ process.env.SITE_URL}/${process.env.PRODUCT_BASE_SLUG}/${process.env.ADS_BASE_SLUG}/${props.adID}` );
+    const { onCopy, hasCopied } = useClipboard(`${process.env.SITE_URL}/${process.env.PRODUCT_BASE_SLUG}/${process.env.ADS_BASE_SLUG}/${props.adID}`);
     const { data, error, fetched, loading } = useContentful({
         contentType: 'ad',
         query: {
@@ -24,9 +35,11 @@ const SingleAdLoader = (props) => {
     });
 
     if (loading || !fetched) {
-        <Box>
-            <Spinner />
-        </Box>
+        <Flex
+            justify='center'
+        >
+            <Spinner size='sm' />
+        </Flex>
     }
 
     if (error) {
@@ -35,22 +48,21 @@ const SingleAdLoader = (props) => {
     }
 
     if (!data) {
-        return <p>Page does not exist.</p>;
+        return <Box><Spinner /></Box>;
     }
 
     // See the Contentful query response
     // console.debug(data);
     // console.log(data);
-    if( !data.items[0]){
+    if (!data.items[0]) {
         return (<div>Ad error</div>)
     }
-    console.log( 'ad data', data )
     const ad = data.items[0].fields
     // Process and pass in the loaded `data` necessary for your page or child components.
     return (
 
-        <Stack
-            spacing='1rem'
+        <Box
+            // spacing='1rem'
             shouldWrapChildren={true}
             bg='brandLightPrimary'
             borderRadius={{ xs: '0', lg: '10px' }}
@@ -61,13 +73,10 @@ const SingleAdLoader = (props) => {
 
             w={{ xs: '100vw', lg: 'auto' }}
             h={{ xs: '100vh', lg: 'auto' }}
-            pb={{ xs:'7rem', lg:'0'}}
+            // pb={{ xs: '7rem', lg: '0' }}
             zIndex='tooltip'
         >
-
             { viewingGallery ? <Gallery close={() => { setViewingGallery(false) }} images={ad.images.url} /> : null}
-
-            
             <Box
                 position='relative'
                 onClick={
@@ -77,47 +86,41 @@ const SingleAdLoader = (props) => {
                         () => { console.log('no gallery') }
                 }
             >
-            <Box
-                top='10rem'
-                left='0rem'
-                p='1rem'
-                position='absolute'
-                bg='red.400'
-                zIndex='tooltip'
-                w='100%'
-                background='linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6540178571428572) 100%)'
+                <Box
+                    top='0rem'
+                    left='0rem'
+                    p='1rem'
+                    position='absolute'
+                    bg='red.400'
+                    zIndex='banner'
+                    w='100%'
+                    background='linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6540178571428572) 100%)'
                 >
-                <Button
-                // variant='outline'
-                display={{ xs: 'flex', lg: 'none' }}
-                // m='1rem'
-                size='sm'
-                
-                variant='outline'
-                color='white'
-                onClick={() => { props.close() }}
-            >
-                ← <FormattedMessage id="main.back" /></Button>
+                    <Button
+                        // variant='outline'
+                        display={{ xs: 'flex', lg: 'none' }}
+                        // m='1rem'
+                        size='sm'
+
+                        variant='outline'
+                        color='white'
+                        onClick={() => { props.close() }}
+                    >
+                        ← <FormattedMessage id="main.back" /></Button>
                 </Box>
-                
+
                 <Button
                     bottom='1rem'
                     right='1rem'
                     variantColor='ghost'
-                    borderBottom='solid 2px'
-                    borderBottomColor='brandLight2'
+                    borderBottom='solid 1px'
                     borderRadius='0'
                     position='absolute'>{ad.images.url.length} <FormattedMessage id='main.pictures' /> →</Button>
-                    {/* <Image
-                        mt={{ xs: '-10rem', lg: '-20rem' }}
-                        src={`${process.env.IMAGE_URL_PREFIX}photos/${ad.images.url[0]}?fit=cover&width=750&height=750&format=webp`}
-                        alt={ad.name}
-                    /> */}
                 <Box
                     mt={{ xs: '-10rem', lg: '-20rem' }}
                     cursor='pointer'
                     bg='brandDark1'
-                    minH={{ xs:'340px', lg:'630px'}}
+                    minH={{ xs: '340px', lg: '630px' }}
                 >
                     <picture>
                         <source
@@ -132,11 +135,21 @@ const SingleAdLoader = (props) => {
                 </Box>
 
             </Box>
-            <Stack p={{ xs:'1rem', lg:'1rem 2rem'}} pb='2rem' spacing='1rem'>
+            <Stack
+                p={{ base: '1rem', lg: '1rem 2rem' }}
+                pb='2rem'
+                spacing='1rem'
+                bg='white'
+            >
                 <Heading
+                    as='h3'
                     fontSize='26px'
                 >{ad.name}</Heading>
-                <Stack isInline spacing='1rem'>
+                    
+                <Stack
+                    isInline
+                    spacing='1rem'
+                >
                     {ad.year ?
                         <Text>{ad.year}</Text>
                         : null}
@@ -144,13 +157,13 @@ const SingleAdLoader = (props) => {
                         <Box
                             as='span'
                             display='flex'
-                            color='white'
+                            color='green.500'
                             fontWeight='bold'
                             backgroundColor='brandDark2'
-                            px='.5rem'
+                            // px='.5rem'
                             borderRadius='4px'
                             alignItems='center'
-                            
+
                         >{`${ad.price}`}&nbsp;€</Box>
                         : null}
                     {ad.refBrand ?
@@ -164,49 +177,31 @@ const SingleAdLoader = (props) => {
                             {ad.refBrand.fields.name}
                         </Text>
                         : null}
-                        <Box>
-                        {/* <Input value={'value'} isReadOnly placeholder="Welcome" /> */}
-
-                        </Box>
+                   <Button
+                        variant='outline'
+                        size='small'
+                        fontSize='12px'
+                        p='.25rem .75rem'
+                        bg='white'
+                        onClick={onCopy}
+                    >
+                        <LinkIcon mr='.5rem' />
+                        {hasCopied ? <FormattedMessage id='main.copied' /> : <FormattedMessage id='main.direct.link' />}
+                    </Button>
 
                 </Stack>
                 <Box fontSize="16px">
                     <ReactMarkdown source={ad.content} />
                 </Box>
-                <Stack isInline spacing='1rem'>
-                    <Button
-                        as={ GatsbyLink }
-                        to={ `/${process.env.CONTACT_PAGE_UID}` }
-                        bg='brandLight2'
-                        w='auto'
-                        color='gray.800'
-                        p='.5rem 1rem'
-                        cursor='pointer'
-                        borderRadius='3px'
-                        justifyContent='center'
-                        display='flex'
-                        leftIcon='email'
-                        _hover={{
-                            bg:'brandDark2',
-                            color:'white'
-                        }}
-                    >
-                        <FormattedMessage id='main.contact.us' />
-                    </Button>
-                    <Button
-                        variant='outline'
-                        size='small'
-                        fontSize='12px'
-                        p='.25rem .75rem'
-                        leftIcon='link'
-                        bg='white'
-                        onClick={onCopy}
-                    >
-                        {hasCopied ? <FormattedMessage id='main.copied' /> : <FormattedMessage id='main.direct.link' />}
-                    </Button>
-                </Stack>
+                <Box>
+                    <Text
+                        fontWeight='bold'
+                        
+                    >Des questions sur cette occasion : contactez-nous :</Text>
+                    <ContactForm />
+                </Box>
             </Stack>
-        </Stack>
+        </Box>
     )
 }
 

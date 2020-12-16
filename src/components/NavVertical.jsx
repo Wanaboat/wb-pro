@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Box, Button, Flex, IconButton, Image, Link } from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'
 import { CSSTransition } from 'react-transition-group'
-import { FormattedMessage } from 'react-intl'
+// import { FormattedMessage } from 'react-intl'
 import SubNav from './SubNav'
 import '../styles/transition.css'
 import linkResolver from '../utils/linkResolver'
-import { HamburgerIcon, ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 import logoSvg from '../images/logo-sailfast.svg'
 
 const NavVertical = (props) => {
