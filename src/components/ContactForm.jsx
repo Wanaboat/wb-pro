@@ -8,9 +8,9 @@ import {
     Input,
     SimpleGrid
 } from '@chakra-ui/react'
-import ButtonSecondary from '../ButtonSecondary'
+import ButtonSecondary from './ButtonSecondary'
 
-const ContactForm = () => {
+const ContactForm = ({ context }) => {
 
     const [sent, setSent] = useState(false)
 
@@ -32,7 +32,8 @@ const ContactForm = () => {
             {
                 "name": nameInput.current.value,
                 "email": emailInput.current.value,
-                "message": messageInput.current.value
+                "message": messageInput.current.value,
+                "context": context
             }
         )
             .then(function (response) {
@@ -46,7 +47,6 @@ const ContactForm = () => {
                 as='form'
                 bg='white'
                 onSubmit={(e) => { handleSubmit(e) }}
-                mx={{ base: '1rem', lg: '4rem' }}
             >
                 <SimpleGrid columns={{ base: 1, lg:2 }}>
                     <Input
@@ -108,7 +108,6 @@ const ContactForm = () => {
             <Box
                 bg='white'
                 p='1rem'
-                mx={{ base: '1rem', lg: '4rem' }}
             >
                 <Alert status="success">
                     <AlertIcon />

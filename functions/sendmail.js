@@ -20,6 +20,7 @@ exports.handler = function(event, context, callback) {
         subject: `[Form] : de ${data.name}`,
         html: `
             <h3>Message de ${data.name} (${data.email})</h3>
+            <h4>Depuis la page : ${data.context}</h4>
             <p>${data.message}<p>
             `
     }, function(error, info) {

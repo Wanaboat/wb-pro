@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { 
+import {
     Button,
     Box,
     Flex,
@@ -16,12 +16,12 @@ import Gallery from './Gallery'
 import { useContentful } from 'react-contentful'
 import { FormattedMessage } from 'react-intl'
 import { useClipboard } from '@chakra-ui/react'
-import ContactForm from './slices/ContactForm'
+import ContactForm from './ContactForm'
 const ReactMarkdown = require('react-markdown')
 
 const SingleAdLoader = (props) => {
     const [viewingGallery, setViewingGallery] = useState(false)
-    const { onCopy, hasCopied } = useClipboard(`${process.env.SITE_URL}/${process.env.PRODUCT_BASE_SLUG}/${process.env.ADS_BASE_SLUG}/${props.adID}`);
+    const { onCopy, hasCopied } = useClipboard(`${process.env.SITE_URL}/occasions/#${props.adID}`);
     const { data, error, fetched, loading } = useContentful({
         contentType: 'ad',
         query: {
@@ -48,7 +48,13 @@ const SingleAdLoader = (props) => {
     }
 
     if (!data) {
-        return <Box><Spinner /></Box>;
+        return (
+            <Flex
+                justify='center'
+            >
+                <Spinner size='sm' />
+            </Flex>
+        )
     }
 
     // See the Contentful query response
@@ -108,14 +114,15 @@ const SingleAdLoader = (props) => {
                     >
                         ← <FormattedMessage id="main.back" /></Button>
                 </Box>
-
-                <Button
-                    bottom='1rem'
-                    right='1rem'
-                    variantColor='ghost'
-                    borderBottom='solid 1px'
-                    borderRadius='0'
-                    position='absolute'>{ad.images.url.length} <FormattedMessage id='main.pictures' /> →</Button>
+                {ad.images.url.length > 1 ?
+                    <Button
+                        bottom='1rem'
+                        right='1rem'
+                        variantColor='ghost'
+                        borderBottom='solid 1px'
+                        borderRadius='0'
+                        position='absolute'>{ad.images.url.length} <FormattedMessage id='main.pictures' /> →</Button>
+                    : null}
                 <Box
                     mt={{ xs: '-10rem', lg: '-20rem' }}
                     cursor='pointer'
@@ -145,7 +152,7 @@ const SingleAdLoader = (props) => {
                     as='h3'
                     fontSize='26px'
                 >{ad.name}</Heading>
-                    
+
                 <Stack
                     isInline
                     spacing='1rem'
@@ -177,7 +184,7 @@ const SingleAdLoader = (props) => {
                             {ad.refBrand.fields.name}
                         </Text>
                         : null}
-                   <Button
+                    <Button
                         variant='outline'
                         size='small'
                         fontSize='12px'
@@ -193,12 +200,18 @@ const SingleAdLoader = (props) => {
                 <Box fontSize="16px">
                     <ReactMarkdown source={ad.content} />
                 </Box>
-                <Box>
+                <Box
+                    border='solid 1px'
+                    borderColor='gray.100'
+                    borderRadius='4px'
+                >
                     <Text
                         fontWeight='bold'
-                        
+                        p='1rem'
                     >Des questions sur cette occasion : contactez-nous :</Text>
-                    <ContactForm />
+                    <ContactForm
+                        context={ ad.name }
+                    />
                 </Box>
             </Stack>
         </Box>

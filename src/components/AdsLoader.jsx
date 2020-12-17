@@ -51,6 +51,7 @@ const AdsLooader = ( props ) => {
              data.items.map( ad => 
                 ad.sys.id != detailsAdId  ?
                 <AdCard
+                  id={`annonce-${ad.sys.id }`}
                   isCurrent={ props.adID === ad.sys.id }
                   key={ ad.sys.id }
                   handleClick={ 

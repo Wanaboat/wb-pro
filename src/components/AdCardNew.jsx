@@ -9,8 +9,6 @@ import {
   Grid,
   Flex,
   Heading,
-  Icon,
-  Link,
   Text
 } from "@chakra-ui/react";
 
@@ -150,6 +148,7 @@ class AdCardLandscape extends Component {
           cursor:"pointer"
         }}
         onClick={ ()=>{ this.props.handleClick() } }
+        id={ this.props.id }
       >
         <Grid
           templateColumns={{ base: "96px calc(95% - 96px)", lg: "96px calc(100% - 96px - 50px - 30px) 50px" }}
