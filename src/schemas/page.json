@@ -49,7 +49,8 @@
           "contact_form": [],
           "specs_table": [],
           "equipement_sheet": [],
-          "children_news": []
+          "children_news": [],
+          "documents_list": []
         },
         "choices": {
           "text": {
@@ -390,6 +391,23 @@
             "display": "list",
             "non-repeat": {},
             "repeat": {}
+          },
+          "documents_list": {
+            "type": "Slice",
+            "fieldset": "Documents list",
+            "description": "A list of downloadable document",
+            "icon": "picture_as_pdf",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "document": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Document"
+                }
+              }
+            }
           }
         }
       }

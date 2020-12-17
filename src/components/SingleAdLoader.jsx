@@ -132,12 +132,12 @@ const SingleAdLoader = (props) => {
                     <picture>
                         <source
                             type="image/webp"
-                            srcSet={`${process.env.IMAGE_URL_PREFIX}/photos/${ad.images.url[0]}?fit=cover&width=750&height=750&format=webp`}
+                            srcSet={`https://i3sh32xk.twic.pics/photos/${ad.images.url[0]}?fit=cover&width=750&height=750&format=webp`}
                         />
                         <Image
                             alt={ad.name}
                             objectFit="cover"
-                            srcSet={`${process.env.IMAGE_URL_PREFIX}/photos/${ad.images.url[0]}?fit=cover&width=750&height=750`} />
+                            srcSet={`https://i3sh32xk.twic.pics//photos/${ad.images.url[0]}?fit=cover&width=750&height=750`} />
                     </picture>
                 </Box>
 

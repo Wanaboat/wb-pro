@@ -16,6 +16,7 @@ import EquipementSheet from './EquipementSheet'
 import Carousel from './Carousel'
 import ChildrenNews from './ChildrenNews'
 import PicturesViewers from './PicturesViewers'
+import DocumentsList from './DocumentsList'
 
 export { 
     AdsList,
@@ -35,5 +36,6 @@ export {
     EquipementSheet,
     Carousel,
     ChildrenNews,
-    PicturesViewers
+    PicturesViewers,
+    DocumentsList
 }

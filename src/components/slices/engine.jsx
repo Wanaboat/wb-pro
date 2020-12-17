@@ -19,7 +19,8 @@ import {
   EquipementSheet,
   Carousel,
   ChildrenNews,
-  PicturesViewers
+  PicturesViewers,
+  DocumentsList
 } from '../slices'
 
 const Slices = (props) => {
@@ -40,7 +41,8 @@ const Slices = (props) => {
     PrismicPageBodyContactForm: ContactForm,
     PrismicPageBodySpecsTable: SpecsTable,
     PrismicPageBodyEquipementSheet: EquipementSheet,
-    PrismicPageBodyChildrenNews: ChildrenNews
+    PrismicPageBodyChildrenNews: ChildrenNews,
+    PrismicPageBodyDocumentsList: DocumentsList
   }
 
   const SlicesMerge = slices.map((slice, index) => {

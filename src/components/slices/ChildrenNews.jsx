@@ -29,18 +29,28 @@ const ChildrenNews = (props) => {
                     <Flex
                         as={GatsbyLink}
                         to={linkResolver(item.node.prismicId)}
-                        borderBottom={ props.childrenNews.edges.lengt != i+1 ? 'dashed 1px' : 'none' }
+
+                        role='group'
+                        display='flex'
+                        borderBottom={ props.childrenNews.edges.length != i+1 ? 'dashed 1px' : 'none' }
                         borderBottomColor='gray.100'
                         p='.5rem 0'
                         justifyContent='space-between'
+                        _hover={{
+                            color:'brand.2'
+                        }}
                     >
                         <Text>
                             {item.node.data.title.text}
                         </Text> 
-                        <Text>
+                        <Box
+                            transition='all 200ms ease'
+                            _groupHover={{
+                                transform:'translateX(.5rem)'
+                            }}
+                        >
                             →
-                        </Text>
-
+                        </Box>
                     </Flex>
                 )}
                 </Stack>

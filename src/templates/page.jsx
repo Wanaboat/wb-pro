@@ -115,6 +115,14 @@ export const pageQuery = graphql`
          #    }
          #  }
          #}
+          ... on PrismicPageBodyDocumentsList{
+            items{
+              document{
+                name
+                url
+              }
+            }
+          }
           ... on PrismicPageBodyEntryListIllustrated {
             items{
               related_entries{ document{
