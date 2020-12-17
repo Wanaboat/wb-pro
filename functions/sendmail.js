@@ -21,7 +21,7 @@ exports.handler = function(event, context, callback) {
         html: `
             <h3>Message de ${data.name} (${data.email})</h3>
             <h4>Depuis la page : ${data.context}</h4>
-            <p>${data.message}<p>
+            <p>${data.message.replace(/\n/g, "<br />")}<p>
             `
     }, function(error, info) {
         if (error) {
