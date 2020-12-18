@@ -18,6 +18,7 @@ import ChildrenNews from './ChildrenNews'
 import PicturesViewers from './PicturesViewers'
 import DocumentsList from './DocumentsList'
 import AllLastNews from './AllLastNews'
+import PublicationDate from './PublicationDate'
 
 export { 
     AdsList,
@@ -39,5 +40,6 @@ export {
     ChildrenNews,
     PicturesViewers,
     DocumentsList,
-    AllLastNews
+    AllLastNews,
+    PublicationDate
 }

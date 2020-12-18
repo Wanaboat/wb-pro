@@ -40,6 +40,7 @@ const Page = ( { data, location } ) => {
             slices={ prismicPage.data.body }
             posts={ posts }
             childrenNews={ childrenNews }
+            page={ prismicPage.data }
           />
         : null}
       </Wrapper> 

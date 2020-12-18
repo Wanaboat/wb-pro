@@ -21,11 +21,12 @@ import {
   ChildrenNews,
   PicturesViewers,
   DocumentsList,
-  AllLastNews
+  AllLastNews,
+  PublicationDate
 } from '../slices'
 
 const Slices = (props) => {
-  const { slices, posts, products, childrenNews } = props
+  const { page, slices, posts, products, childrenNews } = props
   const sliceComponents = {
     PrismicPageBodyAdsList: AdsList,
     PrismicPageBodyText: BodyText,
@@ -44,7 +45,8 @@ const Slices = (props) => {
     PrismicPageBodyEquipementSheet: EquipementSheet,
     PrismicPageBodyChildrenNews: ChildrenNews,
     PrismicPageBodyDocumentsList: DocumentsList,
-    PrismicPageBodyAllLastNews: AllLastNews
+    PrismicPageBodyAllLastNews: AllLastNews,
+    PrismicPageBodyPublicationDate: PublicationDate
   }
 
   const SlicesMerge = slices.map((slice, index) => {
@@ -53,6 +55,7 @@ const Slices = (props) => {
       return (
         <>
           <SliceComponent
+            page={ page }
             data={slice.primary}
             items={slice.items}
             posts={posts}

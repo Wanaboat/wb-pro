@@ -51,7 +51,8 @@
           "equipement_sheet": [],
           "children_news": [],
           "documents_list": [],
-          "all_last_news": []
+          "all_last_news": [],
+          "publication_date": []
         },
         "choices": {
           "text": {
@@ -415,6 +416,15 @@
             "fieldset": "All last news",
             "description": "All news cards list",
             "icon": "fiber_new",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          },
+          "publication_date": {
+            "type": "Slice",
+            "fieldset": "Publication date",
+            "description": "The publication date of the page",
+            "icon": "date_range",
             "display": "list",
             "non-repeat": {},
             "repeat": {}
