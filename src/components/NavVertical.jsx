@@ -91,7 +91,7 @@ const NavVertical = (props) => {
                     <Box
                         as={ GatsbyLink }
                         title={'Aller à l\'accueil'}
-                        display='block'
+                        // display={{ base:'none', lg:'block' }}
                         to='/'
                         maxW='100%'
                         w='220px'

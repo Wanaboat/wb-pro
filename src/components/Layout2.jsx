@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link as GatsbyLink } from 'gatsby'
 import { IntlProvider } from 'react-intl';
 import { AspectRatio, Box, Grid, ChakraProvider, Image, Flex, CSSReset, Text, GridItem } from '@chakra-ui/react'
 import NavVertical from './NavVertical'
@@ -117,6 +118,8 @@ const Layout2 = (props) => {
             >
               <Flex>
                 <Box
+                  as={ GatsbyLink }
+                  to='/'
                   display={{ base:'block', lg:'none' }}
                   m='1.5rem 1rem'
                   bg={`url( ${logoSvg} )`}
