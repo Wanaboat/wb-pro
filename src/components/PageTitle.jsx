@@ -9,7 +9,7 @@ const PageTitle = (props) => {
             mb='2rem'
             color='brand.2'
             position='relative'
-            zIndex={{ base:'base', lg:'tooltip'}}
+            zIndex={{ base:'base', lg:'banner'}}
             p={{ base:'1rem', lg: '2rem 4rem' }}
             fontSize={{ base: '32px', lg:'42px', xl:'52px' }}
         >
@@ -24,5 +24,4 @@ const PageTitle = (props) => {
         </Heading>
     )
 }
-
 export default PageTitle

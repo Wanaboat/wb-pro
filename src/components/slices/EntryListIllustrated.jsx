@@ -1,6 +1,7 @@
 import React from 'react'
 import {
-    Box, SimpleGrid
+    Box,
+    SimpleGrid
 } from '@chakra-ui/react'
 import EntryCard from '../EntryCard'
 
@@ -17,7 +18,7 @@ const EntryListIllustrated = ( props ) => {
                 <EntryCard
                     node={ entry.related_entries.document[0] }
                 />
-                 )}
+            )}
         </SimpleGrid>
     )
 }

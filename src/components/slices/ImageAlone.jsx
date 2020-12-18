@@ -13,6 +13,8 @@ const ImageAlone = ( props ) => {
     return(
         <Box
             as='figure'
+            pos='relative'
+            zIndex='base'
             bg={
                 props.data.background_color
             }
@@ -26,7 +28,16 @@ const ImageAlone = ( props ) => {
                 alt={ props.data.image.alt }
 
             />
-            { props.data.image.alt ? <Text as='figcaption'>{ props.data.image.alt }</Text> : null}
+            { props.data.image.alt ?
+                <Text
+                    pos='absolute'
+                    bottom='0'
+                    right='0'
+                    p='.15rem .4rem'
+                    bg={ 'gray.300' }
+                    fontSize={{ base: '12px', lg:'14px' }}
+                    as='figcaption'>{ props.data.image.alt }</Text>
+            : null}
         </Box>
     )
 }

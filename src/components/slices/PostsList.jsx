@@ -46,10 +46,10 @@ const PostsList = ( props ) => {
                             color='gray.400'
                             mr='1rem'
                         >
-                            { post.node.data.publication_date }
+                            { post.node.data.publication_date } - test
                         </Text>
                     </Flex>
-                    )
+                )
             }
         </Stack>
     )

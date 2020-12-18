@@ -20,7 +20,8 @@ import {
   Carousel,
   ChildrenNews,
   PicturesViewers,
-  DocumentsList
+  DocumentsList,
+  AllLastNews
 } from '../slices'
 
 const Slices = (props) => {
@@ -42,7 +43,8 @@ const Slices = (props) => {
     PrismicPageBodySpecsTable: SpecsTable,
     PrismicPageBodyEquipementSheet: EquipementSheet,
     PrismicPageBodyChildrenNews: ChildrenNews,
-    PrismicPageBodyDocumentsList: DocumentsList
+    PrismicPageBodyDocumentsList: DocumentsList,
+    PrismicPageBodyAllLastNews: AllLastNews
   }
 
   const SlicesMerge = slices.map((slice, index) => {
@@ -65,7 +67,7 @@ const Slices = (props) => {
     }
     else {
       return (
-        <Box>Composant absent : {slice.__typename}</Box>
+        <Box>Missing component : {slice.__typename}</Box>
       )
     }
   })

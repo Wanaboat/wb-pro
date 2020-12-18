@@ -284,7 +284,13 @@ export const pageQuery = graphql`
             data{
               publication_date
               title{text}
+              sharing_image{
+                url
+                small{ url }
+                large{ url }
+              }
             }
+            
           }
         }
       }

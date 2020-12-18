@@ -17,6 +17,7 @@ import Carousel from './Carousel'
 import ChildrenNews from './ChildrenNews'
 import PicturesViewers from './PicturesViewers'
 import DocumentsList from './DocumentsList'
+import AllLastNews from './AllLastNews'
 
 export { 
     AdsList,
@@ -37,5 +38,6 @@ export {
     Carousel,
     ChildrenNews,
     PicturesViewers,
-    DocumentsList
+    DocumentsList,
+    AllLastNews
 }

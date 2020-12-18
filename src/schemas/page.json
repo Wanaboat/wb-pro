@@ -50,7 +50,8 @@
           "specs_table": [],
           "equipement_sheet": [],
           "children_news": [],
-          "documents_list": []
+          "documents_list": [],
+          "all_last_news": []
         },
         "choices": {
           "text": {
@@ -408,6 +409,15 @@
                 }
               }
             }
+          },
+          "all_last_news": {
+            "type": "Slice",
+            "fieldset": "All last news",
+            "description": "All news cards list",
+            "icon": "fiber_new",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
           }
         }
       }

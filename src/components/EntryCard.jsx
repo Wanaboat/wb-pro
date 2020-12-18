@@ -10,6 +10,7 @@ import ButtonSecondary from './ButtonSecondary'
 import { FormattedMessage } from 'react-intl'
 
 const EntryCard = ({ node }) => {
+    // console.log('EntryCard', node.data.sharing_image.small.url)
     return(
         <Box
             as={ GatsbyLink }
@@ -22,6 +23,7 @@ const EntryCard = ({ node }) => {
                 boxShadow:'0 0 15px rgba(100,100,100,.1)'
             }}
         >
+            { node.data.sharing_image ? 
             <Image
                 src={
                     node.data.sharing_image.small 
@@ -29,7 +31,9 @@ const EntryCard = ({ node }) => {
                         : node.data.sharing_image.url }
                 alt={ node.data.title.text }
                 w='100%'
+                loading='lazy'
             />
+            : null }
             <Box
              p='1rem'
             >
