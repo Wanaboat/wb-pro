@@ -100,22 +100,7 @@
                 "config": {
                   "multi": "paragraph",
                   "label": "Description",
-                  "placeholder": "My description"
-                }
-              },
-              "button_label": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-                  "label": "Button label",
-                  "placeholder": "Click Here"
-                }
-              },
-              "button_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Button Link",
-                  "placeholder": "Select the link"
+                  "placeholder": "Content"
                 }
               }
             },

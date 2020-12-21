@@ -195,33 +195,6 @@ export const pageQuery = graphql`
                 html
                 text
               }
-              button_link {
-                url
-              }
-              button_label {
-                html
-                text
-              }
-            }
-          }
-          ... on PrismicPageBodyBannerWithCaption {
-            primary {
-              image_banner {
-                alt
-                copyright
-                url
-              }
-              description {
-                html
-                text
-              }
-              button_link {
-                url
-              }
-              button_label {
-                html
-                text
-              }
             }
           }
           ... on PrismicPageBodyEquipementSheet{
