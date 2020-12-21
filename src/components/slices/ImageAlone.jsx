@@ -16,9 +16,10 @@ const ImageAlone = ( props ) => {
             pos='relative'
             zIndex='base'
             bg={
-                props.data.background_color
+                props.data.background_color ? props.data.background_color : '#F1F1F1'
             }
-            p={'8rem 2rem'}
+            p={{ base:'1rem', lg:'2rem 4rem'}}
+            minH='400px'
 
         >
             <Image  
