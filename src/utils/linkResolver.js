@@ -1,7 +1,7 @@
 export const linkResolver = ( prismicID ) => {
   var data = require('../../paths.js')
-  console.log('paths', data.URIs )
-  console.log('prismicID', prismicID )
+  // console.log('paths', data.URIs )
+  // console.log('prismicID', prismicID )
   if (!prismicID) {
     return '/'
   } else {

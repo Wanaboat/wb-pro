@@ -5,7 +5,7 @@ import {
 import EntryCard from '../EntryCard'
 
 const AllLastNews = ( props ) => {
-    console.log('AllLastNews', props )
+    // console.log('AllLastNews', props )
     return(
         <SimpleGrid
             columns={{ base:1, lg:3 }}
@@ -14,6 +14,7 @@ const AllLastNews = ( props ) => {
         >
             { props.posts.edges.map( entry =>
             <EntryCard
+                key={ entry.node.prismicId}
                 node={ entry.node }
             />
             )}

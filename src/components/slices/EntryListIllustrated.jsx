@@ -16,6 +16,7 @@ const EntryListIllustrated = ( props ) => {
         >
             { props.items.map( entry => 
                 <EntryCard
+                    key={ entry.related_entries.document[0].prismicId }
                     node={ entry.related_entries.document[0] }
                 />
             )}

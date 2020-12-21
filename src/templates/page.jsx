@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import PageTitle from '../components/PageTitle'
 import Wrapper from '../components/Wrapper'
 import Breadcrumbs from '../components/Breadcrumbs'
+import ButtonBack from '../components/ButtonBack'
 // import usePreviewData from '../utils/usePreviewData'
 const Page = ( { data, location } ) => {
   // const liveData = usePreviewData( data )
@@ -29,6 +30,9 @@ const Page = ( { data, location } ) => {
       <Wrapper>
         { !prismicPage.data.hide_breadcrumbs ? 
           <Breadcrumbs data={ prismicPage } />
+        : null}
+        { prismicPage.data.show_back_button ? 
+          <ButtonBack />
         : null}
         { prismicPage.data.hide_title ? 
         null
@@ -85,6 +89,7 @@ export const pageQuery = graphql`
         sharing_image {
           url
         }
+        show_back_button
         body {
           __typename
           ... on PrismicPageBodyText {

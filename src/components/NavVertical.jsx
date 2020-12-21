@@ -107,74 +107,71 @@ const NavVertical = (props) => {
                     <Box
                         mx={{ base: '0', lg: '4rem', xl:'6rem', xxl:'8rem' }}
                     >
-
                         {props.items.map((item, index) =>
-                            <>
-                                <Box
-                                    key={`nav-item-${index}`}
-                                    display='flex'
-                                    justifyContent='space-between'
-                                    flexWrap='wrap'
-                                    // mx={{ lg: '.5rem' }}
-                                    position={item.items.length > 1 ? 'relative' : 'initial'}
+                            <Box
+                                key={`nav-item-${index}`}
+                                display='flex'
+                                justifyContent='space-between'
+                                flexWrap='wrap'
+                                // mx={{ lg: '.5rem' }}
+                                position={item.items.length > 1 ? 'relative' : 'initial'}
+                                _hover={{
+                                    bg: 'gray.50'
+                                }}
+                                alignItems='center'
+                                borderBottom="solid 1px"
+                                borderBottomColor='gray.100'
+                                onMouseOver={() => setSubNavOpen(`nav-item-${index}`)}
+                                onMouseLeave={() => setSubNavOpen(false)}
+                                w='100%'
+                            >
+                                <Link
+                                    key={item.primary.link.id}
+                                    flexGrow='1'
+                                    w='auto'
+                                    as={item.primary.link.url ? 'a' : GatsbyLink }
+                                    href={ item.primary.link.url ? item.primary.link.url : '' }
+                                    color="white"
+                                    fontWeight='500'
+                                    to={
+                                        item.primary.link.url ?
+                                            item.primary.link.url
+                                            : linkResolver(item.primary.link.document[0].prismicId)
+                                    }
+                                    p='.5rem 1rem'
+                                    // pr={item.items.length > 1 ? '.25rem' : '1rem'}
+                                    textTransform='uppercase'
+                                    color='gray.600'
+                                    fontSize={{ xs: '16px', lg: '18px' }}
+                                    letterSpacing='0.05rem'
+                                    fontFamily="Source Sans Pro"
                                     _hover={{
                                         bg: 'gray.50'
                                     }}
-                                    alignItems='center'
-                                    borderBottom="solid 1px"
-                                    borderBottomColor='gray.100'
-                                    onMouseOver={() => setSubNavOpen(`nav-item-${index}`)}
-                                    onMouseLeave={() => setSubNavOpen(false)}
-                                    w='100%'
                                 >
-                                    <Link
-                                        key={item.primary.link.id}
-                                        flexGrow='1'
-                                        w='auto'
-                                        as={GatsbyLink}
-                                        color="white"
-                                        fontWeight='500'
-                                        to={
-                                            item.primary.link.url ?
-                                                item.primary.link.url
-                                                : linkResolver(item.primary.link.document[0].prismicId)
-                                        }
-                                        p='.5rem 1rem'
-                                        // pr={item.items.length > 1 ? '.25rem' : '1rem'}
-                                        textTransform='uppercase'
-                                        color='gray.600'
-                                        fontSize={{ xs: '16px', lg: '18px' }}
-                                        letterSpacing='0.05rem'
-                                        fontFamily="Source Sans Pro"
-                                        _hover={{
-                                            bg: 'gray.50'
-                                        }}
+                                    {/* {item.primary.link} -  */}
+                                    {item.primary.label.text}
+                                    {/* { item.primary.link.document[0].prismicId } */}
+                                </Link>
+                                {item.items.length > 1 ?
+                                    <Button
+                                        aria-label="Voir les pages filles"
+                                        bg='transparent'
+                                        color='brandDark1'
+                                        size='sm'
+                                        p='.15rem'
+                                        onClick={() => setSubNavOpen(subNavOpen !== `nav-item-${index}` ? `nav-item-${index}` : false)}
+                                        _hover={{ bg: 'transparent' }}
+                                    // onClick={()=>  setSubNavOpen( false ) }
                                     >
-                                        {/* {item.primary.link} -  */}
-                                        {item.primary.label.text}
-                                        {/* { item.primary.link.document[0].prismicId } */}
-                                    </Link>
-                                    {item.items.length > 1 ?
-                                        <Button
-                                            aria-label="Voir les pages filles"
-                                            bg='transparent'
-                                            color='brandDark1'
-                                            size='sm'
-                                            p='.15rem'
-                                            onClick={() => setSubNavOpen(subNavOpen !== `nav-item-${index}` ? `nav-item-${index}` : false)}
-                                            _hover={{ bg: 'transparent' }}
-                                        // onClick={()=>  setSubNavOpen( false ) }
-                                        >
-                                            {`nav-item-${index}` === subNavOpen ? '✕' : '↓'}
-                                        </Button>
-                                        : null}
-
-                                    {item.items.length > 1 ?
-                                        <SubNav isOpen={`nav-item-${index}` === subNavOpen ? true : false} items={item.items} />
+                                        {`nav-item-${index}` === subNavOpen ? '✕' : '↓'}
+                                    </Button>
                                     : null}
-                                </Box>
-                                
-                            </>
+
+                                {item.items.length > 1 ?
+                                    <SubNav isOpen={`nav-item-${index}` === subNavOpen ? true : false} items={item.items} />
+                                : null}
+                            </Box>
                         )}
                     </Box>
                 </Box>

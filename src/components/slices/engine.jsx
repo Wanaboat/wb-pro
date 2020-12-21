@@ -49,11 +49,12 @@ const Slices = (props) => {
     PrismicPageBodyPublicationDate: PublicationDate
   }
 
+{/* <Box>Composant absent : {slice.__typename}</Box> */}
+
   const SlicesMerge = slices.map((slice, index) => {
     const SliceComponent = sliceComponents[slice.__typename]
     if (SliceComponent) {
       return (
-        <>
           <SliceComponent
             page={ page }
             data={slice.primary}
@@ -63,9 +64,6 @@ const Slices = (props) => {
             childrenNews={ childrenNews }
             key={`${slice.__typename}-${index}`}
           />
-          {/* <Box>Composant absent : {slice.__typename}</Box> */}
-        </>
-
       )
     }
     else {

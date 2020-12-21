@@ -486,6 +486,13 @@
         "default_value": false,
         "label": "Hide title"
       }
+    },
+    "show_back_button": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Show back button"
+      }
     }
   }
 }
