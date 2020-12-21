@@ -184,7 +184,7 @@ const SingleAdLoader = (props) => {
                             {ad.refBrand.fields.name}
                         </Text>
                         : null}
-                    <Button
+                    {/* <Button
                         variant='outline'
                         size='small'
                         fontSize='12px'
@@ -194,7 +194,7 @@ const SingleAdLoader = (props) => {
                     >
                         <LinkIcon mr='.5rem' />
                         {hasCopied ? <FormattedMessage id='main.copied' /> : <FormattedMessage id='main.direct.link' />}
-                    </Button>
+                    </Button> */}
 
                 </Stack>
                 <Box fontSize="16px">
