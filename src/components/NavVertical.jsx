@@ -121,9 +121,10 @@ const NavVertical = (props) => {
                                 alignItems='center'
                                 borderBottom="solid 1px"
                                 borderBottomColor='gray.100'
-                                onMouseOver={() => setSubNavOpen(`nav-item-${index}`)}
-                                onMouseLeave={() => setSubNavOpen(false)}
+                                // onMouseOver={() => setSubNavOpen(`nav-item-${index}`)}
+                                // onMouseLeave={() => setSubNavOpen(false)}
                                 w='100%'
+                                pr='0.25rem'
                             >
                                 <Link
                                     key={item.primary.link.id}
@@ -159,10 +160,10 @@ const NavVertical = (props) => {
                                         bg='transparent'
                                         color='brandDark1'
                                         size='sm'
-                                        p='.15rem'
+                                        p='.25rem'
+                                        mr='.05rem'
                                         onClick={() => setSubNavOpen(subNavOpen !== `nav-item-${index}` ? `nav-item-${index}` : false)}
-                                        _hover={{ bg: 'transparent' }}
-                                    // onClick={()=>  setSubNavOpen( false ) }
+                                        _hover={{ bg: 'gray.200' }}
                                     >
                                         {`nav-item-${index}` === subNavOpen ? '✕' : '↓'}
                                     </Button>
