@@ -9,7 +9,7 @@ const SliceContact = ( props ) => {
         <Box
             mx={{ base: '1rem', lg: '4rem' }}
         >
-            <ContactForm />
+            <ContactForm context={ props.page.data.title.text } />
         </Box>
     )
 }

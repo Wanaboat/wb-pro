@@ -7,15 +7,16 @@ import PageTitle from '../components/PageTitle'
 import Wrapper from '../components/Wrapper'
 import Breadcrumbs from '../components/Breadcrumbs'
 import ButtonBack from '../components/ButtonBack'
+import { propNames } from '@chakra-ui/react'
 // import usePreviewData from '../utils/usePreviewData'
-const Page = ( { data, location } ) => {
+const Page = ( { path,  data, location, pageContext } ) => {
   // const liveData = usePreviewData( data )
   const { nav, prismicPage, settings, childrenNews, posts } = data
-  console.log( 'prismicPage', prismicPage, childrenNews )
-
-  console.log( 'childrenNews', childrenNews)
-  console.log( prismicPage.data.parent )
-  console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
+  // console.log( 'prismicPage', prismicPage, childrenNews )
+  // console.log('pageContext', path)
+  // console.log( 'childrenNews', childrenNews)
+  // console.log( prismicPage.data.parent )
+  // console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
   
   return(
     <Layout nav={ nav.data.nav } settings={ settings }>
@@ -44,7 +45,7 @@ const Page = ( { data, location } ) => {
             slices={ prismicPage.data.body }
             posts={ posts }
             childrenNews={ childrenNews }
-            page={ prismicPage.data }
+            page={ prismicPage }
           />
         : null}
       </Wrapper> 

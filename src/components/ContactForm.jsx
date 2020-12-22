@@ -12,6 +12,8 @@ import ButtonSecondary from './ButtonSecondary'
 
 const ContactForm = ({ context }) => {
 
+    console.log('context', context)
+
     const [sent, setSent] = useState(false)
 
     const

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-    Box,
+    Flex,
     Image,
     Text
 } from '@chakra-ui/react'
@@ -11,9 +11,10 @@ const ImageAlone = ( props ) => {
     console.log( 'ImageAlone', props )
 
     return(
-        <Box
+        <Flex
             as='figure'
             pos='relative'
+            align='center'
             zIndex='base'
             bg={
                 props.data.background_color ? props.data.background_color : '#F1F1F1'
@@ -39,7 +40,7 @@ const ImageAlone = ( props ) => {
                     fontSize={{ base: '12px', lg:'14px' }}
                     as='figcaption'>{ props.data.image.alt }</Text>
             : null}
-        </Box>
+        </Flex>
     )
 }
 
