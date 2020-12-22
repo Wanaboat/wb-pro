@@ -10,7 +10,7 @@ const EntryListIllustrated = ( props ) => {
     const relatedEntries = props.items
     return(
         <SimpleGrid
-            columns={{ base:1, lg:2, xl:  props.items.length === 2 ? 2 : 3}}
+            columns={{ base:1, lg:2, xl: 3}}
             gap='2rem'
             mx={{ base:0, lg:'4rem' }}
         >

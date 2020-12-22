@@ -19,6 +19,10 @@ const ButtonSecondary = ({ to, children, ...rest }) => {
             fontWeight='400'
             p='1rem 2rem'
             letterSpacing='0.05rem'
+            _groupHover={{
+                color:'white',
+                bg:'brand.1'
+            }}
             _hover={{
                 color:'white',
                 bg:'brand.1'

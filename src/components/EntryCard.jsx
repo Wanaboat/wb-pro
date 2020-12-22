@@ -13,6 +13,7 @@ const EntryCard = ({ node }) => {
     // console.log('EntryCard', node.data.sharing_image.small.url)
     return(
         <Box
+            role="group"
             as={ GatsbyLink }
             to={ linkResolver( node.prismicId ) }
             bg='white'
