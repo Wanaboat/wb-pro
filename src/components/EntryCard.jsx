@@ -41,6 +41,7 @@ const EntryCard = ({ node }) => {
                 fontWeight='bold'
                 fontSize='18px'
                 mb='2rem'
+                // minH='80px'
             >
                 { node.data.title.text }
             </Text>
