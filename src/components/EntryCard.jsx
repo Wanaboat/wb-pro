@@ -25,6 +25,7 @@ const EntryCard = ({ node }) => {
             }}
         >
             { node.data.sharing_image ? 
+                node.data.sharing_image.thumbnails ?
             <Image
                 src={
                     node.data.sharing_image.thumbnails.small 
@@ -34,7 +35,7 @@ const EntryCard = ({ node }) => {
                 w='100%'
                 loading='lazy'
             />
-            : null }
+            : null : null }
             <Box
              p='1rem'
             >

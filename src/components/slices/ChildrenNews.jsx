@@ -27,9 +27,9 @@ const ChildrenNews = (props) => {
                 >
                 {props.childrenNews.edges.map((item, i) =>
                     <Flex
+                        align='center'
                         as={GatsbyLink}
                         to={linkResolver(item.node.prismicId)}
-
                         role='group'
                         display='flex'
                         borderBottom={ props.childrenNews.edges.length != i+1 ? 'dashed 1px' : 'none' }
@@ -45,6 +45,7 @@ const ChildrenNews = (props) => {
                         </Text> 
                         <Box
                             transition='all 200ms ease'
+                            pl='1rem'
                             _groupHover={{
                                 transform:'translateX(.5rem)'
                             }}

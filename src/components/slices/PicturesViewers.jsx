@@ -27,20 +27,20 @@ const PicturesViewers = (props) => {
                             onClick={ ()=>{setCurrentPicture(i+1)} }
                             cursor='pointer'
                             w='100%'
-                            src={photo.gallery_image.small ? photo.gallery_image.small.url : photo.gallery_image.url }
+                            src={photo.gallery_image.thumbnails.small ? photo.gallery_image.thumbnails.small.url : photo.gallery_image.url }
                         />
                     )}
                 </SimpleGrid>
             </Box>
             <Box zIndex='999999'>
-            <GalleryModal
-                pictures={ pictures }
-                index={ currentPicture }
-                isVisible={ currentPicture }
-                handleClose={ ()=>{ setCurrentPicture( false )} }
-                handlePrev={()=>{ setCurrentPicture( currentPicture === 1 ? pictures.length : currentPicture - 1)}}
-                handleNext={()=>{ setCurrentPicture( currentPicture ===  pictures.length ? 1 : currentPicture + 1 )}}
-            />
+                <GalleryModal
+                    pictures={ pictures }
+                    index={ currentPicture }
+                    isVisible={ currentPicture }
+                    handleClose={ ()=>{ setCurrentPicture( false )} }
+                    handlePrev={()=>{ setCurrentPicture( currentPicture === 1 ? pictures.length : currentPicture - 1)}}
+                    handleNext={()=>{ setCurrentPicture( currentPicture ===  pictures.length ? 1 : currentPicture + 1 )}}
+                />
             </Box>
             
         </>

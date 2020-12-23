@@ -239,10 +239,9 @@ export const pageQuery = graphql`
       }
     }
     posts: allPrismicPage(
-        filter: {
-          tags: { eq: "news"}
-        }
-      ) {
+      filter: {tags: {eq: "news"}},
+      sort: {fields: data___publication_date, order: DESC}
+    ) {
         edges {
           node {
             prismicId
@@ -252,11 +251,12 @@ export const pageQuery = graphql`
               title{text}
               sharing_image{
                 url
-                #small{ url }
-                #large{ url }
+                thumbnails{
+                  small{ url }
+                  large{ url }
+                }
               }
             }
-            
           }
         }
       }

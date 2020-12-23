@@ -36,34 +36,7 @@ const ImageGallery = (props) => {
 
   return (
     <Box>
-      {/* <Heading>{ props.data.name_of_the_gallery.text }</Heading> */}
       <Gallery photos={ cleanImages( props.items ) } onClick={openLightbox} />
-      {/* <ModalGateway>
-        {viewerIsOpen ? (
-          <Modal onClose={closeLightbox}>
-            <Carousel
-              currentIndex={currentImage}
-              views={cleanImages( props.items ).map(x => ({
-                ...x,
-                srcset: x.srcSet,
-                caption: x.title
-              }))}
-            />
-          </Modal>
-        ) : null}
-      </ModalGateway> */}
-
-      {/* { props.items.map(image =>
-        <Box
-          key={image.gallery_image.url}
-        >
-          
-          <Image
-            src={image.gallery_image.url}
-            alt={image.gallery_image.alot}
-          />
-        </Box>
-      )} */}
     </Box>
   )
 }

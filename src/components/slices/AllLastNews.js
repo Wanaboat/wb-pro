@@ -12,11 +12,13 @@ const AllLastNews = ( props ) => {
             mx={{ base:'1rem', lg: '4rem' }}
             gap='2rem'
         >
-            { props.posts.edges.map( entry =>
-            <EntryCard
-                key={ entry.node.prismicId}
-                node={ entry.node }
-            />
+            { props.posts.edges.map( (entry,i) =>
+            i < 3 ? 
+                <EntryCard
+                    key={ entry.node.prismicId}
+                    node={ entry.node }
+                />
+            : null
             )}
         </SimpleGrid>
     )
