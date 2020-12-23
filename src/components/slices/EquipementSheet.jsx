@@ -10,7 +10,7 @@ import {
 import ButtonSecondary from '../ButtonSecondary'
 
 const EquipementSheet = (props) => {
-    const data = props.data.equipement_sheet_link.document[0].data.body
+    const data = props.data.equipement_sheet_link.document.data.body
     const [more, setMore] = useState(false)
 
     console.log('EquipementSheet', data)

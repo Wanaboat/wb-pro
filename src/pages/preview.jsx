@@ -1,116 +1,110 @@
- import React, { useEffect } from 'react'
- const preview = () => {
-   return(<div>preview</div>)
- }
+// src/pages/preview.js
 
- export default preview
+import React, { useEffect } from 'react'
+import { graphql } from 'gatsby'
+import { navigate, useStaticQuery } from 'gatsby'
+import { usePrismicPreview } from 'gatsby-source-prismic'
+import linkResolver from '../utils/linkResolver'
+import { Box, Flex, Spinner, Text } from '@chakra-ui/react'
+// Note that the `location` prop is taken and provided to the `usePrismicPreview` hook.
+const PreviewPage = ({ location }) => {
+  // Let's use a static query to retrieve all known paths. We'll use it later
+  // to navigate to the unpublishedPreview page if the document is not
+  // published.
 
-// import { graphql, navigate, useStaticQuery } from 'gatsby'
-// import { usePrismicPreview } from 'gatsby-source-prismic'
-// import { Box, Flex, Spinner } from '@chakra-ui/react'
-// // Note that the `location` prop is taken and provided to the `usePrismicPreview` hook.
-// const PreviewPage = ({ location }) => {
-//   // Let's use a static query to retrieve all known paths. We'll use it later
-//   // to navigate to the unpublishedPreview page if the document is not
-//   // published.
-//   const { allSitePage } = useStaticQuery(graphql`
-//     {
-//       allSitePage {
-//         nodes {
-//           path
-//         }
-//       }
-//     }
-//   `)
-//   const allPaths = allSitePage.nodes.map((node) => node.path)
+  const { allSitePage } = useStaticQuery(graphql`
+    {
+      allSitePage {
+        nodes {
+          path
+        }
+      }
+    }
+  `)
 
-//   const { isPreview, previewData, path } = usePrismicPreview({
-//     // The repositoryName value from your `gatsby-config.js`.
-//     repositoryName: 'wanaboat',
-//   })
+  console.log('allSitePage', allSitePage)
 
-//   // console.log( isPreview, previewData, path )
+  console.log('location', location)
+  const allPaths = allSitePage.nodes.map((node) => node.path)
 
-//   // This useEffect runs when values from usePrismicPreview update. When
-//   // preview data is available, this will save the data globally and redirect to
-//   // the previewed document's page.
-//   useEffect(() => {
-//     // If this is not a preview, skip.
-//     //   null = Not yet determined if previewing.
-//     //   true = Preview is available.
-//     //   false = Preview is not available.
-//     // if (isPreview === false || !previewData) return
+  console.log('allPaths', allPaths)
 
-//     // Save the preview data to somewhere globally accessible. This could be
-//     // something like a global Redux store or React context.
-//     //
-//     // We'll just put it on window.
-//     window.__PRISMIC_PREVIEW_DATA__ = previewData
-//     console.log(  'previewData', previewData )
-//     console.log( isPreview, previewData, path )
 
-//     if(
-//       previewData && window.__PRISMIC_PREVIEW_DATA__
-//       && previewData.prismicHomepage
-//     ){
-//       navigate('/')
-//     }
+  const { isPreview, previewData, path } = usePrismicPreview({
+    // The repositoryName value from your `gatsby-config.js`.
+    repositoryName: 'sailfast',
+  })
 
-//     if(
-//       previewData && window.__PRISMIC_PREVIEW_DATA__
-//       && previewData.prismicPage
-//     ){
-//       if( previewData.prismicPage.dataRaw.parent ){
-//         navigate(`/${previewData.prismicPage.dataRaw.parent.uid}/${previewData.prismicPage.uid}`)
 
-//       }
-//       else{
-//         navigate(`/${previewData.prismicPage.uid}`)
-//       }
-//       console.log( previewData.prismicPage )
-//     }
-    
-//     if(
-//       previewData && window.__PRISMIC_PREVIEW_DATA__
-//       && previewData.prismicPost
-//     ){
-//       navigate(`/blog/${previewData.prismicPost.uid}`)
-//     }
-
-//     if(
-//       previewData && window.__PRISMIC_PREVIEW_DATA__
-//       && previewData.prismicProduct
-//     ){
-//       navigate(`/bateaux/${previewData.prismicProduct.uid}`)
-//     }
-
-//     // }
-//     // Navigate to the document's page if page exists.
-//     // if (allPaths.includes(path)) {
-//     //   navigate(previewData.uid)
-//     // } else {
-//     //   navigate('/')
-//     // }
-//   }, [isPreview, previewData, path])
-
-//   // Tell the user if this is not a preview.
-//   if (isPreview === false)
-//     return (
-//       <Box >
-//         <Flex w='100vw' h='100vh' justifyContent='center' alignItems='center'>
-//           Cette page n'est pas une prévisualisation valide
-//         </Flex>
-//       </Box>
-//     )
   
+  console.log(isPreview, previewData, path);
 
-//   return (
-//     <Box >
-//       <Flex w='100vw' h='100vh' justifyContent='center' alignItems='center'>
-//         <Spinner />
-//       </Flex>
-//     </Box>
-//   )
-// }
+  // This useEffect runs when values from usePrismicPreview update. When
+  // preview data is available, this will save the data globally and redirect to
+  // the previewed document's page.
+  useEffect(() => {
+    // If this is not a preview, skip.
+    //   null = Not yet determined if previewing.
+    //   true = Preview is available.
+    //   false = Preview is not available.
+    if (isPreview === false || !previewData) return
 
-// export default PreviewPage
+    // Save the preview data to somewhere globally accessible. This could be
+    // something like a global Redux store or React context.
+    //
+    // We'll just put it on window.
+    window.__PRISMIC_PREVIEW_DATA__ = previewData
+
+    // navigate( `/${previewData.prismicPage.uid}` )
+    if (previewData.prismicPage) {
+      console.log('previewData.prismicPage', previewData.prismicPage.prismicId, linkResolver(previewData.prismicPage.prismicId) )
+      // alert( JSON.stringify( previewData ))
+      // alert( linkResolver(previewData.prismicPage) )
+      navigate(linkResolver(previewData.prismicPage.prismicId))
+    }
+    // else{
+    //   navigate( `/` )
+    // }
+
+
+
+    // allPaths.forEach(path => {
+    //   if (previewData.prismicPage.prismicId) {
+    //     if (path.includes(previewData.prismicPage.uid)) {
+    //       navigate(linkResolver(prismicId))
+    //     }
+    //   }
+
+    //   if (previewData.prismicProduct.uid) {
+    //     if (path.includes(previewData.prismicProduct.uid)) {
+    //       // navigate(`${ path }`)
+    //       navigate(linkResolver(prismicId))
+
+    //     }
+    //   }
+
+
+    // });
+
+    // Navigate to the document's page if page exists.
+    // if (allPaths.includes(previewData.prismicPage.uid)) {
+    //   navigate(`/${previewData.prismicPage.uid}`)
+    // } else {
+    //   //   navigate('/')
+    // }
+  }, [isPreview, previewData, path])
+
+  // Tell the user if this is not a preview.
+  if (isPreview === false) return (
+    <Flex h='100vh' alignItems='center' justify='center'>
+      <Spinner /><Text fontFamily='Arial' textTransform='uppercase' letterSpacing='0.1rem' fontSize='14px' fontWeight='bold' color='#777'>Not a preview...</Text>
+    </Flex>
+  )
+  return (
+    <Flex h='100vh' alignItems='center' justify='center'>
+      <Spinner /><Text fontFamily='Arial' textTransform='uppercase' letterSpacing='0.1rem' fontSize='14px' fontWeight='bold' color='#777'>Loading preview...</Text>
+    </Flex>
+  )
+}
+
+export default PreviewPage

@@ -22,7 +22,7 @@ const SubNav = ( props ) => {
                 { props.items.map( subitem =>
                     <ListItem key={`sub-nav-${subitem.sub_nav_link.uid}`}>
                         <Link
-                            to={ linkResolver( subitem.sub_nav_link.document[0].prismicId )}
+                            to={ linkResolver( subitem.sub_nav_link.document.prismicId )}
                             as={ GatsbyLink }
                             display='block'
                             fontWeight='400'

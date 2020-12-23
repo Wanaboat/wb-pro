@@ -153,6 +153,12 @@
                   "multi": "paragraph, heading4, strong, em, hyperlink",
                   "label": "Adresse"
                 }
+              },
+              "where": {
+                "type": "GeoPoint",
+                "config": {
+                  "label": "where"
+                }
               }
             },
             "repeat": {}

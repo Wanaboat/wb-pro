@@ -4,8 +4,7 @@ import {
     Box,
     Link,
     Text,
-    Stack,
-    Divider
+    Stack
 } from '@chakra-ui/react'
 import BreadcrumbsJSON from './BreadcrumbsJSON'
 import linkResolver from '../utils/linkResolver'
@@ -13,43 +12,39 @@ const Breadcrumbs = (node) => {
     console.log('BreadcrumbsData', node)
     const hierarchyData = () => {
         let hierarchy = []
-        let lang = 'fr'
-        let url = []
-
         if (node.data.prismicId) {
-            console.log('node.data.data', node.data.data)
             hierarchy.push(
                 {
                     prismicID: node.data.prismicId,
                     label: node.data.data.title.text
                 }
             )
-            if (node.data.data.parent) {
+            if (node.data.data.parent.document) {
                 hierarchy.push(
                     {
-                        prismicID: node.data.data.parent.document[0].prismicId,
-                        label: node.data.data.parent.document[0].data.short_name
+                        prismicID: node.data.data.parent.document.prismicId,
+                        label: node.data.data.parent.document.data.short_name
                     }
                 )
-                if (node.data.data.parent.document[0].data.parent) {
+                if (node.data.data.parent.document.data.parent.document) {
                     hierarchy.push(
                         {
-                            prismicID: node.data.data.parent.document[0].data.parent.document[0].prismicId,
-                            label: node.data.data.parent.document[0].data.parent.document[0].data.short_name
+                            prismicID: node.data.data.parent.document.data.parent.document.prismicId,
+                            label: node.data.data.parent.document.data.parent.document.data.short_name
                         }
                     )
-                    if (node.data.data.parent.document[0].data.parent.document[0].data.parent) {
+                    if (node.data.data.parent.document.data.parent.document.data.parent.document) {
                         hierarchy.push(
                             {
-                                prismicID: node.data.data.parent.document[0].data.parent.document[0].data.parent.document[0].prismicId,
-                                label: node.data.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.short_name
+                                prismicID: node.data.data.parent.document.data.parent.document.data.parent.document.prismicId,
+                                label: node.data.data.parent.document.data.parent.document.data.parent.document.data.short_name
                             }
                         )
-                        if (node.data.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.parent) {
+                        if (node.data.data.parent.document.data.parent.document.data.parent.document.data.parent.document) {
                             hierarchy.push(
                                 {
-                                    prismicID: node.data.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.parent.document[0].prismicId,
-                                    label: node.data.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.parent.document[0].data.short_name
+                                    prismicID: node.data.data.parent.document.data.parent.document.data.parent.document.data.parent.document.prismicId,
+                                    label: node.data.data.parent.document.data.parent.document.data.parent.document.data.parent.document.data.short_name
                                 }
                             )
                         }

@@ -8,13 +8,14 @@ import Wrapper from '../components/Wrapper'
 import Breadcrumbs from '../components/Breadcrumbs'
 import ButtonBack from '../components/ButtonBack'
 import { propNames } from '@chakra-ui/react'
-// import usePreviewData from '../utils/usePreviewData'
+import usePreviewData from '../utils/usePreviewData'
 const Page = ( { path,  data, location, pageContext } ) => {
-  // const liveData = usePreviewData( data )
-  const { nav, prismicPage, settings, childrenNews, posts } = data
+  const liveData = usePreviewData( data )
+  console.log('liveData', liveData)
+  const { nav, prismicPage, settings, childrenNews, posts } = liveData
   // console.log( 'prismicPage', prismicPage, childrenNews )
-  // console.log('pageContext', path)
-  // console.log( 'childrenNews', childrenNews)
+  console.log('pageContext', pageContext)
+  console.log( 'childrenNews', childrenNews)
   // console.log( prismicPage.data.parent )
   // console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
   
@@ -56,8 +57,10 @@ const Page = ( { path,  data, location, pageContext } ) => {
 export default Page
 
 export const pageQuery = graphql`
-  query PageQuery( $uid: String!, 
-    $prismicId: String!
+  query PageQuery(
+    $uid: String!, 
+    #$prismicId: String!,
+    #$parentUid: String
   )
   {
     prismicPage(uid: {eq: $uid}) {
@@ -67,10 +70,10 @@ export const pageQuery = graphql`
       prismicId
       data {
         parent{
-          document{ prismicId ... on PrismicPage{ data{ short_name parent{ uid
-            document{ prismicId ... on PrismicPage{ data{ short_name parent{ uid
-              document{ prismicId ... on PrismicPage{ data{ short_name parent{ uid
-                document{ prismicId ... on PrismicPage{ data{ short_name parent{ uid
+          document{ ... on PrismicPage{ prismicId data{ short_name parent{ uid
+            document{  ... on PrismicPage{ prismicId data{ short_name parent{ uid
+              document{  ... on PrismicPage{ prismicId data{ short_name parent{ uid
+                document{  ... on PrismicPage{ prismicId data{ short_name parent{ uid
               
                 }}}}
               }}}}
@@ -102,30 +105,10 @@ export const pageQuery = graphql`
               }
             }
           }
-          
-         #... on PrismicPageBodyAdsList {
-         #  primary{
-         #    link_to_contact{
-         #      id
-         #      isBroken
-         #      lang
-         #      link_type
-         #      slug
-         #      target
-         #      type
-         #      uid
-         #      url
-         #    }
-         #    side_text{
-         #      html
-         #      text
-         #    }
-         #  }
-         #}
           ... on PrismicPageBodyDocumentsList{
             items{
               document{
-                name
+                raw
                 url
               }
             }
@@ -139,9 +122,11 @@ export const pageQuery = graphql`
                     title { text }
                     sharing_image{
                       url
-                      small{ url }
-                      medium{ url }
-                      large { url }
+                      thumbnails{
+                        small{ url }
+                        medium{ url }
+                        large { url }
+                      }
                     }
                   }
                 } 
@@ -155,7 +140,9 @@ export const pageQuery = graphql`
           }
           ... on PrismicPageBodyImageGallery{
             items{
-              gallery_image{ alt url dimensions{ height width } small{ url } }
+              gallery_image{ alt url dimensions{ height width }
+              thumbnails{ small{ url } }
+            }
             }
           }
           ... on PrismicPageBodyTitle{
@@ -173,24 +160,24 @@ export const pageQuery = graphql`
               youtube_link{ version thumbnail_url title embed_url }
             }
           }
-          #... on PrismicPageBodyMap {
-          #  primary {
-          #    location {
-          #      latitude
-          #      longitude
-          #    }
-          #    address {
-          #      html
-          #      text
-          #    }
-          #  }
-          #}
+          ... on PrismicPageBodyMap{
+            primary{
+              address{
+                text
+                html
+              }
+              where{
+                latitude
+                longitude
+              }
+            }
+          }
           ... on PrismicPageBodyBannerWithCaption {
             primary {
               image_banner {
                 alt
                 url
-                medium{ url }
+                thumbnails{ medium{ url } }
               }
               description {
                 html
@@ -228,30 +215,29 @@ export const pageQuery = graphql`
               home_hero_button_label
               home_hero_bg_image{
                 alt
-                small{ url }
-                large{ url }
+                thumbnails{ small{ url } large{ url } }
               }
             }
           }
         }
       }
     }
-    childrenNews: allPrismicPage(
-        filter: {
-          data: {parent: {document: {elemMatch: {prismicId: { eq: $prismicId }}}}}
-          tags: { eq: "news"}
-        }
-      ) {
-        edges {
-          node {
-            prismicId
-            data{
-              publication_date
-              title{text}
+    childrenNews: allPrismicPage(filter:{
+        tags: {eq: "news"},
+        data: {parent: {uid: {eq: $uid}}}
+      }) {
+      edges {
+        node {
+          prismicId
+          data {
+            publication_date
+            title {
+              text
             }
           }
         }
       }
+    }
     posts: allPrismicPage(
         filter: {
           tags: { eq: "news"}
@@ -266,8 +252,8 @@ export const pageQuery = graphql`
               title{text}
               sharing_image{
                 url
-                small{ url }
-                large{ url }
+                #small{ url }
+                #large{ url }
               }
             }
             

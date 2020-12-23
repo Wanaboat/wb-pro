@@ -27,8 +27,8 @@ const EntryCard = ({ node }) => {
             { node.data.sharing_image ? 
             <Image
                 src={
-                    node.data.sharing_image.small 
-                        ? node.data.sharing_image.small.url
+                    node.data.sharing_image.thumbnails.small 
+                        ? node.data.sharing_image.thumbnails.small.url
                         : node.data.sharing_image.url }
                 alt={ node.data.title.text }
                 w='100%'

@@ -57,12 +57,12 @@ exports.createPages = async ({ graphql, actions }) => {
         // node.data.parent.document[0].data.parent.uid
         if (node.data.parent ){
             slug.push( node.data.parent.uid )
-            if( node.data.parent.document[0].data.parent ){
-              slug.push( node.data.parent.document[0].data.parent.uid )
-              if( node.data.parent.document[0].data.parent.document[0].data.parent ){
-                slug.push( node.data.parent.document[0].data.parent.document[0].data.parent.uid )
-                if( node.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.parent ){
-                  slug.push( node.data.parent.document[0].data.parent.document[0].data.parent.document[0].data.parent.uid )
+            if( node.data.parent.document ){
+              slug.push( node.data.parent.document.data.parent.uid )
+              if( node.data.parent.document.data.parent.document ){
+                slug.push( node.data.parent.document.data.parent.document.data.parent.uid )
+                if( node.data.parent.document.data.parent.document.data.parent.document ){
+                  slug.push( node.data.parent.document.data.parent.document.data.parent.document.data.parent.uid )
                 }
               }
             }
@@ -82,7 +82,11 @@ exports.createPages = async ({ graphql, actions }) => {
     })
     console.log( uri )
     return ( uri )
-}
+  }
+
+  const getParentUid = (node) => {
+    return node.data.parent ? node.data.parent.uid : '/'
+  }
 
 
 //   const { createRedirect } = actions;
@@ -218,11 +222,11 @@ const settings = await wrapper(
   pagesList.forEach((edge) => {
       contents.push({ title: edge.node.data.title.text, uid:edge.node.uid, prismicId:edge.node.prismicId  })
       createPage({
-        // path: !edge.node.data.parent ? `${edge.node.uid}` : `${edge.node.data.parent.uid}/${edge.node.uid}`,
         path: edge.node.tags.includes('home') ? '/' : buildPageSlug( edge.node ),
         component: pageTemplate,
         context: {
           uid: edge.node.uid,
+          parentUid: getParentUid( edge.node ),
           prismicId: edge.node.prismicId
         },
       })

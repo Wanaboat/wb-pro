@@ -1,7 +1,7 @@
 export const linkResolver = ( prismicID ) => {
   var data = require('../../paths.js')
-  // console.log('paths', data.URIs )
-  // console.log('prismicID', prismicID )
+  // console.log('nav- paths', data.URIs )
+  // console.log('nav- prismicID', prismicID )
   if (!prismicID) {
     return '/'
   } else {
@@ -11,10 +11,12 @@ export const linkResolver = ( prismicID ) => {
         element.prismicID === prismicID
         || element.prismicID === prismicID
       ) {
-        return `/${element.path}/`
+        
+        return `${element.path}`
       }
     }
   }
+  console.log('else')
   // Backup for all other types
   return '/'
 }

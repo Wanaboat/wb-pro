@@ -1,29 +1,30 @@
 import React from 'react'
-import { Box, Grid } from '@chakra-ui/react'
+import { Box, Grid, Stack } from '@chakra-ui/react'
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const Plan = ( props ) => {
-    // console.log('plan', props)
-    // const { location, address } = props.data
-    // const defaultOptions = {
-    //     mapTypeControl: false,
-    //     zoomControl: false,
-    //     streetViewControl: true,
-    //     draggableCursor: "default",
-    //     draggingCursor: "move"
-    // };
+    console.log('plan', props)
+    const { where, address } = props.data
+    const defaultOptions = {
+        mapTypeControl: false,
+        zoomControl: false,
+        streetViewControl: true,
+        draggableCursor: "default",
+        draggingCursor: "move"
+    }
     return(
         <Box>
-            <Grid
-                templateColumns={{ xs:'100%', xl:'20% 1fr'}}
-                gap='10rem'
+            <Stack
+                mx={{ base:'1rem', lg:'4rem' }}
+                spacing={{ base:'1rem', xl:'2rem' }}
             >
-                {/* <Box mx={{ base: '1rem', lg:'4rem'}}>
+                <Box>
                     <div className='wysiwyg' dangerouslySetInnerHTML={ {__html: address.html }} />
                 </Box>
                 <Box
                     h='500px'
                     bg='blue.300'
+                    // mx={{ base:'-1rem', lg:0 }}
                 >
                      <LoadScript
                         id="script-loader"
@@ -37,21 +38,21 @@ const Plan = ( props ) => {
                             }}
                             zoom={7.2}
                             center={{
-                                lat: location.latitude,
-                                lng: location.longitude
+                                lat: where.latitude,
+                                lng: where.longitude
                             }}
                             defaultOptions={defaultOptions}
                         >
                         <Marker
                             position={{
-                                lat: location.latitude,
-                                lng: location.longitude
+                                lat: where.latitude,
+                                lng: where.longitude
                             }}
                         />
                         </GoogleMap>
                     </LoadScript>
-                </Box> */}
-            </Grid>
+                </Box>
+            </Stack>
         </Box>
     )
 }

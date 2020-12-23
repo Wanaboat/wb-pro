@@ -137,7 +137,7 @@ const NavVertical = (props) => {
                                     to={
                                         item.primary.link.url ?
                                             item.primary.link.url
-                                            : linkResolver(item.primary.link.document[0].prismicId)
+                                            : linkResolver(item.primary.link.document.prismicId)
                                     }
                                     p='.5rem 1rem'
                                     // pr={item.items.length > 1 ? '.25rem' : '1rem'}

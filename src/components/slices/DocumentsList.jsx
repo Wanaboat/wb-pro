@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react'
 
 const DocumentsList = (props) => {
+    console.log('DocumentsList', props )
     return (
         <Box
             id='news'
@@ -22,7 +23,6 @@ const DocumentsList = (props) => {
                         as={'a'}
                         target='_blank'
                         href={`${item.document.url}`}
-
                         role='group'
                         display='flex'
                         borderBottom={ props.items.length != i+1 ? 'dashed 1px' : 'none' }
@@ -34,7 +34,7 @@ const DocumentsList = (props) => {
                         }}
                     >
                         <Text>
-                            { item.document.name }
+                            { item.document.raw.name }
                         </Text> 
                         <Box
                             transition='all 200ms ease'

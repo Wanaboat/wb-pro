@@ -24,8 +24,8 @@ const HomeHero = (props) => {
           boxShadow='sm'
           position='relative'
           zIndex='docked'
-          srcSet={`${props.data.home_hero_bg_image.small.url} 750w, 
-            ${props.data.home_hero_bg_image.large.url} 1040w`}
+          srcSet={`${props.data.home_hero_bg_image.thumbnails.small.url} 750w, 
+            ${props.data.home_hero_bg_image.thumbnails.large.url} 1040w`}
           sizes="
             (max-width: 768px) 100vw, 
             (max-width: 1280px) calc(100vw - 400px),
