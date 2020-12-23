@@ -82,7 +82,8 @@ const Layout2 = (props) => {
         <Grid
           templateColumns={{
             base: '100vw',
-            lg: '33% 1fr',
+            lg: '25% 1fr',
+            xl:'33% 1fr'
             // xl: '400px 1fr',
             // xxl: '600px 1fr'
           }}

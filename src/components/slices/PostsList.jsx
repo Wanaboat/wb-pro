@@ -39,7 +39,7 @@ const PostsList = (props) => {
                             isTruncated={true}
                             color='brand.2'
                             fontWeight='500'
-                            fontSize={{ base:'18px', lg:'26px' }}
+                            fontSize={{ base:'18px', lg:'20px', lg:'24px' }}
                             transform={{ base:'none' , lg: 'translateX(-3rem)' }}
                         >
                             <Text
