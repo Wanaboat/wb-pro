@@ -2,6 +2,8 @@
 /wp-content/themes/*	/
 /wp-includes/*	/
 /boutique2/*	/
+/page/*	/
+/nous-contacter/    /contact
 /goodall-design/	/catamarans-de-sport/goodall/
 /nacra/	/catamarans-de-sport/nacra/f20/
 /occasions2/	/catamarans-de-sport/nacra/500/
