@@ -5,7 +5,7 @@ module.exports = {
   description: 'Les sites des pros Wanaboat.fr',
   headline: 'Un site malin et performant pour les professionnels Wanaboat.fr', // Headline for schema.org JSONLD
   // url: process.env.SITE_URL, // Domain of your site. No trailing slash!
-  url:'https://localhost:8000',
+  url:'https://sailfast.fr',
   siteLanguage: 'fr', // Language Tag on <html> element
   logo: '/logos/logo-1024.png', // Used for SEO
   ogLanguage: 'fr_FR', // Facebook Language
