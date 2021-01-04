@@ -22,7 +22,7 @@ const Page = ( { path,  data, location, pageContext } ) => {
   return(
     <Layout nav={ nav.data.nav } settings={ settings }>
        <SEO
-        title={`${prismicPage.data.title.text}`}
+        title={ prismicPage.data.seo_title ? prismicPage.data.seo_title : `${prismicPage.data.title.text}`}
         pathname={prismicPage.data.uid ? page.data.url : '/'}
         desc={ prismicPage.data.seo_description ? prismicPage.data.seo_description.text : ''}
         node={prismicPage}
