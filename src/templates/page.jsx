@@ -11,11 +11,11 @@ import { propNames } from '@chakra-ui/react'
 import usePreviewData from '../utils/usePreviewData'
 const Page = ( { path,  data, location, pageContext } ) => {
   const liveData = usePreviewData( data )
-  console.log('liveData', liveData)
+  // console.log('liveData', liveData)
   const { nav, prismicPage, settings, childrenNews, posts } = liveData
   // console.log( 'prismicPage', prismicPage, childrenNews )
-  console.log('pageContext', pageContext)
-  console.log( 'childrenNews', childrenNews)
+  // console.log('pageContext', pageContext)
+  // console.log( 'childrenNews', childrenNews)
   // console.log( prismicPage.data.parent )
   // console.log( 'prismicPage.data.hide_title', prismicPage.data.hide_title)
   

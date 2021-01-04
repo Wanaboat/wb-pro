@@ -6,7 +6,7 @@ const PageTitle = (props) => {
         <Heading
             as='h1'
             mt='3rem'
-            mb='2rem'
+            mb='1rem'
             color='brand.2'
             position='relative'
             zIndex={{ base:'base', lg:'banner'}}

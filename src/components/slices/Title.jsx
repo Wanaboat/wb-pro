@@ -20,7 +20,6 @@ const Title = ( props ) => {
             as={ extractH( props.data.slice_title.html )}
             position='relative'
             zIndex={{ base:'auto', lg:'banner'}}
-            color='brand.light.primary'
             mb={ level() === 1 ? '2rem' : 0 }
             fontSize={{
                 base: level() === 1 ? '32px' : level() === 2 ? '26px' : level() === 2 ? '20px' : '18px',
@@ -30,7 +29,7 @@ const Title = ( props ) => {
             fontWeight={{ base: level() != 4 ? '600' : '400' }}
             letterSpacing={{ base: level() != 4 ? 'auto' : '0.05rem' }}
             mt={ level === 2 ? '4rem' : level === 3 ? '3rem' : level === 4 ? '2rem' : '1rem' }
-            color='brand.3'
+            color='brand.2'
             p={{ base:'1rem', lg: level() <= 2 ? '2rem 4rem' : '0rem 4rem'}}
             pb={{ base:'.25rem', lg: level() <= 2 ? '1rem' : '.5rem'}}
         >
