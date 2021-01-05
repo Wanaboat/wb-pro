@@ -14,7 +14,7 @@ const EntryCard = ({ node }) => {
     return(
         <Box
             role="group"
-            ariaLabel={ node.data.title.text }
+            aria-label={ node.data.title.text }
             title={ node.data.title.text }
             as={ GatsbyLink }
             to={ linkResolver( node.prismicId ) }

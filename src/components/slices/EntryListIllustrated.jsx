@@ -1,12 +1,11 @@
 import React from 'react'
 import {
-    Box,
     SimpleGrid
 } from '@chakra-ui/react'
 import EntryCard from '../EntryCard'
 
 const EntryListIllustrated = ( props ) => {
-    console.log('EntryListIllustrated', props )
+    // console.log('EntryListIllustrated', props )
     const relatedEntries = props.items
     return(
         <SimpleGrid

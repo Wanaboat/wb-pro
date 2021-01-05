@@ -14,7 +14,6 @@ const Layout = (props) => {
     >
       <ChakraProvider>
         {props.nav ? <Nav items={props.nav} /> : null}
-        Layout
         <Grid
           templateColumns={{ xs: '100%', l:'200px 1fr' }}
           gap={{ xl: '5rem' }}

@@ -8,7 +8,7 @@ import '../styles/transition.css'
 import linkResolver from '../utils/linkResolver'
 const Nav = (props) => {
 
-    console.log('NavProps', props)
+    // console.log('NavProps', props)
     const [isOpen, setOpen] = useState( false )
     const [subNavOpen, setSubNavOpen] = useState( false )
     const resolve = ( link ) => {

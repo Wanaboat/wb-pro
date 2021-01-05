@@ -7,7 +7,7 @@ import ButtonPrimary from '../ButtonPrimary'
 
 const HomeHero = (props) => {
 
-  console.log('Hero Props', props)
+  // console.log('Hero Props', props)
   return (
     <Box
       bg='rgba(6, 52, 98, 1)'
