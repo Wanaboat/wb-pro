@@ -222,10 +222,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    childrenNews: allPrismicPage(filter:{
+    childrenNews: allPrismicPage(
+      filter:{
         tags: {eq: "news"},
-        data: {parent: {uid: {eq: $uid}}}
-      }) {
+        data: {parent: {uid: {eq: $uid}}
+      }}
+      sort: {fields: data___publication_date, order: DESC}
+      ) {
       edges {
         node {
           prismicId

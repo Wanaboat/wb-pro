@@ -11,10 +11,10 @@ import {
 import linkResolver from '../../utils/linkResolver'
 
 const ChildrenNews = (props) => {
-    console.log('childrenNews', props)
+    // console.log('childrenNews', props)
     return (
 
-        props.childrenNews.edges ?
+        props.childrenNews.edges.length > 0 ?
             <Box
                 id='news'
                 bg='white'
