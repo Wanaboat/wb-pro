@@ -33,6 +33,13 @@
         "placeholder": "For a news"
       }
     },
+    "is_pinned": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Is pinned"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -52,7 +59,8 @@
           "children_news": [],
           "documents_list": [],
           "all_last_news": [],
-          "publication_date": []
+          "publication_date": [],
+          "list_of_articles": []
         },
         "choices": {
           "text": {
@@ -205,10 +213,11 @@
           "list_of_articles": {
             "type": "Slice",
             "fieldset": "List of Articles",
-            "description": "Section title and article list",
+            "description": "List of all post used for news summary",
             "icon": "photo_filter",
             "non-repeat": {},
-            "repeat": {}
+            "repeat": {},
+            "display": "list"
           },
           "home_hero": {
             "type": "Slice",
@@ -382,7 +391,19 @@
             "description": "List of children news",
             "icon": "list",
             "display": "list",
-            "non-repeat": {},
+            "non-repeat": {
+              "display": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "list",
+                    "cards"
+                  ],
+                  "default_value": "list",
+                  "label": "display"
+                }
+              }
+            },
             "repeat": {}
           },
           "documents_list": {

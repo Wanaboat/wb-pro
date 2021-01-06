@@ -26,7 +26,7 @@ import {
 } from '../slices'
 
 const Slices = (props) => {
-  const { page, slices, posts, products, childrenNews } = props
+  const { page, slices, posts, products, childrenNews, lastPinnedPost } = props
   const sliceComponents = {
     PrismicPageBodyAdsList: AdsList,
     PrismicPageBodyText: BodyText,
@@ -60,6 +60,7 @@ const Slices = (props) => {
             data={slice.primary}
             items={slice.items}
             posts={posts}
+            lastPinnedPost={lastPinnedPost}
             products={products}
             childrenNews={ childrenNews }
             key={`${slice.__typename}-${index}`}

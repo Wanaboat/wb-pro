@@ -9,7 +9,7 @@ import {
 import BreadcrumbsJSON from './BreadcrumbsJSON'
 import linkResolver from '../utils/linkResolver'
 const Breadcrumbs = (node) => {
-    console.log('BreadcrumbsData', node)
+    // console.log('BreadcrumbsData', node)
     const hierarchyData = () => {
         let hierarchy = []
         if (node.data.prismicId) {

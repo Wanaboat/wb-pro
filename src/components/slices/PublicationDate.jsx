@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react'
 
 const PublicationDate = (props) => {
-    console.log('PublicationDate', props)
+    // console.log('PublicationDate', props)
     return (
         <Box
             mx={{ base: '1rem', lg: '4rem' }}
@@ -26,9 +26,6 @@ const PublicationDate = (props) => {
                 />
                 {' '}par Sailfast
             </Text>
-            <Box>
-                {/* { JSON.stringify( props ) } */}
-            </Box>
         </Box>
     )
 }

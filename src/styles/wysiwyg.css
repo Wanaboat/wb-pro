@@ -3,10 +3,11 @@
     line-height: 1.6;
 }
 .wysiwyg a {
-    text-decoration: none;
+    text-decoration: underline;
+    color: #283daa;
 }
 .wysiwyg a:hover {
-    border-bottom: 1px solid;
+    color: #008c48;
 }
 .wysiwyg abbr {
     border-bottom: 1px dotted;

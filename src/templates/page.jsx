@@ -7,12 +7,13 @@ import PageTitle from '../components/PageTitle'
 import Wrapper from '../components/Wrapper'
 import Breadcrumbs from '../components/Breadcrumbs'
 import ButtonBack from '../components/ButtonBack'
-import { propNames } from '@chakra-ui/react'
 import usePreviewData from '../utils/usePreviewData'
 const Page = ( { path,  data, location, pageContext } ) => {
+  
   const liveData = usePreviewData( data )
+  const { nav, prismicPage, settings, childrenNews, posts, lastPinnedPost } = liveData
+
   // console.log('liveData', liveData)
-  const { nav, prismicPage, settings, childrenNews, posts } = liveData
   // console.log( 'prismicPage', prismicPage, childrenNews )
   // console.log('pageContext', pageContext)
   // console.log( 'childrenNews', childrenNews)
@@ -45,6 +46,7 @@ const Page = ( { path,  data, location, pageContext } ) => {
           <SlicesEngine
             slices={ prismicPage.data.body }
             posts={ posts }
+            lastPinnedPost={ lastPinnedPost }
             childrenNews={ childrenNews }
             page={ prismicPage }
           />
@@ -96,6 +98,11 @@ export const pageQuery = graphql`
         show_back_button
         body {
           __typename
+          ... on PrismicPageBodyChildrenNews {
+            primary{
+              display
+            }
+          }
           ... on PrismicPageBodyText {
             id
             primary {
@@ -237,6 +244,13 @@ export const pageQuery = graphql`
             title {
               text
             }
+            sharing_image{
+              url
+              thumbnails{
+                small{ url }
+                large{ url }
+              }
+            }
           }
         }
       }
@@ -245,24 +259,48 @@ export const pageQuery = graphql`
       filter: {tags: {eq: "news"}},
       sort: {fields: data___publication_date, order: DESC}
     ) {
-        edges {
-          node {
-            prismicId
-            uid
-            data{
-              publication_date
-              title{text}
-              sharing_image{
-                url
-                thumbnails{
-                  small{ url }
-                  large{ url }
-                }
+      edges {
+        node {
+          prismicId
+          uid
+          data{
+            publication_date
+            title{text}
+            sharing_image{
+              url
+              thumbnails{
+                small{ url }
+                large{ url }
               }
             }
           }
         }
       }
+    }
+    lastPinnedPost: allPrismicPage(
+      filter: {tags: {eq: "news"}, data: {is_pinned: {eq: true}}},
+      sort: {fields: data___publication_date, order: DESC},
+      limit: 1
+    ){
+      edges {
+        node {
+          prismicId
+          data {
+            publication_date
+            title {
+              text
+            }
+            sharing_image{
+              url
+              thumbnails{
+                small{ url }
+                large{ url }
+              }
+            }
+          }
+        }
+      }
+    }
     settings:prismicSettings {
       data {
           site_name
@@ -318,93 +356,3 @@ export const pageQuery = graphql`
     }
 }
 `
-
-
-
-
-// #prismicPage: prismicPage(uid: { eq: $uid }) {
-//   #  uid
-//   #  first_publication_date
-//   #  last_publication_date
-//   #  data {
-//   #    title {
-//   #      text
-//   #    }
-//   #    seo_description{
-//   #      text
-//   #    }
-//   #    seo_title
-//   #    sharing_image{
-//   #      url
-//   #    }
-//   #    body {
-//   #      __typename
-//   #      ... on PrismicPageBodyAdsList {
-//   #        id
-//   #        primary{
-//   #          link_to_contact{
-//   #        id
-//   #        isBroken
-//   #        lang
-//   #        link_type
-//   #        slug
-//   #        target
-//   #        type
-//   #        uid
-//   #        url
-//   #      
-//   #          }
-//   #          side_text{
-//   #            html
-//   #            text
-//   #          }
-//   #        }
-//   #      }
-//   #      ... on PrismicPageBodyMap {
-//   #        primary {
-//   #          location {
-//   #            latitude
-//   #            longitude
-//   #          }
-//   #          address {
-//   #            html
-//   #            text
-//   #          }
-//   #        }
-//   #      }
-//   #      ... on PrismicPageBodyBannerWithCaption {
-//   #        primary {
-//   #          image_banner {
-//   #            alt
-//   #            copyright
-//   #            url
-//   #          }
-//   #          description {
-//   #            html
-//   #            text
-//   #          }
-//   #          button_link {
-//   #            url
-//   #          }
-//   #          button_label {
-//   #            html
-//   #            text
-//   #          }
-//   #        }
-//   #      }
-//   #      ... on PrismicPageBodyText {
-//   #        id
-//   #        primary {
-//   #          text {
-//   #            html
-//   #            text
-//   #            raw {
-//   #              text
-//   #              type
-//   #            }
-//   #          }
-//   #        }
-//   #      }
-//   #    }
-//   #  }
-//   #}

@@ -3,8 +3,7 @@ import Helmet from 'react-helmet'
 import linkResolver from '../utils/linkResolver'
 
 const BreadcrumbsJSON = ( crumbs ) => {
-    console.log( 'crumbs', crumbs)
-
+    // console.log( 'crumbs', crumbs)
     const structuredJSON = () => {
 
         let breadcrumbsItems = [];

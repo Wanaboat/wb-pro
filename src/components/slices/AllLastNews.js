@@ -13,7 +13,7 @@ const AllLastNews = ( props ) => {
             gap='2rem'
         >
             { props.posts.edges.map( (entry,i) =>
-            i < 3 ? 
+             i < 3 ? 
                 <EntryCard
                     key={ entry.node.prismicId}
                     node={ entry.node }
