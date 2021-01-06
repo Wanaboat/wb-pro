@@ -30,7 +30,7 @@
     "@emotion/styled": "^11.0.0",
     "@reach/skip-nav": "^0.8.6",
     "@react-google-maps/api": "^1.13.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "emotion": "^11.0.0",
     "emotion-server": "^11.0.0",
     "framer-motion": "^2.9.4",
