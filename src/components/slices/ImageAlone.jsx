@@ -8,7 +8,7 @@ import {
 
 const ImageAlone = ( props ) => {
 
-    console.log( 'ImageAlone', props )
+    // console.log( 'ImageAlone', props )
 
     return(
         <Flex

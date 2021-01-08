@@ -57,6 +57,7 @@ const Video = (props) => {
                             <Box
                                 onClick={() => { setCurrentVideo(iframePlayerUrl(video)) }}
                                 position='relative'
+                                key={`video-playlist-item-${i}`}
                             >
                                 <Flex
                                     cursor='pointer'
