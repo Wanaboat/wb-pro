@@ -9,7 +9,7 @@ import translations from './translations'
 import { IconButton } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 import { createBreakpoints } from "@chakra-ui/theme-tools"
-
+import Helmet from 'react-helmet'
 import logoSvg from '../images/logo-sailfast.svg'
 
 
@@ -73,6 +73,9 @@ const Layout2 = (props) => {
       defaultLocale={'fr'}
       messages={translations['fr']}
     >
+      <Helmet>
+        <meta name="google-site-verification" content="L6EcAQI1lhH6KxMPWkvN1H1eSFlxMewj7L_IoPdQhZ8" />
+      </Helmet>
       <ChakraProvider
         theme={theme}
       >
