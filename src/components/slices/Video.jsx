@@ -17,7 +17,7 @@ const Video = (props) => {
 
     const [currentVideo, setCurrentVideo] = useState(false)
 
-    console.log('Videoprops', props.items)
+    // console.log('Videoprops', props.items)
     const iframePlayerUrl = (video) => {
         if (video.youtube_link.embed_url) {
             console.log('video', video)
