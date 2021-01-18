@@ -107,6 +107,7 @@ export const pageQuery = graphql`
             id
             primary {
               text {
+                raw
                 html
                 text
               }
