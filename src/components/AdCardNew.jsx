@@ -44,6 +44,17 @@ class AdCardLandscape extends Component {
                 'https://i3sh32xk.twic.pics/'
                 +'photos'
                 +images.url[0]
+                + '?twic=v1/cover=96x96/format=avif/quality=50'
+                // + '?quality=70&fit=cover&width=96&height=96&format=webp'
+              }
+              type="image/avif"
+            />
+            <source
+              srcSet={
+                // process.env.GATSBY_IMAGE_URL_PREFIX
+                'https://i3sh32xk.twic.pics/'
+                +'photos'
+                +images.url[0]
                 + '?twic=v1/cover=96x96/format=webp/quality=50'
                 // + '?quality=70&fit=cover&width=96&height=96&format=webp'
               }
@@ -60,17 +71,7 @@ class AdCardLandscape extends Component {
               }
               type="image/jpeg"
             />
-            <source
-              srcSet={
-                // process.env.GATSBY_IMAGE_URL_PREFIX
-                'https://i3sh32xk.twic.pics/'
-                +'photos'
-                +images.url[0]
-                + '?twic=v1/cover=96x96/format=heif/quality=50'
-                // + '?quality=70&fit=cover&width=96&height=96&format=webp'
-              }
-              type="image/heif"
-            />
+
             <img
               src={
                 // process.env.GATSBY_IMAGE_URL_PREFIX

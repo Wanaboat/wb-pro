@@ -82,7 +82,7 @@ const SingleAdLoader = (props) => {
             // pb={{ xs: '7rem', lg: '0' }}
             zIndex='tooltip'
         >
-            { viewingGallery ? <Gallery close={() => { setViewingGallery(false) }} images={ad.images.url} /> : null}
+            { viewingGallery ? <Gallery close={() => { setViewingGallery(false) }} ad={ ad } images={ad.images.url} /> : null}
             <Box
                 position='relative'
                 onClick={

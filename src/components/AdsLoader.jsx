@@ -3,12 +3,6 @@ import { Box, Flex, Stack, Spinner } from '@chakra-ui/react'
 import { useContentful } from 'react-contentful';
 import AdCard from './AdCardNew'
 import SingleAdLoader from './SingleAdLoader'
-// https://cdn.contentful.com/spaces/xg7lbk8sfmzs/environments/master/entries
-//     ?content_type=ad
-//     &locale=fr&order=-fields.publicationDate
-//     &limit=20
-//     &skip=0
-//     &fields.refModel.sys.id=5dadfb6dae5ec
 
 const AdsLooader = ( props ) => {
   const [ detailsAdId , setDetailsAdId ] = useState(false)

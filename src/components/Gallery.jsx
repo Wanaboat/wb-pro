@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 const Gallery = (props) => {
+    const { ad, images } = props
     return (
         <>
             {/* <Button onClick={true}>Open Modal</Button> */}
@@ -39,13 +40,14 @@ const Gallery = (props) => {
                                     <picture>
                                         <source
                                             type="image/webp"
-                                            srcSet={`${process.env.IMAGE_URL_PREFIX}/photos/${image}?fit=cover&width=750&height=750&format=webp`}
+                                            srcSet={`${process.env.IMAGE_URL_PREFIX}/photos${image}?fit=cover&width=750&height=750&format=webp`}
                                         />
                                         <Image
+                                            alt={ ad.title }
                                             // alt={ad.name}
                                             // mt={{ xs: '-10rem', lg: '-20rem' }}
                                             objectFit="cover"
-                                            srcSet={`${process.env.IMAGE_URL_PREFIX}/photos/${image}?fit=cover&width=750&height=750`} />
+                                            srcSet={`${process.env.IMAGE_URL_PREFIX}photos${image}?fit=cover&width=750&height=750`} />
                                     </picture>
                                 </Box>)}
                         </Stack>
