@@ -40,7 +40,7 @@ class AdCardLandscape extends Component {
           <picture>
             <source
               srcSet={
-                // process.env.GATSBY_IMAGE_URL_PREFIX
+                // process.env.GATSBY_GATSBY_IMAGE_URL_PREFIX
                 'https://i3sh32xk.twic.pics/'
                 +'photos'
                 +images.url[0]
@@ -51,7 +51,7 @@ class AdCardLandscape extends Component {
             />
             <source
               srcSet={
-                // process.env.GATSBY_IMAGE_URL_PREFIX
+                // process.env.GATSBY_GATSBY_IMAGE_URL_PREFIX
                 'https://i3sh32xk.twic.pics/'
                 +'photos'
                 +images.url[0]
@@ -62,7 +62,7 @@ class AdCardLandscape extends Component {
             />
             <source
               srcSet={
-                // process.env.GATSBY_IMAGE_URL_PREFIX
+                // process.env.GATSBY_GATSBY_IMAGE_URL_PREFIX
                 'https://i3sh32xk.twic.pics/'
                 +'photos'
                 +images.url[0]
@@ -74,7 +74,7 @@ class AdCardLandscape extends Component {
 
             <img
               src={
-                // process.env.GATSBY_IMAGE_URL_PREFIX
+                // process.env.GATSBY_GATSBY_IMAGE_URL_PREFIX
                 'https://i3sh32xk.twic.pics/'
                 +'photos'
                 +images.url[0]

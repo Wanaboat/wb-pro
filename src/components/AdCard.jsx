@@ -25,7 +25,7 @@ const AdCard = (props) => {
             <Box>
                 { props.ad.images ? 
                 // <Image
-                //     src={`${process.env.IMAGE_URL_PREFIX}photos/${props.ad.images.url[0]}`}
+                //     src={`${process.env.GATSBY_IMAGE_URL_PREFIX}photos/${props.ad.images.url[0]}`}
                 //     alt={props.ad.name}
                 //     w='90px'
                 //     h='90px'
@@ -34,13 +34,13 @@ const AdCard = (props) => {
                 <picture>
                     <source
                         type="image/webp"
-                        srcSet={`${process.env.IMAGE_URL_PREFIX}/photos${props.ad.images.url[0]}?fit=cover&width=96&height=96&format=webp`}
+                        srcSet={`${process.env.GATSBY_IMAGE_URL_PREFIX}/photos${props.ad.images.url[0]}?fit=cover&width=96&height=96&format=webp`}
                     />
                     <Image
                         alt={ props.ad.name }
                         objectFit='cover'
                         loading='lazy'
-                        srcSet={`${process.env.IMAGE_URL_PREFIX}/photos${props.ad.images.url[0]}?fit=cover&width=750&height=750`} />
+                        srcSet={`${process.env.GATSBY_IMAGE_URL_PREFIX}/photos${props.ad.images.url[0]}?fit=cover&width=750&height=750`} />
                 </picture>
 
                 :
