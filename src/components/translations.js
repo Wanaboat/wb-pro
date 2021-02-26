@@ -7,7 +7,7 @@ export default {
         "main.discover":"Découvrez",
         "main.pictures": "photos",
         "main.copied": "Copié !",
-        "main.previous": "Précédant",
+        "main.previous": "Précédent",
         "main.next": "Suivant",
         "main.discover":"Découvrir",
         "footer.wb.signature": "Site par Wanaboat.fr : Services digitaux pour les pros du nautisme",
