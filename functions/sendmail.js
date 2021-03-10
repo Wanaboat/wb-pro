@@ -16,8 +16,9 @@ exports.handler = function(event, context, callback) {
 
     transporter.sendMail({
         from: "vhf@wanaboat.fr",
-        to: "site@sailfast.fr",
+        to: "site@sailfast.fr, oli.livet@gmail.com",
         subject: `[Form] : de ${data.name}`,
+        replyTo: `${data.email}`,
         html: `
             <h3>Message de ${data.name} (${data.email})</h3>
             <h4>Depuis la page : ${data.context}</h4>
